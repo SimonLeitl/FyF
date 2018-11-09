@@ -14,8 +14,8 @@
         android:layout_height="wrap_content"
         android:text="Hello"
         android:textSize="36sp"
-        tools:layout_editor_absoluteX="234dp"
-        tools:layout_editor_absoluteY="410dp" />
+        tools:layout_editor_absoluteX="83dp"
+        tools:layout_editor_absoluteY="394dp" />
 
     <ImageView
         android:id="@+id/imageView1"
