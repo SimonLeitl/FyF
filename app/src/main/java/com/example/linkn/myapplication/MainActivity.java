@@ -17,6 +17,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
+
 public class MainActivity extends AppCompatActivity {
 
     public EditText emailTextbox, passwortTextBox;
@@ -60,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
         //create User
 
         auth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
+               .addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
 
@@ -79,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
 
                     }
                 });
+
     }
 
     // eventListener für den Login Button auf der Startseite. Leitet zum Login weiter
