@@ -28,14 +28,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.start);
-
-
-
-
-
-
     }
-
 
     public void onClick(View view){
         auth = FirebaseAuth.getInstance();
@@ -80,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
                             Toast.makeText(MainActivity.this, "Authentication failed." + task.getException(),
                                     Toast.LENGTH_SHORT).show();
                         } else {
-                            startActivity(new Intent(MainActivity.this, MainActivity.class));
+                            startActivity(new Intent(MainActivity.this, Sucessful.class));
                             finish();
                         }
 
