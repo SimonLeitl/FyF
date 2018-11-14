@@ -53,4 +53,14 @@ public class MainActivity extends AppCompatActivity {
         EditText passwortWdhText= (EditText) findViewById(R.id.passwortWdhTextBox);
         passwortWdhText.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD);
     }
+
+    // setzt activity_main.xml wieder als aktiven View
+    public void loginZurückButtonClick(View view){
+        setContentView(R.layout.activity_main);
+    }
+
+    // öffnet die Funktionen ohnen Login oder Registration.
+    public void withoutLoginLabelKlick(View view){
+
+    }
 }
