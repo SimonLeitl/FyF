@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
 
     // setzt activity_main.xml wieder als aktiven View
     public void loginZurückButtonClick(View view){
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.start);
     }
 
     // öffnet die Funktionen ohnen Login oder Registration.
