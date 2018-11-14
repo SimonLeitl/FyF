@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "222835418135",
+    "firebase_url": "https://findyourfarm-93df7.firebaseio.com",
+    "project_id": "findyourfarm-93df7",
+    "storage_bucket": "findyourfarm-93df7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:222835418135:android:8ff40ce41b1a4c78",
+        "android_client_info": {
+          "package_name": "com.example.linkn.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "222835418135-1ujevr3fm24licgg7010lkijc0gt3lne.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCslo0dE5v_Vl-zxyrFGKRuTfmc5u_DHCA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
