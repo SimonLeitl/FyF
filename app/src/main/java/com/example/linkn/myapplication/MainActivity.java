@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
 
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
-        emailTextbox = (EditText) findViewById(R.id.emailText);
+        emailTextbox = (EditText) findViewById(R.id.loginEmail);
         passwortTextBox = (EditText) findViewById(R.id.passwortTextBox);
         registrieren=(Button) findViewById(R.id.registrierenButton);
 
@@ -86,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
     // eventListener für den Login Button auf der Startseite. Leitet zum Login weiter
     public void preLoginButtonClick(View view){
         setContentView(R.layout.login);
+        startActivity(new Intent(MainActivity.this, LoginActivity.class));
     }
 
     // eventListener für den Register Button auf der Startseite. Leitet zur preRegistrierung weiter
@@ -123,9 +124,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     // setzt activity_main.xml wieder als aktiven View
-    public void loginZurückButtonClick(View view){
+    public void regZurückButtonClick(View view){
         setContentView(R.layout.start);
     }
+
 
     // öffnet die Funktionen ohnen Login oder Registration.
     public void withoutLoginLabelKlick(View view){

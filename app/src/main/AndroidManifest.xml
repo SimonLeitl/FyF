@@ -20,6 +20,10 @@
             android:name=".Sucessful">
 
         </activity>
+        <activity
+            android:name=".LoginActivity">
+
+        </activity>
 
     </application>
     <uses-permission android:name="android.permission.INTERNET" />

@@ -6,7 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <EditText
-        android:id="@+id/emailText"
+        android:id="@+id/loginEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="84dp"
@@ -22,7 +22,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/loginPasswort"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="83dp"
@@ -35,38 +35,31 @@
         android:text="Passwort"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/emailText"
+        app:layout_constraintTop_toBottomOf="@+id/loginEmail"
         tools:text="Passwort" />
 
     <Button
         android:id="@+id/loginButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="148dp"
-        android:layout_marginLeft="148dp"
-        android:layout_marginTop="52dp"
-        android:layout_marginEnd="148dp"
-        android:layout_marginRight="148dp"
-        android:onClick="loginButtonClick"
+        android:layout_marginStart="116dp"
+        android:layout_marginLeft="116dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="14dp"
+        android:layout_marginRight="14dp"
         android:text="Login"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.206"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText2" />
+        app:layout_constraintTop_toBottomOf="@+id/loginPasswort" />
 
-    <Button
+    <ImageButton
         android:id="@+id/loginZurückButton"
-        android:layout_width="90dp"
-        android:layout_height="36dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="278dp"
-        android:layout_marginRight="278dp"
-        android:background="@color/colorPrimaryDark"
+        android:layout_width="49dp"
+        android:layout_height="38dp"
         android:onClick="loginZurückButtonClick"
-        android:text="zurück"
-        android:textColor="@android:color/background_light"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="?attr/actionModeCloseDrawable" />
+
 </android.support.constraint.ConstraintLayout>
