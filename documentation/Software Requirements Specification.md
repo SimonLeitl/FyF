@@ -47,7 +47,7 @@ Either he registers as a farmer or as a customer. But the app can also be used a
 
 #### 3.1.2 Farmer profile
 An as farm shop registered user can access his user profile. There, he is able to update his provided personal data and password, and also to delete his account. 
-##### 3.1.2.1 [Set profile data](https://github.com/FyF-Team/fyf/blob/master/UC/UC%20set%20profile%20data.md)
+##### 3.1.2.1 [Create farm shop](https://github.com/linkna/FyF/blob/master/documentation/UC/UCS-create%20farm%20shop.md)
 A user with a farmer profile can register new farm shops and manage the business data.
 
 #### 3.1.3 Customer profile
