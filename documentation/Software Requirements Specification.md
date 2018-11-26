@@ -32,7 +32,7 @@ The following chapters are about our vision and perspective, the software requir
 
 ## 2 Overall Description
 
-![use case diagram](/OverallUseCaseDiagram.jpg)
+![use case diagram](/documentation/OverallUseCaseDiagram.jpg)
 
 Find your Farm will be an Andriod app which focuses on the connection between farmers and customers who love to buy and eat healthy food and the knowledge where it comes from. So we try to make it easy to find the farmer in your area. We'll use a map where you can find your favorite farm and check the latest offers from vegetables to meet or eggs. Also you find important informations about the farm like open times or something. Another possibility is that you can direktly write an e-mail to your farm to get informations and you can rate the service and the quality of the food.
 
