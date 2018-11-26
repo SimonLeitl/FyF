@@ -3,87 +3,59 @@
   <ID>JAVA</ID>
   <OriginalElement>com.example.linkn.myapplication</OriginalElement>
   <nodes>
-    <node x="471.0" y="700.0">com.example.linkn.myapplication.BuildConfig</node>
-    <node x="0.0" y="615.0">com.example.linkn.myapplication.SearchByRanking</node>
-    <node x="242.0" y="700.0">com.example.linkn.myapplication.ExampleInstrumentedTest</node>
-    <node x="158.0" y="604.0">com.example.linkn.myapplication.SearchByLocation</node>
-    <node x="212.25" y="0.0">com.example.linkn.myapplication.Profile</node>
-    <node x="350.0" y="615.0">com.example.linkn.myapplication.SearchByProduct</node>
-    <node x="0.0" y="700.0">com.example.linkn.myapplication.ExampleUnitTest</node>
-    <node x="186.0" y="190.0">com.example.linkn.myapplication.Farmer</node>
-    <node x="202.5" y="525.0">com.example.linkn.myapplication.Search</node>
-    <node x="541.0" y="79.0">com.example.linkn.myapplication.Sucessful</node>
-    <node x="553.25" y="180.0">com.example.linkn.myapplication.MainActivity</node>
-    <node x="658.25" y="0.0">com.example.linkn.myapplication.R</node>
-    <node x="322.0" y="190.0">com.example.linkn.myapplication.Customer</node>
-    <node x="116.0" y="291.0">com.example.linkn.myapplication.Farmshop</node>
+    <node x="0.0" y="449.0">com.example.linkn.myapplication.BuildConfig</node>
+    <node x="237.0" y="561.0">com.example.linkn.myapplication.SearchByRanking</node>
+    <node x="0.0" y="818.0">com.example.linkn.myapplication.ExampleInstrumentedTest</node>
+    <node x="395.0" y="550.0">com.example.linkn.myapplication.SearchByLocation</node>
+    <node x="343.5" y="0.0">com.example.linkn.myapplication.Profile</node>
+    <node x="301.0" y="655.0">com.example.linkn.myapplication.ExampleUnitTest</node>
+    <node x="587.0" y="561.0">com.example.linkn.myapplication.SearchByProduct</node>
+    <node x="310.0" y="225.5">com.example.linkn.myapplication.Farmer</node>
+    <node x="394.0" y="449.0">com.example.linkn.myapplication.Search</node>
+    <node x="0.0" y="0.0">com.example.linkn.myapplication.MainActivity</node>
+    <node x="543.0" y="655.0">com.example.linkn.myapplication.Sucessful</node>
+    <node x="229.0" y="818.0">com.example.linkn.myapplication.R</node>
+    <node x="446.0" y="214.0">com.example.linkn.myapplication.Customer</node>
+    <node x="0.0" y="655.0">com.example.linkn.myapplication.Farmshop</node>
   </nodes>
   <notes />
   <edges>
-    <edge source="com.example.linkn.myapplication.Sucessful" target="com.example.linkn.myapplication.R">
-      <point x="0.0" y="-25.5" />
-      <point x="634.0" y="54.0" />
-      <point x="672.0" y="54.0" />
-      <point x="-13.75" y="14.5" />
-    </edge>
     <edge source="com.example.linkn.myapplication.SearchByRanking" target="com.example.linkn.myapplication.Search">
       <point x="0.0" y="-14.5" />
-      <point x="69.0" y="579.0" />
-      <point x="216.33333333333334" y="579.0" />
-      <point x="-27.666666666666657" y="14.5" />
+      <point x="306.0" y="525.0" />
+      <point x="423.0" y="525.0" />
+      <point x="-58.0" y="25.5" />
     </edge>
     <edge source="com.example.linkn.myapplication.Customer" target="com.example.linkn.myapplication.Profile">
-      <point x="43.5" y="-25.5" />
-      <point x="452.5" y="165.0" />
-      <point x="399.5" y="165.0" />
-      <point x="80.25" y="70.0" />
-    </edge>
-    <edge source="com.example.linkn.myapplication.Search" target="com.example.linkn.myapplication.Farmshop">
-      <point x="0.0" y="-14.5" />
-      <point x="0.0" y="92.0" />
-    </edge>
-    <edge source="com.example.linkn.myapplication.Farmshop" target="com.example.linkn.myapplication.Farmer">
-      <point x="-64.0" y="-92.0" />
-      <point x="180.0" y="266.0" />
-      <point x="215.0" y="266.0" />
-      <point x="-29.0" y="25.5" />
-    </edge>
-    <edge source="com.example.linkn.myapplication.MainActivity" target="com.example.linkn.myapplication.Sucessful">
-      <point x="-66.25" y="-146.5" />
-      <point x="619.5" y="155.0" />
-      <point x="634.0" y="155.0" />
-      <point x="0.0" y="25.5" />
-    </edge>
-    <edge source="com.example.linkn.myapplication.MainActivity" target="com.example.linkn.myapplication.R">
-      <point x="66.25" y="-146.5" />
-      <point x="752.0" y="155.0" />
-      <point x="737.5" y="155.0" />
-      <point x="737.5" y="54.0" />
-      <point x="699.5" y="54.0" />
-      <point x="13.75" y="14.5" />
+      <point x="0.0" y="-37.0" />
+      <point x="533.0" y="189.0" />
+      <point x="504.0" y="189.0" />
+      <point x="53.5" y="82.0" />
     </edge>
     <edge source="com.example.linkn.myapplication.SearchByLocation" target="com.example.linkn.myapplication.Search">
       <point x="0.0" y="-25.5" />
-      <point x="0.0" y="14.5" />
+      <point x="0.0" y="25.5" />
     </edge>
     <edge source="com.example.linkn.myapplication.Farmer" target="com.example.linkn.myapplication.Profile">
-      <point x="29.0" y="-25.5" />
-      <point x="273.0" y="165.0" />
-      <point x="292.5" y="165.0" />
-      <point x="-26.75" y="70.0" />
+      <point x="0.0" y="-25.5" />
+      <point x="368.0" y="189.0" />
+      <point x="397.0" y="189.0" />
+      <point x="-53.5" y="82.0" />
     </edge>
     <edge source="com.example.linkn.myapplication.SearchByProduct" target="com.example.linkn.myapplication.Search">
       <point x="0.0" y="-14.5" />
-      <point x="418.5" y="579.0" />
-      <point x="271.6666666666667" y="579.0" />
-      <point x="27.666666666666686" y="14.5" />
+      <point x="655.5" y="525.0" />
+      <point x="539.0" y="525.0" />
+      <point x="58.0" y="25.5" />
     </edge>
   </edges>
-  <settings layout="Hierarchic Group" zoom="0.45006485084306097" x="409.5" y="365.5" />
+  <settings layout="Hierarchic Group" zoom="0.7925339366515836" x="397.3460460289548" y="212.49099728053537" />
   <SelectedNodes />
   <Categories>
     <Category>Constructors</Category>
+    <Category>Properties</Category>
     <Category>Methods</Category>
+    <Category>Fields</Category>
   </Categories>
   <SCOPE>All</SCOPE>
   <VISIBILITY>private</VISIBILITY>
