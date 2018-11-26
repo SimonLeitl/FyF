@@ -65,7 +65,7 @@ For authentication the email address and password are used.
 #### 3.1.5 Search a farm shop
 There are three different ways to find farm shops.
 
-##### 3.1.5.1 [Search by location](https://github.com/FyF-Team/fyf/blob/master/UC/UC%20search%20by%20location.md)
+##### 3.1.5.1 [Search by location](https://github.com/linkna/FyF/blob/master/documentation/UC/UCS-search%20by%20location.md)
 With the location search you can find shops nearby.
 ##### 3.1.5.2 Search by product
 With searching for a special product you will find surrounding shops that offer the special product.
