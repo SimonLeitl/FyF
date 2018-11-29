@@ -98,7 +98,7 @@ public class LoginActivity extends AppCompatActivity {
                         });
             }
         });
-
+˘
     }
     // setzt activity_main.xml wieder als aktiven View
     public void loginZurückButtonClick(View view){
