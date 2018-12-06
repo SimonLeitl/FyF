@@ -54,7 +54,7 @@ n/a
 
 ## 7. Deployment View
 
-
+![Deployment View](https://github.com/linkna/FyF/blob/master/documentation/deployment%20view.png)
 
 
 ## 8. Implementation View
