@@ -19,10 +19,7 @@ This document describes the architecture of the Find your Farm project.
 |			Title									|	Date		|
 |---------------------------------------------------|---------------|
 | [FyF Blog](https://findyourfarm.wordpress.com/) | |
-
-
-
-Here you find our [SRS](https://github.com/linkna/FyF/blob/master/documentation/Software%20Requirements%20Specification.md)
+|[SRS](https://github.com/linkna/FyF/blob/master/documentation/Software%20Requirements%20Specification.md) | |
 
 ### 1.5 Overview
 
