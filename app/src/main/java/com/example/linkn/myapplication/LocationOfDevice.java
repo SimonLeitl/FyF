@@ -1,98 +1,86 @@
 package com.example.linkn.myapplication;
 
+import android.Manifest;
+import android.content.Context;
+import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.widget.Toast;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-public class LocationOfDevice implements LocationListener {
 
-    private static double lat =0.0;
-    private static double lon = 0.0;
-    private final String mSnippet;
-    private final LatLng mPosition;
+public class LocationOfDevice extends AppCompatActivity {
 
-    /*
-    private static double alt = 0.0;
-    private static double speed = 0.0;
-    private final String mTitle = "";
-    */
+    private LocationManager locationManager;
+    private LocationListener locationListener;
+    private GoogleMap mMap;
 
-    // Breitengrad
-    public static double getLat()
-    {
-        return lat;
+    public LocationManager getLocationManager() {
+        return locationManager;
     }
 
-    // Längengrad
-    public static double getLon()
-    {
-        return lon;
-    }
-
-    /*
-    public static double getAlt()
-    {
-        return alt;
-    }
-
-    public static double getSpeed()
-    {
-        return speed;
-    }
-    */
-
-    public void onMapReady(GoogleMap map) {
-        map.addMarker(new MarkerOptions()
-                .position(new LatLng(getLat(), getLon()))
-                .title("Current Location"));
-    }
-    public LocationOfDevice(double lati, double lng, String title, String snippet) {
-        lati = lat;
-        lng = lon;
-        mPosition = new LatLng(lat, lng);
-      //  mTitle = title;
-        mSnippet = snippet;
-    }
-
-    public LocationOfDevice(double lati, double lng, String mSnippet) {
-        lati = lat;
-        lng = lon;
-        this.mSnippet = mSnippet;
-        mPosition = new LatLng(lati, lng);
-    }
-
-    // gibt die Koordinaten in Goolgefromat wieder
-    public LatLng getPosition() {
-        return mPosition;
-    }
-
-   // public String getTitle() {
-      //  return mTitle;
-   // }
-
-    public String getSnippet() {
-        return mSnippet;
+    public LocationListener getLocationListener() {
+        return locationListener;
     }
 
     @Override
-    public void onLocationChanged(Location location)
-    {
-        lat = location.getLatitude();
-        lon = location.getLongitude();
-        /*
-        alt = location.getAltitude();
-        speed = location.getSpeed();
-        */
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        if(grantResults.length > 0 && grantResults [0] == PackageManager.PERMISSION_GRANTED){
+            if(ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED){
+                locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
+            }
+        }
     }
 
     @Override
-    public void onProviderDisabled(String provider) {}
-    @Override
-    public void onProviderEnabled(String provider) {}
-    @Override
-    public void onStatusChanged(String provider, int status, Bundle extras) {}
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
+        locationListener = new LocationListener() {
+            @Override
+            public void onLocationChanged(Location location) {
+                mMap.clear();
+                LatLng userLocation = new LatLng(location.getLatitude(), location.getLongitude());
+                mMap.addMarker(new MarkerOptions().position(userLocation).title("Your Location"));
+                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(userLocation, 15));
+            }
+
+            @Override
+            public void onStatusChanged(String provider, int status, Bundle extras) {
+
+            }
+
+            @Override
+            public void onProviderEnabled(String provider) {
+
+            }
+
+            @Override
+            public void onProviderDisabled(String provider) {
+
+            }
+        };
+
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions( this, new String [] {Manifest.permission.ACCESS_FINE_LOCATION}, 1);
+        }else{
+            //minTime legt fest, wie oft die Location aktualisier wird, pro sekunde, halbe Minute usw.
+            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 3, 0, locationListener);
+        }
+    }
+
 }
