@@ -34,6 +34,8 @@ This document contains the Architectural Representation, Goals and Constraints a
 The project is focused around the API. The frontend is built in Java (Android).
 The MVC architectural pattern allows us separate functionality and define specified tasks for each part of our application. 
 
+![MVC](https://github.com/linkna/FyF/blob/master/documentation/mvc-architecture.png)
+
 ## 4. Use-Case View
 
 ![UCD][] 
