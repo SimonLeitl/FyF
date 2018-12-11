@@ -85,5 +85,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }
         // Add a marker on the Position of the user
 
+        mMap.addMarker(new MarkerOptions()
+                .position(new LatLng(10, 10))
+                .title("Hello world"));
     }
 }
