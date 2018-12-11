@@ -22,7 +22,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/vornameTextBox"
+        android:id="@+id/vornameTextBox2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="84dp"
@@ -124,6 +124,6 @@
         android:text="Geburtsdatum"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/vornameTextBox" />
+        app:layout_constraintTop_toBottomOf="@+id/vornameTextBox2" />
 
 </android.support.constraint.ConstraintLayout>

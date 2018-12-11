@@ -5,7 +5,6 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.text.InputType;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,15 +12,11 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firestore.v1beta1.WriteResult;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -56,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
         passwortTextBox = (EditText) findViewById(R.id.passwortTextBox);
         registrieren=(Button) findViewById(R.id.registrierenButton);
         nameTextBox=(EditText) findViewById(R.id.nameTextBox);
-        vornameTextBox=(EditText) findViewById(R.id.vornameTextBox);
+        vornameTextBox=(EditText) findViewById(R.id.vornameTextBox2);
         geburtstagTextBox=(EditText) findViewById(R.id.geburtstagTextBox);
 
         String email = emailTextbox.getText().toString().trim();
@@ -99,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
                             Toast.makeText(MainActivity.this, "Authentication failed." + task.getException(),
                                     Toast.LENGTH_SHORT).show();
                         } else {
-                            startActivity(new Intent(MainActivity.this, Sucessful.class));
+                            startActivity(new Intent(MainActivity.this, Profile.class));
                            //ruft den aktuellen User ab
                             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                             //gibt den String des aktuellen Users
