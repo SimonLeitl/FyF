@@ -93,12 +93,12 @@ public class LoginActivity extends AppCompatActivity {
                                     Intent intent = new Intent(LoginActivity.this, Sucessful.class);
                                     startActivity(intent);
                                     finish();
-                      „          }
+                                }
                             }
                         });
             }
         });
-˘
+
     }
     // setzt activity_main.xml wieder als aktiven View
     public void loginZurückButtonClick(View view){
