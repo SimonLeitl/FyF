@@ -1,11 +1,11 @@
 package com.example.linkn.myapplication;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.text.InputType;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,31 +13,51 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firestore.v1beta1.WriteResult;
+
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class MainActivity extends AppCompatActivity {
 
-    public EditText emailTextbox, passwortTextBox;
+    public EditText emailTextbox, passwortTextBox, nameTextBox, vornameTextBox, geburtstagTextBox;
+
     public Button registrieren;
     public FirebaseAuth auth;
     private ProgressBar progressBar;
+    private FirebaseFirestore mDatabase;
+
+    Map<String, Object> userEingabe = new HashMap<>();
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.start);
+        mDatabase = FirebaseFirestore.getInstance();
     }
 
     public void onClick(View view){
         auth = FirebaseAuth.getInstance();
 
-        progressBar = (ProgressBar) findViewById(R.id.progressBar);
+
         emailTextbox = (EditText) findViewById(R.id.loginEmail);
         passwortTextBox = (EditText) findViewById(R.id.passwortTextBox);
         registrieren=(Button) findViewById(R.id.registrierenButton);
+        nameTextBox=(EditText) findViewById(R.id.nameTextBox);
+        vornameTextBox=(EditText) findViewById(R.id.vornameTextBox);
+        geburtstagTextBox=(EditText) findViewById(R.id.geburtstagTextBox);
 
         String email = emailTextbox.getText().toString().trim();
         String password = passwortTextBox.getText().toString().trim();
@@ -57,7 +77,12 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-        progressBar.setVisibility(View.VISIBLE);
+        //Daten die in die Datenbank gespeichert werden sollen.
+        userEingabe.put("firstname",nameTextBox.getText().toString());
+        userEingabe.put("lastname", vornameTextBox.getText().toString());
+        userEingabe.put("born", geburtstagTextBox.getText().toString());
+
+
         //create User
 
         auth.createUserWithEmailAndPassword(email, password)
@@ -66,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
 
                         Toast.makeText(MainActivity.this, "createUserWithEmail:onComplete:" + task.isSuccessful(), Toast.LENGTH_SHORT).show();
-                          progressBar.setVisibility(View.GONE);
+
                         // If sign in fails, display a message to the user. If sign in succeeds
                         // the auth state listener will be notified and logic to handle the
                         // signed in user can be handled in the listener.
@@ -75,7 +100,14 @@ public class MainActivity extends AppCompatActivity {
                                     Toast.LENGTH_SHORT).show();
                         } else {
                             startActivity(new Intent(MainActivity.this, Sucessful.class));
+                           //ruft den aktuellen User ab
+                            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                            //gibt den String des aktuellen Users
+                            String uid = user.getUid();
+                            //speicher Daten in Datenbank. Tabelle: Customer: Dokument wird erzeugt mit der UiD des Nutzers.
+                            mDatabase.collection("Customer").document(uid).set(userEingabe);
                             finish();
+
                         }
 
                     }
@@ -108,7 +140,8 @@ public class MainActivity extends AppCompatActivity {
 
     // eventListener für den Verkäufer Button auf der Registrierungsseite. Leitet zur Verkäuferregistration weiter
     public void verkäuferButtonClick(View view){
-        setContentView(R.layout.verkaeufer);
+        setContentView(R.layout.farmer_registration);
+        startActivity(new Intent(MainActivity.this, Farmer.class));
     }
 
     // setzt Passwort Feld bei Eingabe auf Verschlüsselte Eingabe
@@ -117,11 +150,8 @@ public class MainActivity extends AppCompatActivity {
         passwortText.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD);
     }
 
-    // setzt Passwort Feld bei Eingabe auf Verschlüsselte Eingabe
-    public void passwortWdhTextBoxClick(View view){
-        EditText passwortWdhText= (EditText) findViewById(R.id.passwortWdhTextBox);
-        passwortWdhText.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD);
-    }
+
+
 
     // setzt activity_main.xml wieder als aktiven View
     public void regZurückButtonClick(View view){
