@@ -17,6 +17,8 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptor;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
@@ -53,8 +55,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
 
         mMap.addMarker(new MarkerOptions()
-                .position(new LatLng(49.013397,  8.404370))
-                .title("Hagsfelder Hofladen"));
+                .position(new LatLng(49.029090,  8.461969))
+                .title("Hagsfelder Hofladen")
+                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
+      //          .icon(BitmapDescriptorFactory.fromResource(R.drawable.marker)));
+
 
 
         locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
