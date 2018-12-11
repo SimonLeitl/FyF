@@ -8,18 +8,151 @@
 
     <TextView
         android:id="@+id/vornameTextBox"
-        android:layout_width="137dp"
+        android:layout_width="153dp"
         android:layout_height="53dp"
-        android:layout_marginStart="124dp"
-        android:layout_marginLeft="124dp"
-        android:layout_marginTop="191dp"
-        android:layout_marginEnd="123dp"
-        android:layout_marginRight="123dp"
-        android:layout_marginBottom="267dp"
-        android:text="TextView"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="44dp"
+        android:layout_marginRight="44dp"
+        android:text="Vorname"
         android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/vornameTextView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/nachnameTextBox"
+        android:layout_width="153dp"
+        android:layout_height="53dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="14dp"
+        android:layout_marginEnd="44dp"
+        android:layout_marginRight="44dp"
+        android:text="Nachname"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toStartOf="@+id/nachnameTextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/vornameTextBox" />
+
+    <TextView
+        android:id="@+id/gebTextBox"
+        android:layout_width="155dp"
+        android:layout_height="53dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="42dp"
+        android:layout_marginRight="42dp"
+        android:text="Geb.datum"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toStartOf="@+id/gebTextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nachnameTextBox" />
+
+    <TextView
+        android:id="@+id/emailTextBox"
+        android:layout_width="155dp"
+        android:layout_height="53dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="42dp"
+        android:layout_marginRight="42dp"
+        android:layout_marginBottom="92dp"
+        android:text="E-Mail"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/emailAendernButton"
+        app:layout_constraintEnd_toStartOf="@+id/emailTextView"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gebTextBox"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/emailTextView"
+        android:layout_width="155dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="92dp"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/passwortAendernButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gebTextView" />
+
+    <TextView
+        android:id="@+id/gebTextView"
+        android:layout_width="155dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nachnameTextView" />
+
+    <TextView
+        android:id="@+id/nachnameTextView"
+        android:layout_width="155dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="14dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/vornameTextView" />
+
+    <TextView
+        android:id="@+id/vornameTextView"
+        android:layout_width="155dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/emailAendernButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginEnd="66dp"
+        android:layout_marginRight="66dp"
+        android:layout_marginBottom="25dp"
+        android:text="E-Mail ändern"
+        app:layout_constraintBottom_toTopOf="@+id/accountLoeschenButton"
+        app:layout_constraintEnd_toStartOf="@+id/passwortAendernButton"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/passwortAendernButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="66dp"
+        android:layout_marginLeft="66dp"
+        android:layout_marginBottom="25dp"
+        android:text="Passwort ändern"
+        app:layout_constraintBottom_toTopOf="@+id/accountLoeschenButton"
+        app:layout_constraintStart_toEndOf="@+id/emailAendernButton" />
+
+    <Button
+        android:id="@+id/accountLoeschenButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="114dp"
+        android:layout_marginLeft="114dp"
+        android:layout_marginEnd="114dp"
+        android:layout_marginRight="114dp"
+        android:layout_marginBottom="16dp"
+        android:text="Account löschen"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
 </android.support.constraint.ConstraintLayout>

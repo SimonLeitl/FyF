@@ -1,26 +1,25 @@
 package com.example.linkn.myapplication;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.EditText;
+import android.widget.TextView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
-
-import java.util.List;
 
 public class Profile extends AppCompatActivity {
     private double[] gps;
     private String name;
    private int id;
     public FirebaseAuth auth;
-    public EditText vornameTextBox;
+    public TextView vornameTextBox2;
 
     private FirebaseFirestore mDatabase;
     @Override
@@ -29,6 +28,7 @@ public class Profile extends AppCompatActivity {
         setContentView(R.layout.profil_view);
         mDatabase = FirebaseFirestore.getInstance();
 
+       read();
 
     }
 
@@ -37,9 +37,8 @@ public class Profile extends AppCompatActivity {
     public Profile() {
     }
 
-    Task<DocumentSnapshot> task;
     public void read(){
-        vornameTextBox=(EditText) findViewById(R.id.vornameTextBox);
+        vornameTextBox2=(TextView) findViewById(R.id.vornameTextBox2);
 
         //ruft den aktuellen User ab
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -50,11 +49,18 @@ public class Profile extends AppCompatActivity {
         DocumentReference Customer=mDatabase.collection("Customer").document(uid);
 
 
-        DocumentSnapshot document=task.getResult();
+        Farmer.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>(){
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
 
-        String vorname=document.getString("firstname");
+                DocumentSnapshot document=task.getResult();
+                String vorname=document.getString("firstname");
+                vornameTextBox2.setText(vorname);
+            }
+        });
 
-        vornameTextBox.setText(vorname);
+
+
+
     }
 
 

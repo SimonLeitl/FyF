@@ -51,8 +51,10 @@ public class MainActivity extends AppCompatActivity {
         passwortTextBox = (EditText) findViewById(R.id.plzTextBox);
         registrieren=(Button) findViewById(R.id.weiterButton);
         nameTextBox=(EditText) findViewById(R.id.nameTextBox);
+
         vornameTextBox=(EditText) findViewById(R.id.vornameTextBox);
         geburtstagTextBox=(EditText) findViewById(R.id.StraßeTextBox);
+
 
         String email = emailTextbox.getText().toString().trim();
         String password = passwortTextBox.getText().toString().trim();
@@ -94,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
                             Toast.makeText(MainActivity.this, "Authentication failed." + task.getException(),
                                     Toast.LENGTH_SHORT).show();
                         } else {
-                            startActivity(new Intent(MainActivity.this, Sucessful.class));
+                            startActivity(new Intent(MainActivity.this, Profile.class));
                            //ruft den aktuellen User ab
                             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                             //gibt den String des aktuellen Users
