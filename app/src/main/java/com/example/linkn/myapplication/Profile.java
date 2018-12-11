@@ -19,7 +19,7 @@ public class Profile extends AppCompatActivity {
     private String name;
    private int id;
     public FirebaseAuth auth;
-    public TextView vornameTextBox2;
+    public TextView vornameTextView,nachnameTextView, gebTextView, emailTextView;
 
     private FirebaseFirestore mDatabase;
     @Override
@@ -38,8 +38,10 @@ public class Profile extends AppCompatActivity {
     }
 
     public void read(){
-        vornameTextBox2=(TextView) findViewById(R.id.vornameTextBox2);
-
+        vornameTextView=(TextView) findViewById(R.id.vornameTextView);
+        nachnameTextView=(TextView) findViewById(R.id.nachnameTextView);
+        gebTextView=(TextView) findViewById(R.id.gebTextView);
+        gebTextView=(TextView) findViewById(R.id.gebTextView);
         //ruft den aktuellen User ab
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         //gibt den String des aktuellen Users
@@ -54,7 +56,12 @@ public class Profile extends AppCompatActivity {
 
                 DocumentSnapshot document=task.getResult();
                 String vorname=document.getString("firstname");
-                vornameTextBox2.setText(vorname);
+                String nachname=document.getString("lastname");
+                String geb=document.getString("born");
+                vornameTextView.setText(vorname);
+                nachnameTextView.setText(nachname);
+                gebTextView.setText(geb);
+
             }
         });
 
