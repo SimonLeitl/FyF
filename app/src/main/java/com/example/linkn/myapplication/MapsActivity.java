@@ -51,11 +51,17 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
+
+        mMap.addMarker(new MarkerOptions()
+                .position(new LatLng(49.013397,  8.404370))
+                .title("Hagsfelder Hofladen"));
+
+
         locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
         locationListener = new LocationListener() {
             @Override
             public void onLocationChanged(Location location) {
-                mMap.clear();
+              //  mMap.clear();
                 LatLng userLocation = new LatLng(location.getLatitude(), location.getLongitude());
                 mMap.addMarker(new MarkerOptions().position(userLocation).title("Your Location"));
                 mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(userLocation, 12));
@@ -77,6 +83,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             }
         };
 
+
+
+
+
+
+
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED){
             ActivityCompat.requestPermissions( this, new String [] {Manifest.permission.ACCESS_FINE_LOCATION}, 1);
         }else{
@@ -85,8 +97,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }
         // Add a marker on the Position of the user
 
-        mMap.addMarker(new MarkerOptions()
-                .position(new LatLng(10, 10))
-                .title("Hello world"));
+
     }
 }
