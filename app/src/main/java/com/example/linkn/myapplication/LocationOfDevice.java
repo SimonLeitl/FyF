@@ -78,7 +78,7 @@ public class LocationOfDevice extends AppCompatActivity {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED){
             ActivityCompat.requestPermissions( this, new String [] {Manifest.permission.ACCESS_FINE_LOCATION}, 1);
         }else{
-            //minTime legt fest, wie oft die Location aktualisier wird, pro sekunde, halbe Minute usw.
+            //minTime legt fest, wie oft die Location aktualisiert wird, pro sekunde, halbe Minute usw.
             locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 3, 0, locationListener);
         }
     }
