@@ -161,6 +161,7 @@ public class MainActivity extends AppCompatActivity {
 
     // öffnet die Funktionen ohnen Login oder Registration.
     public void withoutLoginLabelKlick(View view){
+        startActivity(new Intent(MainActivity.this, MapsActivity.class));
 
     }
           protected void onResume() {
