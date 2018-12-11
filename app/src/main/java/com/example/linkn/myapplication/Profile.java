@@ -3,8 +3,10 @@ package com.example.linkn.myapplication;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -69,9 +71,67 @@ public class Profile extends AppCompatActivity {
 
 
     }
+    EditText changePasswort;
+    public void changePasswordKlick(View view){
+        setContentView(R.layout.change_password);
+        changePasswort=(EditText) findViewById(R.id.newPasswortTextBox);
+    }
+public void changePassword(View view){
+    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
+    user.updatePassword(changePasswort.getText().toString().trim())
+            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    if (task.isSuccessful()) {
+                        Toast.makeText(Profile.this, "Password is updated!", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(Profile.this, "Failed to update password!", Toast.LENGTH_SHORT).show();
+                        //progressBar.setVisibility(View.GONE);
+                    }
+                }
+            });
+}
+    EditText newMail;
+public void changeEmailKlick(View view){
+    setContentView(R.layout.change_mail);
+    newMail=(EditText) findViewById(R.id.newMail);
 
+}
 
+public void changeEmail(View view){
+    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+    user.updateEmail(newMail.getText().toString().trim())
+            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    if (task.isSuccessful()) {
+                        Toast.makeText(Profile.this, "Email address is updated.", Toast.LENGTH_LONG).show();
+                    } else {
+                        Toast.makeText(Profile.this, "Failed to update email!", Toast.LENGTH_LONG).show();
+                    }
+                }
+            });
+}
+
+public void deleteAcc(View view){
+
+    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+    if (user != null) {
+        user.delete()
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            Toast.makeText(Profile.this, "Your profile is deleted:( Create a account now!", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(Profile.this, "Failed to delete your account!", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+    }
+}
 
     public Profile (String name, int id, double[] gps){
         this.name=name;
