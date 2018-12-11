@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
                             Toast.makeText(MainActivity.this, "Authentication failed." + task.getException(),
                                     Toast.LENGTH_SHORT).show();
                         } else {
-                            startActivity(new Intent(MainActivity.this, Sucessful.class));
+                            startActivity(new Intent(MainActivity.this, MapsActivity.class));
                             finish();
                         }
 
