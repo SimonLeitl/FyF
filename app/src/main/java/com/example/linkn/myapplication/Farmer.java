@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.text.InputType;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -46,12 +45,12 @@ super();
         auth = FirebaseAuth.getInstance();
 
 
-        emailTextbox = (EditText) findViewById(R.id.loginEmail);
-        passwortTextBox = (EditText) findViewById(R.id.passwortTextBox);
-        registrieren=(Button) findViewById(R.id.registrierenButton);
+        emailTextbox = (EditText) findViewById(R.id.inhaberTextBox);
+        passwortTextBox = (EditText) findViewById(R.id.plzTextBox);
+        registrieren=(Button) findViewById(R.id.weiterButton);
         nameTextBox=(EditText) findViewById(R.id.nameTextBox);
         vornameTextBox=(EditText) findViewById(R.id.vornameTextBox);
-        geburtstagTextBox=(EditText) findViewById(R.id.geburtstagTextBox);
+        geburtstagTextBox=(EditText) findViewById(R.id.StraßeTextBox);
 
         String email = emailTextbox.getText().toString().trim();
         String password = passwortTextBox.getText().toString().trim();

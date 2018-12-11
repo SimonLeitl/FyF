@@ -31,7 +31,7 @@ public class LoginActivity extends AppCompatActivity {
         //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
        // setSupportActionBar(toolbar);
 
-        inputEmail = (EditText) findViewById(R.id.loginEmail);
+        inputEmail = (EditText) findViewById(R.id.inhaberTextBox);
         inputPassword = (EditText) findViewById(R.id.loginPasswort);
         //progressBar = (ProgressBar) findViewById(R.id.progressBar);
         //btnSignup = (Button) findViewById(R.id.btn_signup);

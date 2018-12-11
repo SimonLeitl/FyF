@@ -5,7 +5,6 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.text.InputType;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,15 +12,11 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firestore.v1beta1.WriteResult;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -52,12 +47,12 @@ public class MainActivity extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
 
 
-        emailTextbox = (EditText) findViewById(R.id.loginEmail);
-        passwortTextBox = (EditText) findViewById(R.id.passwortTextBox);
-        registrieren=(Button) findViewById(R.id.registrierenButton);
+        emailTextbox = (EditText) findViewById(R.id.inhaberTextBox);
+        passwortTextBox = (EditText) findViewById(R.id.plzTextBox);
+        registrieren=(Button) findViewById(R.id.weiterButton);
         nameTextBox=(EditText) findViewById(R.id.nameTextBox);
         vornameTextBox=(EditText) findViewById(R.id.vornameTextBox);
-        geburtstagTextBox=(EditText) findViewById(R.id.geburtstagTextBox);
+        geburtstagTextBox=(EditText) findViewById(R.id.StraßeTextBox);
 
         String email = emailTextbox.getText().toString().trim();
         String password = passwortTextBox.getText().toString().trim();
@@ -146,7 +141,7 @@ public class MainActivity extends AppCompatActivity {
 
     // setzt Passwort Feld bei Eingabe auf Verschlüsselte Eingabe
     public void passwortTextBoxClick(View view){
-        EditText passwortText = (EditText) findViewById(R.id.passwortTextBox);
+        EditText passwortText = (EditText) findViewById(R.id.plzTextBox);
         passwortText.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD);
     }
 
