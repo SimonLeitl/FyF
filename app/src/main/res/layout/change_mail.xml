@@ -6,6 +6,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <ImageButton
+        android:id="@+id/emailChangeZurückButton"
+        android:layout_width="49dp"
+        android:layout_height="38dp"
+        android:onClick="zurückButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="?attr/actionModeCloseDrawable" />
+
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
@@ -64,4 +73,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/newMail" />
+
 </android.support.constraint.ConstraintLayout>

@@ -1,5 +1,6 @@
 package com.example.linkn.myapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -21,6 +22,9 @@ public class Profile extends AppCompatActivity {
     private String name;
    private int id;
     public FirebaseAuth auth;
+    //public FirebaseAuth.AuthStateListener authListener;
+
+
     public TextView vornameTextView,nachnameTextView, gebTextView, emailTextView;
 
     private FirebaseFirestore mDatabase;
@@ -29,10 +33,37 @@ public class Profile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.profil_view);
         mDatabase = FirebaseFirestore.getInstance();
-
+        auth = FirebaseAuth.getInstance();
        read();
+        // this listener will be called when there is change in firebase user session
+        authListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+                if (user == null) {
+                    // user auth state is changed - user is null
+                    // launch login activity
+                    startActivity(new Intent(Profile.this, LoginActivity.class));
+                    finish();
+                }
+            }
+        };
 
     }
+   FirebaseAuth.AuthStateListener authListener = new FirebaseAuth.AuthStateListener() {
+        @Override
+        public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+            auth.signOut();
+            FirebaseUser user = firebaseAuth.getCurrentUser();
+            if (user == null) {
+                // user auth state is changed - user is null
+                // launch login activity
+                startActivity(new Intent(Profile.this, LoginActivity.class));
+                finish();
+            }
+        }
+    };
+
 
 
 
@@ -125,6 +156,7 @@ public void deleteAcc(View view){
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
                             Toast.makeText(Profile.this, "Your profile is deleted:( Create a account now!", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(Profile.this, MainActivity.class));
                         } else {
                             Toast.makeText(Profile.this, "Failed to delete your account!", Toast.LENGTH_SHORT).show();
                         }
@@ -137,9 +169,20 @@ public void deleteAcc(View view){
         this.name=name;
         this.id=id;
 
+
+    }
+//Methode für den LogOut
+    public void logOut(View view) {
+
+        auth.signOut();
+        startActivity(new Intent(Profile.this, MainActivity.class));
+
     }
 
-
+// Setzt Layout zurück auf Profilansicht
+    public void zurückButton(View view){
+        setContentView(R.layout.profil_view);
+    }
     public String getName() {
         return name;
     }

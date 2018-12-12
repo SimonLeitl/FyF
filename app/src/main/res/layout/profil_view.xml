@@ -12,12 +12,13 @@
         android:layout_height="53dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="80dp"
         android:layout_marginEnd="44dp"
         android:layout_marginRight="44dp"
         android:text="Vorname"
         android:textSize="30sp"
         app:layout_constraintEnd_toStartOf="@+id/vornameTextView"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -27,12 +28,13 @@
         android:layout_height="53dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="14dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="44dp"
         android:layout_marginRight="44dp"
         android:text="Nachname"
         android:textSize="30sp"
         app:layout_constraintEnd_toStartOf="@+id/nachnameTextView"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/vornameTextBox" />
 
@@ -42,12 +44,13 @@
         android:layout_height="53dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="42dp"
         android:layout_marginRight="42dp"
         android:text="Geb.datum"
         android:textSize="30sp"
         app:layout_constraintEnd_toStartOf="@+id/gebTextView"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nachnameTextBox" />
 
@@ -81,13 +84,14 @@
         android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@+id/passwortAendernButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/gebTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/gebTextView"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/gebTextView"
         android:layout_width="155dp"
         android:layout_height="53dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:textSize="30sp"
@@ -98,7 +102,7 @@
         android:id="@+id/nachnameTextView"
         android:layout_width="155dp"
         android:layout_height="53dp"
-        android:layout_marginTop="14dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:textSize="30sp"
@@ -109,7 +113,7 @@
         android:id="@+id/vornameTextView"
         android:layout_width="155dp"
         android:layout_height="53dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="80dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:textSize="30sp"
@@ -158,5 +162,14 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/logoutButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="logOut"
+        android:text="LogOut"
+        tools:layout_editor_absoluteX="279dp"
+        tools:layout_editor_absoluteY="16dp" />
 
 </android.support.constraint.ConstraintLayout>
