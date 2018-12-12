@@ -13,6 +13,8 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -23,6 +25,16 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+
+
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback {
 
@@ -30,6 +42,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     private LocationListener locationListener;
     private GoogleMap mMap;
     private Marker yourLocation;
+    private FirebaseFirestore mDatabase;
+    ArrayList<String> koordinaten=new ArrayList<>();
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
@@ -46,6 +60,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.map);
+        mDatabase = FirebaseFirestore.getInstance();
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
@@ -96,6 +111,25 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
             @Override
             public void onProviderDisabled(String provider) {
+
+            }
+
+            public void getFarmshops(){
+                mDatabase.collection("Farmshop")
+                        .get()
+                        .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                            @Override
+                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                if (task.isSuccessful()) {
+                                    for (QueryDocumentSnapshot document : task.getResult()) {
+                                        koordinaten.add(document.getString("ort")+"+"+document.getString("straße")+"+"+document.getString("hausnummer")+"+"+document.getString("plz"));
+                                        //Log.d(TAG, document.getId() + " => " + document.getData());
+                                    }
+                                } else {
+                                    //Log.w(TAG, "Error getting documents.", task.getException());
+                                }
+                            }
+                        });
 
             }
         };
