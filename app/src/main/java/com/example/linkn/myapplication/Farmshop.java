@@ -25,7 +25,7 @@ public class Farmshop extends AppCompatActivity {
     EditText shopnameTextbox,inhaberTextBox,StraßeTextBox,hausnummerTextBox,plzTextBox, ortTextBox2,phoneTextBox, emailTextBox,
             moAnfangTextBox, moEndeTextBox,diAnfangTextBox, diEndeTextBox,miAnfangTextBox, miEndeTextBox,doAnfangTextBox,
             doEndeTextBox,frAnfangTextBox, frEndeTextBox,saAnfangTextBox, saEndeTextBox,soAnfangTextBox, soEndeTextBox;
-    CheckBox montagcheckBox,dienstagcheckBox,mittwochcheckBox,donnerstagcheckBox,freitagcheckBox, samstagcheckBox, sonntagcheckBox;
+    CheckBox montagcheckBox,dienstagcheckBox,mittwochcheckBox,donnerstagcheckBox,freitagcheckBox, samstagcheckBox, sonntagcheckBox, geöffnetCeckBox;
 
     // Farmshopdaten als enum speichern? Name, Adresse, Öffnungszeiten...
 public Farmshop(){}
@@ -44,7 +44,57 @@ public Farmshop(Farmer owner, String shopname, double[]gps){
 
 
     }
+public void durchgängigGeöffnet(View view){
+    moAnfangTextBox = (EditText) findViewById(R.id.moAnfangTextBox);
+    moEndeTextBox = (EditText) findViewById(R.id.moEndeTextBox);
+    diAnfangTextBox = (EditText) findViewById(R.id.diAnfangTextBox);
+    diEndeTextBox = (EditText) findViewById(R.id.diEndeTextBox);
+    miAnfangTextBox = (EditText) findViewById(R.id.miAnfangTextBox);
+    miEndeTextBox = (EditText) findViewById(R.id.miEndeTextBox);
+    doAnfangTextBox = (EditText) findViewById(R.id.doAnfangTextBox);
+    doEndeTextBox = (EditText) findViewById(R.id.doEndeTextBox);
+    frAnfangTextBox = (EditText) findViewById(R.id.frAnfangTextBox);
+    frEndeTextBox = (EditText) findViewById(R.id.frEndeTextBox);
+    saAnfangTextBox = (EditText) findViewById(R.id.saAnfangTextBox);
+    saEndeTextBox = (EditText) findViewById(R.id.saEndeTextBox);
+    soAnfangTextBox = (EditText) findViewById(R.id.soAnfangTextBox);
+    soEndeTextBox = (EditText) findViewById(R.id.soEndeTextBox);
+    geöffnetCeckBox=(CheckBox) findViewById(R.id.geöffnetCheckBox);
 
+
+    if(geöffnetCeckBox.isChecked()){
+        moAnfangTextBox.setVisibility(View.INVISIBLE);
+        moEndeTextBox.setVisibility(View.INVISIBLE);
+        diAnfangTextBox.setVisibility(View.INVISIBLE);
+        diEndeTextBox.setVisibility(View.INVISIBLE);
+        miAnfangTextBox.setVisibility(View.INVISIBLE);
+        miEndeTextBox.setVisibility(View.INVISIBLE);
+        doAnfangTextBox.setVisibility(View.INVISIBLE);
+        doEndeTextBox.setVisibility(View.INVISIBLE);
+        frAnfangTextBox.setVisibility(View.INVISIBLE);
+        frEndeTextBox.setVisibility(View.INVISIBLE);
+        saAnfangTextBox.setVisibility(View.INVISIBLE);
+        saEndeTextBox.setVisibility(View.INVISIBLE);
+        soAnfangTextBox.setVisibility(View.INVISIBLE);
+        soEndeTextBox.setVisibility(View.INVISIBLE);
+
+    }else {
+        moAnfangTextBox.setVisibility(View.VISIBLE);
+        moEndeTextBox.setVisibility(View.VISIBLE);
+        diAnfangTextBox.setVisibility(View.VISIBLE);
+        diEndeTextBox.setVisibility(View.VISIBLE);
+        miAnfangTextBox.setVisibility(View.VISIBLE);
+        miEndeTextBox.setVisibility(View.VISIBLE);
+        doAnfangTextBox.setVisibility(View.VISIBLE);
+        doEndeTextBox.setVisibility(View.VISIBLE);
+        frAnfangTextBox.setVisibility(View.VISIBLE);
+        frEndeTextBox.setVisibility(View.VISIBLE);
+        saAnfangTextBox.setVisibility(View.VISIBLE);
+        saEndeTextBox.setVisibility(View.VISIBLE);
+        soAnfangTextBox.setVisibility(View.VISIBLE);
+        soEndeTextBox.setVisibility(View.VISIBLE);
+    }
+}
 public void createFarmshop1(View view){
     auth = FirebaseAuth.getInstance();
     //ruft den aktuellen User ab

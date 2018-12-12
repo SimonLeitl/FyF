@@ -471,12 +471,13 @@
         app:layout_constraintTop_toBottomOf="@+id/textView13" />
 
     <CheckBox
-        android:id="@+id/checkBox9"
+        android:id="@+id/geöffnetCheckBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="55dp"
         android:layout_marginEnd="60dp"
         android:layout_marginRight="60dp"
+        android:onClick="durchgängigGeöffnet"
         android:text="täglich 24 Stunden"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/shopArtText" />
