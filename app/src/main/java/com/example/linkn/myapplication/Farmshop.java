@@ -3,6 +3,7 @@ package com.example.linkn.myapplication;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.EditText;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -19,8 +20,12 @@ public class Farmshop extends AppCompatActivity {
     public FirebaseAuth auth;
     private FirebaseFirestore mDatabase;
     Map<String, Object> userEingabe = new HashMap<>();
+    //Map<String, Object> öffnungszeiten=new HashMap<>();
 
-    EditText shopnameTextbox,inhaberTextBox,StraßeTextBox,hausnummerTextBox,plzTextBox, ortTextBox2,phoneTextBox, emailTextBox;
+    EditText shopnameTextbox,inhaberTextBox,StraßeTextBox,hausnummerTextBox,plzTextBox, ortTextBox2,phoneTextBox, emailTextBox,
+            moAnfangTextBox, moEndeTextBox,diAnfangTextBox, diEndeTextBox,miAnfangTextBox, miEndeTextBox,doAnfangTextBox,
+            doEndeTextBox,frAnfangTextBox, frEndeTextBox,saAnfangTextBox, saEndeTextBox,soAnfangTextBox, soEndeTextBox;
+    CheckBox montagcheckBox,dienstagcheckBox,mittwochcheckBox,donnerstagcheckBox,freitagcheckBox, samstagcheckBox, sonntagcheckBox, geöffnetCeckBox;
 
     // Farmshopdaten als enum speichern? Name, Adresse, Öffnungszeiten...
 public Farmshop(){}
@@ -39,7 +44,57 @@ public Farmshop(Farmer owner, String shopname, double[]gps){
 
 
     }
+public void durchgängigGeöffnet(View view){
+    moAnfangTextBox = (EditText) findViewById(R.id.moAnfangTextBox);
+    moEndeTextBox = (EditText) findViewById(R.id.moEndeTextBox);
+    diAnfangTextBox = (EditText) findViewById(R.id.diAnfangTextBox);
+    diEndeTextBox = (EditText) findViewById(R.id.diEndeTextBox);
+    miAnfangTextBox = (EditText) findViewById(R.id.miAnfangTextBox);
+    miEndeTextBox = (EditText) findViewById(R.id.miEndeTextBox);
+    doAnfangTextBox = (EditText) findViewById(R.id.doAnfangTextBox);
+    doEndeTextBox = (EditText) findViewById(R.id.doEndeTextBox);
+    frAnfangTextBox = (EditText) findViewById(R.id.frAnfangTextBox);
+    frEndeTextBox = (EditText) findViewById(R.id.frEndeTextBox);
+    saAnfangTextBox = (EditText) findViewById(R.id.saAnfangTextBox);
+    saEndeTextBox = (EditText) findViewById(R.id.saEndeTextBox);
+    soAnfangTextBox = (EditText) findViewById(R.id.soAnfangTextBox);
+    soEndeTextBox = (EditText) findViewById(R.id.soEndeTextBox);
+    geöffnetCeckBox=(CheckBox) findViewById(R.id.geöffnetCheckBox);
 
+
+    if(geöffnetCeckBox.isChecked()){
+        moAnfangTextBox.setVisibility(View.INVISIBLE);
+        moEndeTextBox.setVisibility(View.INVISIBLE);
+        diAnfangTextBox.setVisibility(View.INVISIBLE);
+        diEndeTextBox.setVisibility(View.INVISIBLE);
+        miAnfangTextBox.setVisibility(View.INVISIBLE);
+        miEndeTextBox.setVisibility(View.INVISIBLE);
+        doAnfangTextBox.setVisibility(View.INVISIBLE);
+        doEndeTextBox.setVisibility(View.INVISIBLE);
+        frAnfangTextBox.setVisibility(View.INVISIBLE);
+        frEndeTextBox.setVisibility(View.INVISIBLE);
+        saAnfangTextBox.setVisibility(View.INVISIBLE);
+        saEndeTextBox.setVisibility(View.INVISIBLE);
+        soAnfangTextBox.setVisibility(View.INVISIBLE);
+        soEndeTextBox.setVisibility(View.INVISIBLE);
+
+    }else {
+        moAnfangTextBox.setVisibility(View.VISIBLE);
+        moEndeTextBox.setVisibility(View.VISIBLE);
+        diAnfangTextBox.setVisibility(View.VISIBLE);
+        diEndeTextBox.setVisibility(View.VISIBLE);
+        miAnfangTextBox.setVisibility(View.VISIBLE);
+        miEndeTextBox.setVisibility(View.VISIBLE);
+        doAnfangTextBox.setVisibility(View.VISIBLE);
+        doEndeTextBox.setVisibility(View.VISIBLE);
+        frAnfangTextBox.setVisibility(View.VISIBLE);
+        frEndeTextBox.setVisibility(View.VISIBLE);
+        saAnfangTextBox.setVisibility(View.VISIBLE);
+        saEndeTextBox.setVisibility(View.VISIBLE);
+        soAnfangTextBox.setVisibility(View.VISIBLE);
+        soEndeTextBox.setVisibility(View.VISIBLE);
+    }
+}
 public void createFarmshop1(View view){
     auth = FirebaseAuth.getInstance();
     //ruft den aktuellen User ab
@@ -69,13 +124,68 @@ public void createFarmshop1(View view){
     setContentView(R.layout.create_farm_shop2);
 }
 
-public void createFarmshop2(){
+public void createFarmshop2(View view){
     int i=0;
     auth = FirebaseAuth.getInstance();
     //ruft den aktuellen User ab
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     //gibt den String des aktuellen Users
     String uid = user.getUid();
+
+    moAnfangTextBox = (EditText) findViewById(R.id.moAnfangTextBox);
+    moEndeTextBox = (EditText) findViewById(R.id.moEndeTextBox);
+    diAnfangTextBox = (EditText) findViewById(R.id.diAnfangTextBox);
+    diEndeTextBox = (EditText) findViewById(R.id.diEndeTextBox);
+    miAnfangTextBox = (EditText) findViewById(R.id.miAnfangTextBox);
+    miEndeTextBox = (EditText) findViewById(R.id.miEndeTextBox);
+    doAnfangTextBox = (EditText) findViewById(R.id.doAnfangTextBox);
+    doEndeTextBox = (EditText) findViewById(R.id.doEndeTextBox);
+    frAnfangTextBox = (EditText) findViewById(R.id.frAnfangTextBox);
+    frEndeTextBox = (EditText) findViewById(R.id.frEndeTextBox);
+    saAnfangTextBox = (EditText) findViewById(R.id.saAnfangTextBox);
+    saEndeTextBox = (EditText) findViewById(R.id.saEndeTextBox);
+    soAnfangTextBox = (EditText) findViewById(R.id.soAnfangTextBox);
+    soEndeTextBox = (EditText) findViewById(R.id.soEndeTextBox);
+
+
+    montagcheckBox = (CheckBox) findViewById(R.id.montagcheckBox);
+    dienstagcheckBox = (CheckBox) findViewById(R.id.dienstagcheckBox);
+    mittwochcheckBox= (CheckBox) findViewById(R.id.mittwochcheckBox);
+    donnerstagcheckBox = (CheckBox) findViewById(R.id.donnerstagcheckBox);
+    freitagcheckBox = (CheckBox) findViewById(R.id.freitagcheckBox);
+    samstagcheckBox = (CheckBox) findViewById(R.id.samstagcheckBox);
+    sonntagcheckBox=(CheckBox)findViewById(R.id.sonntagcheckBox);
+
+
+    if(montagcheckBox.isChecked()){
+    userEingabe.put("Montag",moAnfangTextBox.getText().toString() + " - " + moEndeTextBox.getText().toString());
+    }
+    if(dienstagcheckBox.isChecked()){
+        userEingabe.put("Dienstag",diAnfangTextBox.getText().toString() + " - " + diEndeTextBox.getText().toString());
+    }
+    if(mittwochcheckBox.isChecked()){
+        userEingabe.put("Mittwoch",miAnfangTextBox.getText().toString() + " - " + miEndeTextBox.getText().toString());
+
+    }
+    if(donnerstagcheckBox.isChecked()){
+        userEingabe.put("Donnerstag",doAnfangTextBox.getText().toString() + " - " + doEndeTextBox.getText().toString());
+
+    }
+    if(freitagcheckBox.isChecked()){
+        userEingabe.put("Freitag",frAnfangTextBox.getText().toString() + " - " + frEndeTextBox.getText().toString());
+
+    }
+    if(samstagcheckBox.isChecked()){
+        userEingabe.put("Samstag",saAnfangTextBox.getText().toString() + " - " + saEndeTextBox.getText().toString());
+
+    }
+    if(sonntagcheckBox.isChecked()){
+        userEingabe.put("Sonntag",soAnfangTextBox.getText().toString() + " - " + soEndeTextBox.getText().toString());
+
+    }
+
+    mDatabase.collection("Farmshop").document(uid).set(userEingabe);
+
 }
 
     public Farmer getOwner() {
