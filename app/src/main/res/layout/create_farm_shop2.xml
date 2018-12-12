@@ -13,7 +13,7 @@
         android:layout_marginRight="45dp"
         android:layout_marginBottom="45dp"
         android:background="@color/colorPrimary"
-        android:onClick="onClick"
+        android:onClick="createFarmshop2"
         android:text="Weiter"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -67,7 +67,7 @@
         android:text="Uhr"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/editText2"
+        app:layout_constraintStart_toEndOf="@+id/moEndeTextBox"
         app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
 
     <TextView
@@ -79,7 +79,7 @@
         android:text="Uhr"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/editText2"
+        app:layout_constraintStart_toEndOf="@+id/moEndeTextBox"
         app:layout_constraintTop_toBottomOf="@+id/shopArtText3" />
 
     <TextView
@@ -91,7 +91,7 @@
         android:text="Uhr"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/editText2"
+        app:layout_constraintStart_toEndOf="@+id/moEndeTextBox"
         app:layout_constraintTop_toBottomOf="@+id/shopArtText4" />
 
     <TextView
@@ -103,7 +103,7 @@
         android:text="Uhr"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/editText2"
+        app:layout_constraintStart_toEndOf="@+id/moEndeTextBox"
         app:layout_constraintTop_toBottomOf="@+id/shopArtText5" />
 
     <TextView
@@ -115,7 +115,7 @@
         android:text="Uhr"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/editText8"
+        app:layout_constraintStart_toEndOf="@+id/doEndeTextBox"
         app:layout_constraintTop_toBottomOf="@+id/shopArtText6" />
 
     <TextView
@@ -127,7 +127,7 @@
         android:text="Uhr"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/editText2"
+        app:layout_constraintStart_toEndOf="@+id/moEndeTextBox"
         app:layout_constraintTop_toBottomOf="@+id/shopArtText7" />
 
     <TextView
@@ -139,7 +139,7 @@
         android:text="Uhr"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/editText2"
+        app:layout_constraintStart_toEndOf="@+id/moEndeTextBox"
         app:layout_constraintTop_toBottomOf="@+id/shopArtText8" />
 
     <RadioGroup
@@ -184,7 +184,7 @@
         app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
 
     <CheckBox
-        android:id="@+id/checkBox2"
+        android:id="@+id/dienstagcheckBox"
         android:layout_width="wrap_content"
         android:layout_height="34dp"
         android:layout_marginStart="20dp"
@@ -194,57 +194,57 @@
         app:layout_constraintTop_toBottomOf="@+id/montagcheckBox" />
 
     <CheckBox
-        android:id="@+id/checkBox3"
+        android:id="@+id/mittwochcheckBox"
         android:layout_width="92dp"
         android:layout_height="34dp"
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
         android:text="Mittwoch"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkBox2" />
+        app:layout_constraintTop_toBottomOf="@+id/dienstagcheckBox" />
 
     <CheckBox
-        android:id="@+id/checkBox4"
+        android:id="@+id/donnerstagcheckBox"
         android:layout_width="wrap_content"
         android:layout_height="34dp"
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
         android:text="Donnerstag"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkBox3" />
+        app:layout_constraintTop_toBottomOf="@+id/mittwochcheckBox" />
 
     <CheckBox
-        android:id="@+id/checkBox5"
+        android:id="@+id/freitagcheckBox"
         android:layout_width="wrap_content"
         android:layout_height="34dp"
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
         android:text="Freitag"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkBox4" />
+        app:layout_constraintTop_toBottomOf="@+id/donnerstagcheckBox" />
 
     <CheckBox
-        android:id="@+id/checkBox6"
+        android:id="@+id/samstagcheckBox"
         android:layout_width="wrap_content"
         android:layout_height="34dp"
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
         android:text="Samstag"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkBox5" />
+        app:layout_constraintTop_toBottomOf="@+id/freitagcheckBox" />
 
     <CheckBox
-        android:id="@+id/checkBox8"
+        android:id="@+id/sonntagcheckBox"
         android:layout_width="wrap_content"
         android:layout_height="34dp"
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
         android:text="Sonntag"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkBox6" />
+        app:layout_constraintTop_toBottomOf="@+id/samstagcheckBox" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/moAnfangTextBox"
         android:layout_width="50dp"
         android:layout_height="34dp"
         android:layout_marginStart="40dp"
@@ -252,33 +252,33 @@
         android:layout_marginTop="80dp"
         android:ems="10"
         android:inputType="time"
-        app:layout_constraintStart_toEndOf="@+id/checkBox2"
+        app:layout_constraintStart_toEndOf="@+id/dienstagcheckBox"
         app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/diAnfangTextBox"
         android:layout_width="50dp"
         android:layout_height="34dp"
         android:layout_marginStart="40dp"
         android:layout_marginLeft="40dp"
         android:ems="10"
         android:inputType="time"
-        app:layout_constraintStart_toEndOf="@+id/checkBox2"
-        app:layout_constraintTop_toBottomOf="@+id/editText" />
+        app:layout_constraintStart_toEndOf="@+id/dienstagcheckBox"
+        app:layout_constraintTop_toBottomOf="@+id/moAnfangTextBox" />
 
     <EditText
-        android:id="@+id/editText5"
+        android:id="@+id/miAnfangTextBox"
         android:layout_width="50dp"
         android:layout_height="34dp"
         android:layout_marginStart="40dp"
         android:layout_marginLeft="40dp"
         android:ems="10"
         android:inputType="time"
-        app:layout_constraintStart_toEndOf="@+id/checkBox2"
-        app:layout_constraintTop_toBottomOf="@+id/editText3" />
+        app:layout_constraintStart_toEndOf="@+id/dienstagcheckBox"
+        app:layout_constraintTop_toBottomOf="@+id/diAnfangTextBox" />
 
     <EditText
-        android:id="@+id/editText6"
+        android:id="@+id/miEndeTextBox"
         android:layout_width="50dp"
         android:layout_height="34dp"
         android:layout_marginStart="15dp"
@@ -286,21 +286,21 @@
         android:ems="10"
         android:inputType="time"
         app:layout_constraintStart_toEndOf="@+id/textView10"
-        app:layout_constraintTop_toBottomOf="@+id/editText4" />
+        app:layout_constraintTop_toBottomOf="@+id/diEndeTextBox" />
 
     <EditText
-        android:id="@+id/editText7"
+        android:id="@+id/doAnfangTextBox"
         android:layout_width="50dp"
         android:layout_height="34dp"
         android:layout_marginStart="40dp"
         android:layout_marginLeft="40dp"
         android:ems="10"
         android:inputType="time"
-        app:layout_constraintStart_toEndOf="@+id/checkBox2"
-        app:layout_constraintTop_toBottomOf="@+id/editText5" />
+        app:layout_constraintStart_toEndOf="@+id/dienstagcheckBox"
+        app:layout_constraintTop_toBottomOf="@+id/miAnfangTextBox" />
 
     <EditText
-        android:id="@+id/editText8"
+        android:id="@+id/doEndeTextBox"
         android:layout_width="50dp"
         android:layout_height="34dp"
         android:layout_marginStart="15dp"
@@ -308,21 +308,21 @@
         android:ems="10"
         android:inputType="time"
         app:layout_constraintStart_toEndOf="@+id/textView11"
-        app:layout_constraintTop_toBottomOf="@+id/editText6" />
+        app:layout_constraintTop_toBottomOf="@+id/miEndeTextBox" />
 
     <EditText
-        android:id="@+id/editText9"
+        android:id="@+id/frAnfangTextBox"
         android:layout_width="50dp"
         android:layout_height="34dp"
         android:layout_marginStart="40dp"
         android:layout_marginLeft="40dp"
         android:ems="10"
         android:inputType="time"
-        app:layout_constraintStart_toEndOf="@+id/checkBox2"
-        app:layout_constraintTop_toBottomOf="@+id/editText7" />
+        app:layout_constraintStart_toEndOf="@+id/dienstagcheckBox"
+        app:layout_constraintTop_toBottomOf="@+id/doAnfangTextBox" />
 
     <EditText
-        android:id="@+id/editText10"
+        android:id="@+id/frEndeTextBox"
         android:layout_width="50dp"
         android:layout_height="34dp"
         android:layout_marginStart="15dp"
@@ -330,21 +330,21 @@
         android:ems="10"
         android:inputType="time"
         app:layout_constraintStart_toEndOf="@+id/textView12"
-        app:layout_constraintTop_toBottomOf="@+id/editText8" />
+        app:layout_constraintTop_toBottomOf="@+id/doEndeTextBox" />
 
     <EditText
-        android:id="@+id/editText11"
+        android:id="@+id/saAnfangTextBox"
         android:layout_width="50dp"
         android:layout_height="34dp"
         android:layout_marginStart="40dp"
         android:layout_marginLeft="40dp"
         android:ems="10"
         android:inputType="time"
-        app:layout_constraintStart_toEndOf="@+id/checkBox2"
-        app:layout_constraintTop_toBottomOf="@+id/editText9" />
+        app:layout_constraintStart_toEndOf="@+id/dienstagcheckBox"
+        app:layout_constraintTop_toBottomOf="@+id/frAnfangTextBox" />
 
     <EditText
-        android:id="@+id/editText12"
+        android:id="@+id/saEndeTextBox"
         android:layout_width="50dp"
         android:layout_height="34dp"
         android:layout_marginStart="15dp"
@@ -352,21 +352,21 @@
         android:ems="10"
         android:inputType="time"
         app:layout_constraintStart_toEndOf="@+id/textView13"
-        app:layout_constraintTop_toBottomOf="@+id/editText10" />
+        app:layout_constraintTop_toBottomOf="@+id/frEndeTextBox" />
 
     <EditText
-        android:id="@+id/editText13"
+        android:id="@+id/soAnfangTextBox"
         android:layout_width="50dp"
         android:layout_height="34dp"
         android:layout_marginStart="40dp"
         android:layout_marginLeft="40dp"
         android:ems="10"
         android:inputType="time"
-        app:layout_constraintStart_toEndOf="@+id/checkBox2"
-        app:layout_constraintTop_toBottomOf="@+id/editText11" />
+        app:layout_constraintStart_toEndOf="@+id/dienstagcheckBox"
+        app:layout_constraintTop_toBottomOf="@+id/saAnfangTextBox" />
 
     <EditText
-        android:id="@+id/editText14"
+        android:id="@+id/soEndeTextBox"
         android:layout_width="50dp"
         android:layout_height="34dp"
         android:layout_marginStart="15dp"
@@ -374,10 +374,10 @@
         android:ems="10"
         android:inputType="time"
         app:layout_constraintStart_toEndOf="@+id/textView14"
-        app:layout_constraintTop_toBottomOf="@+id/editText12" />
+        app:layout_constraintTop_toBottomOf="@+id/saEndeTextBox" />
 
     <EditText
-        android:id="@+id/editText4"
+        android:id="@+id/diEndeTextBox"
         android:layout_width="50dp"
         android:layout_height="34dp"
         android:layout_marginStart="15dp"
@@ -385,10 +385,10 @@
         android:ems="10"
         android:inputType="time"
         app:layout_constraintStart_toEndOf="@+id/textView9"
-        app:layout_constraintTop_toBottomOf="@+id/editText2" />
+        app:layout_constraintTop_toBottomOf="@+id/moEndeTextBox" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/moEndeTextBox"
         android:layout_width="50dp"
         android:layout_height="34dp"
         android:layout_marginStart="15dp"
@@ -407,7 +407,7 @@
         android:layout_marginLeft="15dp"
         android:layout_marginTop="80dp"
         android:text="-"
-        app:layout_constraintStart_toEndOf="@+id/editText"
+        app:layout_constraintStart_toEndOf="@+id/moAnfangTextBox"
         app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
 
     <TextView
@@ -417,7 +417,7 @@
         android:layout_marginStart="15dp"
         android:layout_marginLeft="15dp"
         android:text="-"
-        app:layout_constraintStart_toEndOf="@+id/editText"
+        app:layout_constraintStart_toEndOf="@+id/moAnfangTextBox"
         app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
     <TextView
@@ -427,7 +427,7 @@
         android:layout_marginStart="15dp"
         android:layout_marginLeft="15dp"
         android:text="-"
-        app:layout_constraintStart_toEndOf="@+id/editText"
+        app:layout_constraintStart_toEndOf="@+id/moAnfangTextBox"
         app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
     <TextView
@@ -437,7 +437,7 @@
         android:layout_marginStart="15dp"
         android:layout_marginLeft="15dp"
         android:text="-"
-        app:layout_constraintStart_toEndOf="@+id/editText"
+        app:layout_constraintStart_toEndOf="@+id/moAnfangTextBox"
         app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
     <TextView
@@ -447,7 +447,7 @@
         android:layout_marginStart="15dp"
         android:layout_marginLeft="15dp"
         android:text="-"
-        app:layout_constraintStart_toEndOf="@+id/editText"
+        app:layout_constraintStart_toEndOf="@+id/moAnfangTextBox"
         app:layout_constraintTop_toBottomOf="@+id/textView11" />
 
     <TextView
@@ -457,7 +457,7 @@
         android:layout_marginStart="15dp"
         android:layout_marginLeft="15dp"
         android:text="-"
-        app:layout_constraintStart_toEndOf="@+id/editText"
+        app:layout_constraintStart_toEndOf="@+id/moAnfangTextBox"
         app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
     <TextView
@@ -467,7 +467,7 @@
         android:layout_marginStart="15dp"
         android:layout_marginLeft="15dp"
         android:text="-"
-        app:layout_constraintStart_toEndOf="@+id/editText"
+        app:layout_constraintStart_toEndOf="@+id/moAnfangTextBox"
         app:layout_constraintTop_toBottomOf="@+id/textView13" />
 
     <CheckBox
