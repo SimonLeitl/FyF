@@ -51,7 +51,7 @@ super();
         nameTextBox=(EditText) findViewById(R.id.nameTextBox);
 
         vornameTextBox=(EditText) findViewById(R.id.vornameTextBox);
-        geburtstagTextBox=(EditText) findViewById(R.id.StraßeTextBox);
+        geburtstagTextBox=(EditText) findViewById(R.id.geburtstagTextBox);
 
 
         String email = emailTextbox.getText().toString().trim();

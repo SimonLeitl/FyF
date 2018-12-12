@@ -152,6 +152,7 @@ public class MainActivity extends AppCompatActivity {
 
     // setzt activity_main.xml wieder als aktiven View
     public void regZurückButtonClick(View view){
+
         setContentView(R.layout.start);
     }
 
