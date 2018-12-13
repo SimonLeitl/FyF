@@ -104,6 +104,24 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
               //mMap.addMarker(new MarkerOptions().position(userLocation).title("Your Location"));
                 mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(userLocation, 12));
+
+          /*      getFarmshops();
+                if(koordinaten==null){
+                    mMap.addMarker(new MarkerOptions()
+                            .position(new LatLng(49.013611,  8.40444))
+                            .title("Null Liste")
+                            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
+                }else{
+                    mMap.addMarker(new MarkerOptions()
+                            .position(new LatLng(49.013611,  8.40444))
+                            .title(koordinaten.size()+"")
+                            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)));
+                }
+*/
+
+
+
+
             }
 
             @Override
@@ -129,6 +147,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                                 if (task.isSuccessful()) {
                                     for (QueryDocumentSnapshot document : task.getResult()) {
+
                                         koordinaten.add(document.getString("ort")+"+"+document.getString("straße")+"+"+document.getString("hausnummer")+"+"+document.getString("plz"));
                                         //Log.d(TAG, document.getId() + " => " + document.getData());
                                     }
