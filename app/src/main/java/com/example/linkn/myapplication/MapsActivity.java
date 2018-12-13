@@ -3,6 +3,7 @@ package com.example.linkn.myapplication;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
@@ -13,6 +14,9 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.View;
+
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -23,6 +27,18 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+
+
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback {
 
@@ -30,6 +46,11 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     private LocationListener locationListener;
     private GoogleMap mMap;
     private Marker yourLocation;
+    private FirebaseFirestore mDatabase;
+    ArrayList<String> koordinaten=new ArrayList<>();
+    public FirebaseAuth auth;
+    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
@@ -46,7 +67,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.map);
-
+        mDatabase = FirebaseFirestore.getInstance();
+        auth = FirebaseAuth.getInstance();
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
     }
@@ -82,6 +104,24 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
               //mMap.addMarker(new MarkerOptions().position(userLocation).title("Your Location"));
                 mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(userLocation, 12));
+
+          /*      getFarmshops();
+                if(koordinaten==null){
+                    mMap.addMarker(new MarkerOptions()
+                            .position(new LatLng(49.013611,  8.40444))
+                            .title("Null Liste")
+                            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
+                }else{
+                    mMap.addMarker(new MarkerOptions()
+                            .position(new LatLng(49.013611,  8.40444))
+                            .title(koordinaten.size()+"")
+                            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)));
+                }
+*/
+
+
+
+
             }
 
             @Override
@@ -96,6 +136,26 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
             @Override
             public void onProviderDisabled(String provider) {
+
+            }
+
+            public void getFarmshops(){
+                mDatabase.collection("Farmshop")
+                        .get()
+                        .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                            @Override
+                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                if (task.isSuccessful()) {
+                                    for (QueryDocumentSnapshot document : task.getResult()) {
+
+                                        koordinaten.add(document.getString("ort")+"+"+document.getString("straße")+"+"+document.getString("hausnummer")+"+"+document.getString("plz"));
+                                        //Log.d(TAG, document.getId() + " => " + document.getData());
+                                    }
+                                } else {
+                                    //Log.w(TAG, "Error getting documents.", task.getException());
+                                }
+                            }
+                        });
 
             }
         };
@@ -115,5 +175,15 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         // Add a marker on the Position of the user
 
 
+    }
+    public void profilButton(View view){
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if(user==null){
+            startActivity(new Intent(MapsActivity.this, MainActivity.class));
+
+        }else{
+            startActivity(new Intent(MapsActivity.this, Profile.class));
+        }
     }
 }

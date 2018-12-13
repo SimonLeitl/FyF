@@ -152,6 +152,7 @@ public class MainActivity extends AppCompatActivity {
 
     // setzt activity_main.xml wieder als aktiven View
     public void regZurückButtonClick(View view){
+
         setContentView(R.layout.start);
     }
 
@@ -164,5 +165,4 @@ public class MainActivity extends AppCompatActivity {
           protected void onResume() {
                super.onResume();
                //progressBar.setVisibility(View.GONE);
-
 }}

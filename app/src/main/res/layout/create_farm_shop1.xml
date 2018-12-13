@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="85dp"
         android:layout_marginLeft="85dp"
-        android:layout_marginTop="76dp"
+        android:layout_marginTop="35dp"
         android:layout_marginEnd="85dp"
         android:layout_marginRight="85dp"
         android:ems="10"
@@ -21,7 +21,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <EditText
         android:id="@+id/StraßeTextBox"
@@ -29,7 +29,7 @@
         android:layout_height="42dp"
         android:layout_marginStart="84dp"
         android:layout_marginLeft="84dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="15dp"
         android:ems="10"
         android:inputType="text"
         android:text="Straße"
@@ -40,17 +40,16 @@
         android:id="@+id/hausnummerTextBox"
         android:layout_width="54dp"
         android:layout_height="42dp"
-        android:layout_marginStart="244dp"
-        android:layout_marginLeft="244dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="85dp"
-        android:layout_marginRight="85dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="86dp"
+        android:layout_marginRight="86dp"
         android:ems="10"
         android:inputType="text"
         android:text="Nr"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/StraßeTextBox"
         app:layout_constraintTop_toBottomOf="@+id/inhaberTextBox" />
 
     <EditText
@@ -59,7 +58,7 @@
         android:layout_height="43dp"
         android:layout_marginStart="85dp"
         android:layout_marginLeft="85dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="15dp"
         android:layout_marginEnd="85dp"
         android:layout_marginRight="85dp"
         android:ems="10"
@@ -74,22 +73,31 @@
         android:id="@+id/phoneTextBox"
         android:layout_width="wrap_content"
         android:layout_height="43dp"
+        android:layout_marginStart="85dp"
+        android:layout_marginLeft="85dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="84dp"
+        android:layout_marginRight="84dp"
         android:ems="10"
         android:inputType="textEmailAddress|textPersonName|phone"
         android:text="Telefon"
-        tools:layout_editor_absoluteX="85dp"
-        tools:layout_editor_absoluteY="330dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/plzTextBox" />
 
     <EditText
         android:id="@+id/plzTextBox"
         android:layout_width="69dp"
-        android:layout_height="43dp"
+        android:layout_height="0dp"
         android:layout_marginStart="84dp"
         android:layout_marginLeft="84dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="13dp"
+        android:layout_marginRight="13dp"
         android:ems="10"
         android:inputType="text"
         android:text="PLZ"
+        app:layout_constraintEnd_toStartOf="@+id/ortTextBox2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/StraßeTextBox" />
 
@@ -97,27 +105,30 @@
         android:id="@+id/ortTextBox2"
         android:layout_width="132dp"
         android:layout_height="43dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="15dp"
         android:layout_marginEnd="84dp"
         android:layout_marginRight="84dp"
         android:ems="10"
         android:inputType="text"
         android:text="Ort"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/plzTextBox"
         app:layout_constraintTop_toBottomOf="@+id/StraßeTextBox" />
 
     <Button
         android:id="@+id/weiterButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="140dp"
+        android:layout_marginTop="15dp"
         android:layout_marginEnd="40dp"
         android:layout_marginRight="40dp"
         android:background="@color/colorPrimary"
         android:onClick="createFarmshop1"
         android:text="Weiter"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/plzTextBox" />
+        app:layout_constraintTop_toBottomOf="@+id/emailTextBox" />
 
     <EditText
         android:id="@+id/emailTextBox"
@@ -125,7 +136,7 @@
         android:layout_height="43dp"
         android:layout_marginStart="84dp"
         android:layout_marginLeft="84dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="15dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Email"
