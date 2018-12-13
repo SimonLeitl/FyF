@@ -17,6 +17,8 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.Map;
+
 public class Profile extends AppCompatActivity {
     private double[] gps;
     private String name;
@@ -177,6 +179,21 @@ public void deleteAcc(View view){
         auth.signOut();
         startActivity(new Intent(Profile.this, MainActivity.class));
 
+    }
+
+    public void mapKlick(View view){
+        startActivity(new Intent(Profile.this, MapsActivity.class));
+
+    }
+    public void profilButton(View view){
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if(user==null){
+            startActivity(new Intent(Profile.this, MainActivity.class));
+
+        }else{
+            startActivity(new Intent(Profile.this, Profile.class));
+        }
     }
 
 // Setzt Layout zurück auf Profilansicht

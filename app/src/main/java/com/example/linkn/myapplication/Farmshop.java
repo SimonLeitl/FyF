@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -28,6 +29,7 @@ public class Farmshop extends AppCompatActivity {
             doEndeTextBox,frAnfangTextBox, frEndeTextBox,saAnfangTextBox, saEndeTextBox,soAnfangTextBox, soEndeTextBox;
     CheckBox montagcheckBox,dienstagcheckBox,mittwochcheckBox,donnerstagcheckBox,freitagcheckBox, samstagcheckBox, sonntagcheckBox, geöffnetCeckBox;
 
+    TextView adressTextView,phoneTextView;
     // Farmshopdaten als enum speichern? Name, Adresse, Öffnungszeiten...
 public Farmshop(){}
 public Farmshop(Farmer owner, String shopname, double[]gps){
@@ -187,6 +189,14 @@ public void createFarmshop2(View view){
 
     mDatabase.collection("Farmshop").document(uid).set(userEingabe);
     startActivity(new Intent(Farmshop.this, MapsActivity.class));
+
+
+}
+
+public void showFarmShop(View view){
+    setContentView(R.layout.farm_shop_profile);
+    adressTextView = (TextView) findViewById(R.id.adressTextView);
+    phoneTextView = (TextView) findViewById(R.id.phoneTextView);
 
 
 }
