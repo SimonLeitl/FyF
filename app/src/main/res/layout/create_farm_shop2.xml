@@ -252,6 +252,7 @@
         android:layout_marginTop="80dp"
         android:ems="10"
         android:inputType="time"
+        android:textSize="12sp"
         app:layout_constraintStart_toEndOf="@+id/dienstagcheckBox"
         app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
 
@@ -263,6 +264,7 @@
         android:layout_marginLeft="40dp"
         android:ems="10"
         android:inputType="time"
+        android:textSize="12sp"
         app:layout_constraintStart_toEndOf="@+id/dienstagcheckBox"
         app:layout_constraintTop_toBottomOf="@+id/moAnfangTextBox" />
 
@@ -274,6 +276,7 @@
         android:layout_marginLeft="40dp"
         android:ems="10"
         android:inputType="time"
+        android:textSize="12sp"
         app:layout_constraintStart_toEndOf="@+id/dienstagcheckBox"
         app:layout_constraintTop_toBottomOf="@+id/diAnfangTextBox" />
 
@@ -285,6 +288,7 @@
         android:layout_marginLeft="15dp"
         android:ems="10"
         android:inputType="time"
+        android:textSize="12sp"
         app:layout_constraintStart_toEndOf="@+id/textView10"
         app:layout_constraintTop_toBottomOf="@+id/diEndeTextBox" />
 
@@ -296,6 +300,7 @@
         android:layout_marginLeft="40dp"
         android:ems="10"
         android:inputType="time"
+        android:textSize="12sp"
         app:layout_constraintStart_toEndOf="@+id/dienstagcheckBox"
         app:layout_constraintTop_toBottomOf="@+id/miAnfangTextBox" />
 
@@ -307,6 +312,7 @@
         android:layout_marginLeft="15dp"
         android:ems="10"
         android:inputType="time"
+        android:textSize="12sp"
         app:layout_constraintStart_toEndOf="@+id/textView11"
         app:layout_constraintTop_toBottomOf="@+id/miEndeTextBox" />
 
@@ -318,6 +324,7 @@
         android:layout_marginLeft="40dp"
         android:ems="10"
         android:inputType="time"
+        android:textSize="12sp"
         app:layout_constraintStart_toEndOf="@+id/dienstagcheckBox"
         app:layout_constraintTop_toBottomOf="@+id/doAnfangTextBox" />
 
@@ -329,6 +336,7 @@
         android:layout_marginLeft="15dp"
         android:ems="10"
         android:inputType="time"
+        android:textSize="12sp"
         app:layout_constraintStart_toEndOf="@+id/textView12"
         app:layout_constraintTop_toBottomOf="@+id/doEndeTextBox" />
 
@@ -340,6 +348,7 @@
         android:layout_marginLeft="40dp"
         android:ems="10"
         android:inputType="time"
+        android:textSize="12sp"
         app:layout_constraintStart_toEndOf="@+id/dienstagcheckBox"
         app:layout_constraintTop_toBottomOf="@+id/frAnfangTextBox" />
 
@@ -351,6 +360,7 @@
         android:layout_marginLeft="15dp"
         android:ems="10"
         android:inputType="time"
+        android:textSize="12sp"
         app:layout_constraintStart_toEndOf="@+id/textView13"
         app:layout_constraintTop_toBottomOf="@+id/frEndeTextBox" />
 
@@ -362,6 +372,7 @@
         android:layout_marginLeft="40dp"
         android:ems="10"
         android:inputType="time"
+        android:textSize="12sp"
         app:layout_constraintStart_toEndOf="@+id/dienstagcheckBox"
         app:layout_constraintTop_toBottomOf="@+id/saAnfangTextBox" />
 
@@ -374,7 +385,8 @@
         android:ems="10"
         android:inputType="time"
         app:layout_constraintStart_toEndOf="@+id/textView14"
-        app:layout_constraintTop_toBottomOf="@+id/saEndeTextBox" />
+        app:layout_constraintTop_toBottomOf="@+id/saEndeTextBox"
+        android:textSize="12sp" />
 
     <EditText
         android:id="@+id/diEndeTextBox"
@@ -384,6 +396,7 @@
         android:layout_marginLeft="15dp"
         android:ems="10"
         android:inputType="time"
+        android:textSize="12sp"
         app:layout_constraintStart_toEndOf="@+id/textView9"
         app:layout_constraintTop_toBottomOf="@+id/moEndeTextBox" />
 
@@ -396,6 +409,7 @@
         android:layout_marginTop="80dp"
         android:ems="10"
         android:inputType="time"
+        android:textSize="12sp"
         app:layout_constraintStart_toEndOf="@+id/textView8"
         app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
 
