@@ -30,8 +30,11 @@
         android:background="@color/colorPrimary"
         android:text="Maps"
         app:layout_constraintBottom_toBottomOf="parent"
+
+        app:layout_constraintEnd_toStartOf="@+id/listButton"
         app:layout_constraintEnd_toStartOf="@+id/profilButton"
         app:layout_constraintHorizontal_chainStyle="packed"
+
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
@@ -40,13 +43,24 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginEnd="184dp"
-        android:layout_marginRight="184dp"
         android:background="@color/colorPrimary"
         android:onClick="profilButton"
         android:text="Profil"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/listButton" />
+
+    <Button
+        android:id="@+id/listButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:background="@color/colorPrimary"
+        android:text="Liste"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/profilButton"
         app:layout_constraintStart_toEndOf="@+id/mapsButton" />
 
 </android.support.constraint.ConstraintLayout>

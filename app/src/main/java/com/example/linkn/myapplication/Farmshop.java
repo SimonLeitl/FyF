@@ -2,14 +2,19 @@ package com.example.linkn.myapplication;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
@@ -197,6 +202,26 @@ public void showFarmShop(View view){
     setContentView(R.layout.farm_shop_profile);
     adressTextView = (TextView) findViewById(R.id.adressTextView);
     phoneTextView = (TextView) findViewById(R.id.phoneTextView);
+
+    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+    //gibt den String des aktuellen Users
+    String uid = user.getUid();
+
+    DocumentReference Farmshop=mDatabase.collection("Farmshop").document(uid);
+
+    Farmshop.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>(){
+        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+
+            DocumentSnapshot document=task.getResult();
+            String adresse=document.getString("straße")+" "+document.getString("hausnummer")+" "+document.getString("plz")+" "+document.getString("ort");
+            String phone=document.getString("phone");
+           // String geb=document.getString("born");
+            adressTextView.setText(adresse);
+            phoneTextView.setText(phone);
+
+
+        }
+    });
 
 
 }
