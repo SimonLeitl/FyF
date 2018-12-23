@@ -27,11 +27,11 @@ A registered user can login to his account with his email adress and password.
 
 ![alt text][MockUp2]
 
-[MockUp2]: https://github.com/FyF-Team/fyf/blob/master/UC/login2.png "MockUp2"
+[MockUp2]: https://github.com/FyF-Team/fyf/blob/master/UC/login2.png "Login%20Mockup2"
 
 ![alt text][MockUp1]
 
-[MockUp1]: https://github.com/FyF-Team/fyf/blob/master/UC/login1.png "MockUp1"
+[MockUp1]: https://github.com/FyF-Team/fyf/blob/master/UC/login1.png "Login%20Mockup1"
 
 
 ## 2.2 Alternative Flows
