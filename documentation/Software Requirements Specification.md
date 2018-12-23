@@ -69,13 +69,21 @@ Invalidates the active user session.
 There are three different ways to find farm shops.
 
 ##### 3.1.6.1 [Search by location](https://github.com/linkna/FyF/blob/master/documentation/UC/UCS-search%20by%20location.md)
-With the location search you can find shops nearby.
+With the location search you get the location of the device. The map shows your location and the shops nearby.
 ##### 3.1.6.2 Search by product
 With searching for a special product you will find surrounding shops that offer the special product.
 ##### 3.1.6.3 Search by ranking
 With searching by ranking you will find the surrounding shops sorted according to their rating.
 
-#### 3.1.7 Save a farm shop as favorite
+#### 3.1.7 Show results
+The user can choose the type of presentation of the results.
+##### 3.1.7.1 Show results as list
+The farmshops are shown as list.
+##### 3.1.7.2 Show results as map
+The farmshops are shown on the map.
+
+
+#### 3.1.8 Save a farm shop as favorite
 Customers can save a selected farmer shop in a list of his favorites.
 
 ### 3.2 Usability
