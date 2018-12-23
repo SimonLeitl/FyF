@@ -95,7 +95,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                             int i=0;
                             for (QueryDocumentSnapshot document : task.getResult()) {
 
-                                koordinaten.add(document.getString("ort")+"+"+document.getString("straße")+"+"+document.getString("hausnummer")+"+"+document.getString("plz"));
+                                koordinaten.add(document.getString("name")+"+"+document.getString("ort")+"+"+document.getString("straße")+"+"+document.getString("hausnummer")+"+"+document.getString("plz"));
                                 //Log.d(TAG, document.getId() + " => " + document.getData());
                                 System.out.println(koordinaten.get(i).toString());
                                 i++;
