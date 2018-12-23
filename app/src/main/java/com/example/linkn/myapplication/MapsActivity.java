@@ -122,9 +122,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         mMap = googleMap;
 
-        FarmShopMarkerActivity farmShopMarkerActivity = new FarmShopMarkerActivity();
-        mMap.setOnMarkerClickListener(farmShopMarkerActivity);
-
         Task<QuerySnapshot> farmShopDatabaseTask = mDatabase.collection(FARMSHOP).get();
 
         farmShopDatabaseTask.addOnSuccessListener(queryDocumentSnapshots -> {
