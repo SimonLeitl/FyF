@@ -66,7 +66,6 @@ public class Profile extends AppCompatActivity {
         }
     };
 
-
     public Profile() {
     }
 
@@ -87,9 +86,26 @@ public class Profile extends AppCompatActivity {
 
             boolean customerExists = ((DocumentSnapshot) result.get(0).getResult()).exists();
             boolean farmerExists = ((DocumentSnapshot) result.get(1).getResult()).exists();
-
+            if(customerExists==true){
+                DocumentSnapshot document = customerTask.getResult();
+                String vorname= document.getString("firstname");
+                String nachname=document.getString("lastname");
+                String geb=document.getString("born");
+                vornameTextView.setText(vorname);
+                nachnameTextView.setText(nachname);
+                gebTextView.setText(geb);
+            }else{
+                DocumentSnapshot document = farmerTask.getResult();
+                String vorname= document.getString("firstname");
+                String nachname=document.getString("lastname");
+                String geb=document.getString("born");
+                vornameTextView.setText(vorname);
+                nachnameTextView.setText(nachname);
+                gebTextView.setText(geb);
+            }
             return null;
         });
+
 //
 //        documentSnapshotTask.onSuccessTask(user -> {
 //
@@ -104,6 +120,7 @@ public class Profile extends AppCompatActivity {
 //            return null;
 //        });
     }
+
 
     EditText changePasswort;
 
