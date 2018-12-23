@@ -32,7 +32,7 @@ The following chapters are about our vision and perspective, the software requir
 
 ## 2 Overall Description
 
-![use case diagram](/documentation/OverallUseCaseDiagram.jpg)
+![use case diagram](https://github.com/linkna/FyF/blob/master/documentation/OverallUseCaseDiagram-Page-1.jpg)
 
 Find your Farm will be an Andriod app which focuses on the connection between farmers and customers who love to buy and eat healthy food and the knowledge where it comes from. So we try to make it easy to find the farmer in your area. We'll use a map where you can find your favorite farm and check the latest offers from vegetables to meet or eggs. Also you find important informations about the farm like open times or something. Another possibility is that you can direktly write an e-mail to your farm to get informations and you can rate the service and the quality of the food.
 
@@ -59,20 +59,23 @@ Shows a list with the saved favorite farmers.
 #### 3.1.3.3 Evaluate
 Customers can evaluate farmers.
 
-#### 3.1.4 Login/logout
-For authentication the email address and password are used.
+#### 3.1.4 [Login](https://github.com/linkna/FyF/blob/master/documentation/UC/UCS-login.md)
+For authentification the email address and password are used.
 
-#### 3.1.5 Search a farm shop
+#### 3.1.5 Logout
+Invalidates the active user session.
+
+#### 3.1.6 Search a farm shop
 There are three different ways to find farm shops.
 
-##### 3.1.5.1 [Search by location](https://github.com/linkna/FyF/blob/master/documentation/UC/UCS-search%20by%20location.md)
+##### 3.1.6.1 [Search by location](https://github.com/linkna/FyF/blob/master/documentation/UC/UCS-search%20by%20location.md)
 With the location search you can find shops nearby.
-##### 3.1.5.2 Search by product
+##### 3.1.6.2 Search by product
 With searching for a special product you will find surrounding shops that offer the special product.
-##### 3.1.5.3 Search by ranking
+##### 3.1.6.3 Search by ranking
 With searching by ranking you will find the surrounding shops sorted according to their rating.
 
-#### 3.1.6 Save a farm shop as favorite
+#### 3.1.7 Save a farm shop as favorite
 Customers can save a selected farmer shop in a list of his favorites.
 
 ### 3.2 Usability
