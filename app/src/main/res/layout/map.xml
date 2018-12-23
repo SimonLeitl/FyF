@@ -17,7 +17,8 @@
         android:layout_height="535dp"
         tools:context=".MapsActivity"
         tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp" />
+        tools:layout_editor_absoluteY="0dp"
+        tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/mapsButton"
@@ -32,7 +33,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
 
         app:layout_constraintEnd_toStartOf="@+id/listButton"
-        app:layout_constraintEnd_toStartOf="@+id/profilButton"
         app:layout_constraintHorizontal_chainStyle="packed"
 
         app:layout_constraintStart_toStartOf="parent" />
