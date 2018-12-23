@@ -40,7 +40,7 @@ Find your Farm will be an Andriod app which focuses on the connection between fa
 
 ### 3.1 Functionality
 
-#### 3.1.1 User registration
+#### 3.1.1 [User registration](https://github.com/linkna/FyF/blob/master/documentation/UC/UCS-create%20profile.md)
 
 The user has the possibility to choose between two different account types. 
 Either he registers as a farmer or as a customer. But the app can also be used as a guest.
