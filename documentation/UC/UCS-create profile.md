@@ -25,13 +25,11 @@ The user can choose between different profile types. He can register as a farmer
 
 [ActivityDiagram]: https://github.com/linkna/FyF/blob/master/documentation/UC/activity%20Diagrams-create%20profile.jpg "Activity Diagram"
 
-![alt text][MockUp2]
 
-[MockUp2]: https://github.com/FyF-Team/fyf/blob/master/UC/create%20profile.png "MockUp2"
 
 ![alt text][MockUp1]
 
-[MockUp1]: https://github.com/FyF-Team/fyf/blob/master/UC/create.png "MockUp1"
+[MockUp1]: https://github.com/linkna/FyF/blob/master/documentation/UC/Create%20Profile%20Mockup.png
 
 
 ## 2.2 Alternative Flows
