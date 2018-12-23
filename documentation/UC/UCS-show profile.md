@@ -25,13 +25,11 @@ A registered user can view his own profile.
 
 [ActivityDiagram]: https://github.com/linkna/FyF/blob/master/documentation/UC/activity%20Diagrams-show%20profile.jpg "Activity Diagram"
 
-![alt text][MockUp2]
 
-[MockUp2]: https://github.com/FyF-Team/fyf/blob/master/UC/login2.png "MockUp2"
 
 ![alt text][MockUp1]
 
-[MockUp1]: https://github.com/FyF-Team/fyf/blob/master/UC/login1.png "MockUp1"
+[MockUp1]: https://github.com/linkna/FyF/blob/master/documentation/UC/Profile%20Mockup.png
 
 
 ## 2.2 Alternative Flows
