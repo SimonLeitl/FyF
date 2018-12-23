@@ -27,7 +27,7 @@ A registered user can login to his account with his email adress and password.
 
 ![alt text][MockUp2]
 
-[MockUp2]: https://github.com/FyF-Team/fyf/blob/master/UC/login2.png "Login%20Mockup%202.png"
+[MockUp2]: https://github.com/linkna/FyF/blob/master/documentation/UC/Login%20Mockup%202.png
 
 ![alt text][MockUp1]
 
