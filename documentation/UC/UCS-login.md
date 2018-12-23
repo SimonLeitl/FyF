@@ -23,7 +23,7 @@ A registered user can login to his account with his email adress and password.
 
 ![alt text][ActivityDiagram]
 
-[ActivityDiagram]: https://github.com/linkna/FyF/blob/master/documentation/UC/login.jpg "Activity Diagram"
+[ActivityDiagram]: https://github.com/linkna/FyF/blob/master/documentation/UC/activity%20Diagrams-login.jpg "Activity Diagram"
 
 ![alt text][MockUp2]
 
