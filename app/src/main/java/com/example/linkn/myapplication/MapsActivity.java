@@ -17,6 +17,8 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -37,7 +39,6 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
@@ -53,11 +54,11 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     private GoogleMap mMap;
     private Marker yourLocation;
     private FirebaseFirestore mDatabase;
-    ArrayList<String> koordinaten = new ArrayList<>();
+
     public FirebaseAuth auth;
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     TextView adressTextView, phoneTextView;
-
+    ListView ladenNameView;
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
@@ -217,6 +218,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         });
     }
 
+
     public void goToFarmshop(View view) {
 
         setContentView(R.layout.farm_shop_profile);
@@ -253,5 +255,28 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         } else {
             startActivity(new Intent(MapsActivity.this, Profile.class));
         }
+    }
+
+    @SuppressLint("NewApi")
+    public void listButton(View view) {
+
+        setContentView(R.layout.farm_list_item);
+        ladenNameView = findViewById(R.id.ladenNameListView);
+
+        Task<QuerySnapshot> farmShopDatabaseTask = mDatabase.collection(FARMSHOP).get();
+
+        farmShopDatabaseTask.addOnSuccessListener(queryDocumentSnapshots -> {
+
+            List<String> farmShopNames = queryDocumentSnapshots.getDocuments()
+                    .stream()
+                    .map(mapQueryDocumentSnapshotToFarmshopMarker())
+                    .map(farmShopMarker -> farmShopMarker.getShopName())
+                    .collect(Collectors.toList());
+
+            ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
+                    android.R.layout.simple_list_item_1, android.R.id.text1, farmShopNames);
+
+            ladenNameView.setAdapter(adapter);
+        });
     }
 }
