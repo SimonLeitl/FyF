@@ -116,36 +116,13 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         return address;
     }
 
-    @SuppressLint("NewApi")
+
     @Override
     public void onMapReady(GoogleMap googleMap) {
 
         mMap = googleMap;
 
-        Task<QuerySnapshot> farmShopDatabaseTask = mDatabase.collection(FARMSHOP).get();
-
-        farmShopDatabaseTask.addOnSuccessListener(queryDocumentSnapshots -> {
-
-            List<FarmShopMarker> farmShopMarkers = queryDocumentSnapshots.getDocuments()
-                    .stream()
-                    .map(mapQueryDocumentSnapshotToFarmshopMarker())
-                    .collect(Collectors.toList());
-
-            farmShopMarkers.forEach(farmShopMarker -> {
-                Optional<Address> address = getAddressByFarmShopMarker(farmShopMarker);
-
-                if (address.isPresent()) {
-
-                    MarkerOptions markerOptions = new MarkerOptions()
-                            .position(new LatLng(address.get().getLatitude(), address.get().getLongitude()))
-                            .title(farmShopMarker.getShopName())
-                            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
-
-                    Marker marker = mMap.addMarker(markerOptions);
-                    marker.setTag(farmShopMarker);
-                }
-            });
-        });
+        addFarmshopMarkersToMap();
 
         locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
         locationListener = new LocationListener() {
@@ -210,6 +187,34 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         // Add a marker on the Position of the user
 
 
+    }
+
+    @SuppressLint("NewApi")
+    private void addFarmshopMarkersToMap() {
+        Task<QuerySnapshot> farmShopDatabaseTask = mDatabase.collection(FARMSHOP).get();
+
+        farmShopDatabaseTask.addOnSuccessListener(queryDocumentSnapshots -> {
+
+            List<FarmShopMarker> farmShopMarkers = queryDocumentSnapshots.getDocuments()
+                    .stream()
+                    .map(mapQueryDocumentSnapshotToFarmshopMarker())
+                    .collect(Collectors.toList());
+
+            farmShopMarkers.forEach(farmShopMarker -> {
+                Optional<Address> address = getAddressByFarmShopMarker(farmShopMarker);
+
+                if (address.isPresent()) {
+
+                    MarkerOptions markerOptions = new MarkerOptions()
+                            .position(new LatLng(address.get().getLatitude(), address.get().getLongitude()))
+                            .title(farmShopMarker.getShopName())
+                            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
+
+                    Marker marker = mMap.addMarker(markerOptions);
+                    marker.setTag(farmShopMarker);
+                }
+            });
+        });
     }
 
     public void goToFarmshop(View view) {
