@@ -31,6 +31,7 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.gms.tasks.TaskCompletionSource;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
@@ -59,6 +60,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     TextView adressTextView, phoneTextView;
     ListView ladenNameView;
+    private Task<List<FarmShopMarker>> farmShopMarkerFuture;
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
@@ -74,13 +76,18 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.map);
         mDatabase = FirebaseFirestore.getInstance();
         auth = FirebaseAuth.getInstance();
+
+        farmShopMarkerFuture = getFarmShopMarkerFuture();
+
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
     }
+
 
     /**
      * Transformiert DatankresultSet zu FarmerShopMarker Objekt um eine Abstraktionsebene für
@@ -192,14 +199,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     @SuppressLint("NewApi")
     private void addFarmshopMarkersToMap() {
-        Task<QuerySnapshot> farmShopDatabaseTask = mDatabase.collection(FARMSHOP).get();
 
-        farmShopDatabaseTask.addOnSuccessListener(queryDocumentSnapshots -> {
-
-            List<FarmShopMarker> farmShopMarkers = queryDocumentSnapshots.getDocuments()
-                    .stream()
-                    .map(mapQueryDocumentSnapshotToFarmshopMarker())
-                    .collect(Collectors.toList());
+        farmShopMarkerFuture.onSuccessTask(farmShopMarkers -> {
 
             farmShopMarkers.forEach(farmShopMarker -> {
                 Optional<Address> address = getAddressByFarmShopMarker(farmShopMarker);
@@ -215,6 +216,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                     marker.setTag(farmShopMarker);
                 }
             });
+
+            return null;
         });
     }
 
@@ -258,18 +261,32 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     }
 
     @SuppressLint("NewApi")
-    public void listButton(View view) {
+    private Task<List<FarmShopMarker>> getFarmShopMarkerFuture() {
 
-        setContentView(R.layout.farm_list_item);
-        ladenNameView = findViewById(R.id.ladenNameListView);
+        TaskCompletionSource<List<FarmShopMarker>> farmShopMarkers = new TaskCompletionSource<>();
 
         Task<QuerySnapshot> farmShopDatabaseTask = mDatabase.collection(FARMSHOP).get();
 
         farmShopDatabaseTask.addOnSuccessListener(queryDocumentSnapshots -> {
 
-            List<String> farmShopNames = queryDocumentSnapshots.getDocuments()
+            farmShopMarkers.setResult(queryDocumentSnapshots.getDocuments()
                     .stream()
-                    .map(mapQueryDocumentSnapshotToFarmshopMarker())
+                    .map(mapQueryDocumentSnapshotToFarmshopMarker()).collect(Collectors.toList()));
+        });
+
+        return farmShopMarkers.getTask();
+    }
+
+    @SuppressLint("NewApi")
+    public void listButton(View view) {
+
+        setContentView(R.layout.farm_list_item);
+        ladenNameView = findViewById(R.id.ladenNameListView);
+
+        farmShopMarkerFuture.onSuccessTask(farmShopMarkers -> {
+
+            List<String> farmShopNames = farmShopMarkers
+                    .stream()
                     .map(farmShopMarker -> farmShopMarker.getShopName())
                     .collect(Collectors.toList());
 
@@ -277,6 +294,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                     android.R.layout.simple_list_item_1, android.R.id.text1, farmShopNames);
 
             ladenNameView.setAdapter(adapter);
+
+            return null;
         });
     }
 }
