@@ -14,8 +14,9 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="26dp"
         android:layout_marginRight="26dp"
-        android:text="Gasfelder Hofladen"
+        android:text="Hagsfelder Hofladen"
         app:layout_constraintEnd_toStartOf="@+id/button2"
+        app:layout_constraintHorizontal_bias="0.6"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -26,6 +27,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="30dp"
         android:layout_marginRight="30dp"
+        android:onClick="goToFarmshop"
         android:text="GOTO"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

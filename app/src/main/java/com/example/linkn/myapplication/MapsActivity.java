@@ -16,6 +16,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -31,6 +32,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -50,6 +53,9 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     ArrayList<String> koordinaten=new ArrayList<>();
     public FirebaseAuth auth;
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+    TextView adressTextView,phoneTextView;
+
+
 
 
     @Override
@@ -63,6 +69,45 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         }
     }
 
+    public void getFarmshops(){
+        mDatabase.collection("Farmshop")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+
+                                koordinaten.add(document.getString("ort")+"+"+document.getString("straße")+"+"+document.getString("hausnummer")+"+"+document.getString("plz"));
+                                //Log.d(TAG, document.getId() + " => " + document.getData());
+                            }
+                        } else {
+                            //Log.w(TAG, "Error getting documents.", task.getException());
+                        }
+                    }
+                });
+        mDatabase.collection("Farmshop")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            int i=0;
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+
+                                koordinaten.add(document.getString("ort")+"+"+document.getString("straße")+"+"+document.getString("hausnummer")+"+"+document.getString("plz"));
+                                //Log.d(TAG, document.getId() + " => " + document.getData());
+                                System.out.println(koordinaten.get(i).toString());
+                                i++;
+                            }
+                        } else {
+                            //Log.w(TAG, "Error getting documents.", task.getException());
+                        }
+                    }
+                });
+
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,6 +116,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         auth = FirebaseAuth.getInstance();
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+       getFarmshops();
     }
 
 
@@ -139,25 +185,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
             }
 
-            public void getFarmshops(){
-                mDatabase.collection("Farmshop")
-                        .get()
-                        .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                            @Override
-                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                                if (task.isSuccessful()) {
-                                    for (QueryDocumentSnapshot document : task.getResult()) {
 
-                                        koordinaten.add(document.getString("ort")+"+"+document.getString("straße")+"+"+document.getString("hausnummer")+"+"+document.getString("plz"));
-                                        //Log.d(TAG, document.getId() + " => " + document.getData());
-                                    }
-                                } else {
-                                    //Log.w(TAG, "Error getting documents.", task.getException());
-                                }
-                            }
-                        });
-
-            }
         };
 
 
@@ -173,6 +201,32 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 3, 0, locationListener);
         }
         // Add a marker on the Position of the user
+
+
+    }
+    public void goToFarmshop(View view){
+
+        setContentView(R.layout.farm_shop_profile);
+        adressTextView = (TextView) findViewById(R.id.adressTextView);
+        phoneTextView = (TextView) findViewById(R.id.phoneTextView);
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        //gibt den String des aktuellen Users
+        String uid = user.getUid();
+
+        DocumentReference Farmshop=mDatabase.collection("Farmshop").document(uid);
+
+        Farmshop.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>(){
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+
+                DocumentSnapshot document=task.getResult();
+                String adresse=document.getString("straße")+" "+document.getString("hausnummer")+" "+document.getString("plz")+" "+document.getString("ort");
+                String phone=document.getString("phone");
+                // String geb=document.getString("born");
+                adressTextView.setText(adresse);
+                phoneTextView.setText(phone);
+            }
+        });
 
 
     }

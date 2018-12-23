@@ -198,6 +198,9 @@ public void createFarmshop2(View view){
 
 }
 
+public void FarmShopShow(){
+}
+
 public void showFarmShop(View view){
     setContentView(R.layout.farm_shop_profile);
     adressTextView = (TextView) findViewById(R.id.adressTextView);
@@ -218,8 +221,6 @@ public void showFarmShop(View view){
            // String geb=document.getString("born");
             adressTextView.setText(adresse);
             phoneTextView.setText(phone);
-
-
         }
     });
 
