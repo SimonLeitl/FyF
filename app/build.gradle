@@ -21,24 +21,13 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-    sourceSets { main { assets.srcDirs = ['src/main/assets', 'src/test/java/cucumber/assets/'] } }
     sourceSets {
         test {
-            assets.srcDirs = ['src/test/java/assets']
+            assets.srcDirs = ['src/test/assets']
         }
     }
-    testOptions {
-        unitTests.all {
-            def classpath2 = getClasspath()
-            javaexec {
-                main = "cucumber.api.cli.Main"
-                classpath = classpath2
-                args = ['--plugin', 'pretty', '--glue', 'gradle.cucumber', 'src/test/java/cucumber/assets']
-            }
-        }
+    productFlavors {
     }
-    sourceSets { main { assets.srcDirs = ['src/main/assets', 'src/test/java/steps/'] } }
-    sourceSets { main { assets.srcDirs = ['src/main/assets', 'src/test/java/cucumber/assets/'] } }
 }
 
 dependencies {
@@ -60,7 +49,12 @@ dependencies {
     implementation 'com.android.support:gridlayout-v7:28.0.0'
     implementation 'com.android.support:gridlayout-v7:28.0.0'
     implementation 'com.android.support:recyclerview-v7:28.0.0'
-    testImplementation 'io.cucumber:cucumber-java:3.0.2'
-    testImplementation 'io.cucumber:cucumber-junit:3.0.2'
+    //testImplementation 'io.cucumber:cucumber-java:4.0.0'
+    //testImplementation 'io.cucumber:cucumber-junit:4.0.0'
+    testImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    testImplementation 'com.android.support.test.espresso:espresso-contrib:3.0.2'
+    testImplementation 'com.android.support.test:rules:1.0.2'
+    testImplementation 'com.android.support.test:runner:1.0.2'
+    testImplementation 'com.mauriciotogneri:greencoffee:3.5.0'
 }
 apply plugin: 'com.google.gms.google-services'
