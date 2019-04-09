@@ -250,4 +250,19 @@ public void showFarmShop(View view){
     public void setGps(double[] gps) {
         this.gps = gps;
     }
+
+    public void saveAsFavorite(){
+
+        auth = FirebaseAuth.getInstance();
+
+        // gibt eine Instanz des aktuellen Nutzers zurück
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+        //speichert die ID des aktuellen Nutzer in einen String.
+        String uid = user.getUid();
+
+        //erstellet einen neuen einen neuen Eintrag in der Favoriten Tabelle. Der Eintrag bekommt als Id, die des aktiven Nutzers zugewiesen. Die Farmshop ID wird als Feld innerhalb des Eintrags gespeichert.
+        mDatabase.collection("Favoriten").document(uid).set(Farmshop.getId());
+
+    }
 }
