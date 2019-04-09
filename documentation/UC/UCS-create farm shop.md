@@ -23,7 +23,7 @@ A user who wishes to register a farm shop can do so via the profile data setting
 ## 2.1 Basic Flow
 ![alt text][ActivityDiagram]
 
-[ActivityDiagram]: https://github.com/linkna/FyF/blob/master/documentation/UC/activity%20Diagrams-create farm shop.jpg "Activity Diagram"
+[ActivityDiagram]: https://github.com/linkna/FyF/blob/master/documentation/UC/activity%20Diagrams-create%20farm%20shop.jpg "Activity Diagram"
 
 ![alt text][MockUp1]
 
