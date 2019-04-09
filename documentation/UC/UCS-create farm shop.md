@@ -27,15 +27,15 @@ A user who wishes to register a farm shop can do so via the profile data setting
 
 ![alt text][MockUp1]
 
-[MockUp1]: https://github.com/linkna/FyF/blob/master/UC/Create%20Farmshop1.png "MockUp1"
+[MockUp1]: https://github.com/linkna/FyF/blob/master/documentation/UC/Create%20Farmshop1.png "MockUp1"
 
 ![alt text][MockUp2]
 
-[MockUp2]: https://github.com/linkna/FyF/blob/master/UC/Create%20Farmshop%202.png "MockUp2"
+[MockUp2]: https://github.com/linkna/FyF/blob/master/documentation/UC/Create%20Farmshop%202.png "MockUp2"
 
 ![alt text][MockUp3]
 
-[MockUp3]: https://github.com/linkna/FyF/blob/master/UC/Create%20Farmshop3.png "MockUp3"
+[MockUp3]: https://github.com/linkna/FyF/blob/master/documentation/UC/Create%20Farmshop3.png "MockUp3"
 
 ## 2.2 Alternative Flows
 # 3. Special Requirements
