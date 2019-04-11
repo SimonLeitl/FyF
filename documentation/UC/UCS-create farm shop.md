@@ -23,19 +23,19 @@ A user who wishes to register a farm shop can do so via the profile data setting
 ## 2.1 Basic Flow
 ![alt text][ActivityDiagram]
 
-[ActivityDiagram]: https://github.com/FyF-Team/fyf/blob/master/UC/UC%20set%20farm%20shop%20data%20activity%20diagram.jpg "Activity Diagram"
+[ActivityDiagram]: https://github.com/linkna/FyF/blob/master/documentation/UC/activity%20Diagrams-create%20farm%20shop.jpg "Activity Diagram"
 
 ![alt text][MockUp1]
 
-[MockUp1]: https://github.com/FyF-Team/fyf/blob/master/UC/Create%20Farmshop1.png "MockUp1"
+[MockUp1]: https://github.com/linkna/FyF/blob/master/documentation/UC/Create%20Farmshop1.png "MockUp1"
 
 ![alt text][MockUp2]
 
-[MockUp2]: https://github.com/FyF-Team/fyf/blob/master/UC/Create%20Farmshop%202.png "MockUp2"
+[MockUp2]: https://github.com/linkna/FyF/blob/master/documentation/UC/Create%20Farmshop%202.png "MockUp2"
 
 ![alt text][MockUp3]
 
-[MockUp3]: https://github.com/FyF-Team/fyf/blob/master/UC/Create%20Farmshop3.png "MockUp3"
+[MockUp3]: https://github.com/linkna/FyF/blob/master/documentation/UC/Create%20Farmshop3.png "MockUp3"
 
 ## 2.2 Alternative Flows
 # 3. Special Requirements
