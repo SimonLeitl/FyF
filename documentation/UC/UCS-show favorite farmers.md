@@ -23,7 +23,7 @@ A registered user who spent time at an farm shop or bought something there can e
 
 ![alt text][ActivityDiagram]
 
-[ActivityDiagram]: https://github.com/linkna/FyF/blob/master/documentation/UC/activity%20Diagrams-show%20favorite%20farmers.jpg "Activity Diagram"
+[ActivityDiagram]: https://github.com/linkna/FyF/blob/master/documentation/UC/activity%20Diagrams-show%20favorite%20farmer.jpg "Activity Diagram"
 
 ![alt text][MockUp2]
 
