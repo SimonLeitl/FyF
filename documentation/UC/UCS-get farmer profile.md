@@ -13,7 +13,7 @@
 
 # 1. Analyze Acceleration Behavior
 
-A registered user who spent time at an farm shop or bought something there can evaluate this shop.
+A registered user or an unregistered user can see the informations about the store he would like to go.
 
 ## 1.2 Screenshots
 
