@@ -12,7 +12,8 @@
 
 # 1. Analyze Acceleration Behavior
 
-A registered farmer can add information about offered products to his account. He can create, update or delete the product list.
+A customer can find a farmshop using a search field by entering a product. 
+The search result is then filtered by the product.
 
 ## 1.2 Screenshots
 
