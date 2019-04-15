@@ -52,12 +52,12 @@ A user with a farmer profile can register new farm shops and manage the business
 
 #### 3.1.3 Customer profile
 An as customer registered user can access his user profile. There, he is able to update his provided personal data and password, and also to delete his account.
-#### 3.1.3.1 [Save a farmer as favorite](https://github.com/linkna/FyF/blob/master/documentation/UC/UCS-save%20favorite%20farmer.md)
+#### 3.1.3.1 [Save favorite farmshop](https://github.com/linkna/FyF/blob/master/documentation/UC/UCS-save%20favorite%20farmer.md)
 Customers can save a selected farm shop in a list of his favorites.
-#### 3.1.3.2 [Show favorite farmers](https://github.com/linkna/FyF/blob/master/documentation/UC/UCS-show%20favorite%20farmers.md)
-Shows a list with the saved favorite farmers.
+#### 3.1.3.2 [Show favorite farmshops](https://github.com/linkna/FyF/blob/master/documentation/UC/UCS-show%20favorite%20farmers.md)
+Shows a list with the saved favorite farmshops.
 #### 3.1.3.3 [Evaluate](https://github.com/linkna/FyF/blob/master/documentation/UC/UCS-evaluate.md)
-Customers can evaluate farmers.
+Customers can evaluate farmshops.
 
 #### 3.1.4 [Login](https://github.com/linkna/FyF/blob/master/documentation/UC/UCS-login.md)
 For authentification the email address and password are used.
@@ -82,13 +82,9 @@ The farmshops are shown as list.
 ##### 3.1.7.2 Show results as map
 The farmshops are shown on the map.
 
+#### 3.1.8 [Get farmer profile](https://github.com/linkna/FyF/blob/master/documentation/UC/UCS-get%20farmer%20profile.md)
 
-#### 3.1.8 Save a farm shop as favorite
-Customers can save a selected farmer shop in a list of his favorites.
-
-#### 3.1.9 [Get farmer profile](https://github.com/linkna/FyF/blob/master/documentation/UC/UCS-get%20farmer%20profile.md)
-
-#### 3.1.10 [Manage products](https://github.com/linkna/FyF/blob/master/documentation/UC/UCS-manage%20products.md)
+#### 3.1.9 [Manage products](https://github.com/linkna/FyF/blob/master/documentation/UC/UCS-manage%20products.md)
 A registered farmer can add information about offered products to his account. Therefore he can select product categories.
 
 ### 3.2 Usability
