@@ -29,11 +29,6 @@ A registered user or an unregistered user can see the informations about the sto
 
 [MockUp2]: https://github.com/linkna/FyF/blob/master/documentation/UC/Login%20Mockup%202.png
 
-![alt text][MockUp1]
-
-[MockUp1]: https://github.com/linkna/FyF/blob/master/documentation/UC/Login%20Mockup%201.png
-
-
 ## 2.2 Alternative Flows
 # 3. Special Requirements
 
