@@ -1,4 +1,4 @@
-# Use-Case Specification: search by prduct
+# Use-Case Specification: search by product
 # Table of Contents
 - [Analyze Acceleration Behavior](#1-analyze-acceleration-behavior)
     - [Brief Description](#11-brief-description)
@@ -12,8 +12,8 @@
 
 # 1. Analyze Acceleration Behavior
 
-A customer can find a farmshop using a search field by entering a product. 
-The search result is then filtered by the product.
+A customer can find a farmshop by selecting a product category. 
+The search result is then filtered by the product category and shown as a list of farmshops.
 
 ## 1.2 Screenshots
 
