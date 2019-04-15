@@ -27,7 +27,7 @@ A registered user or an unregistered user can see the informations about the sto
 
 ![alt text][MockUp2]
 
-[MockUp2]: https://github.com/linkna/FyF/blob/master/documentation/UC/Login%20Mockup%202.png
+[MockUp2]: https://github.com/linkna/FyF/blob/master/documentation/UC/Get%20farmer%20profile%20Mockup%202.png
 
 ## 2.2 Alternative Flows
 # 3. Special Requirements
