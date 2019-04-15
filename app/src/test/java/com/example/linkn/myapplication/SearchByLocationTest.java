@@ -1,4 +1,4 @@
-package com.example.linkn.myapplication.feature;
+package com.example.linkn.myapplication;
 
 import android.support.test.rule.ActivityTestRule;
 
@@ -11,7 +11,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
-import com.example.linkn.myapplication.SearchByLocation;
 import com.mauriciotogneri.greencoffee.ScenarioConfig;
 
 import java.io.IOException;
@@ -20,7 +19,7 @@ import java.io.IOException;
 public class SearchByLocationTest extends GreenCoffeeTest {
 
     @Rule
-    public ActivityTestRule activity = new ActivityTestRule(SearchByLocation.class);
+    public ActivityTestRule activity = new ActivityTestRule(MainActivity.class);
 
         public SearchByLocationTest(ScenarioConfig scenarioConfig)
         {

@@ -1,4 +1,6 @@
-package com.example.linkn.myapplication.feature;
+package com.example.linkn.myapplication;
+
+import android.support.test.rule.ActivityTestRule;
 
 import com.example.linkn.myapplication.R;
 import com.mauriciotogneri.greencoffee.GreenCoffeeSteps;
@@ -6,7 +8,12 @@ import com.mauriciotogneri.greencoffee.annotations.And;
 import com.mauriciotogneri.greencoffee.annotations.Then;
 import com.mauriciotogneri.greencoffee.annotations.When;
 
+import org.junit.Rule;
+
 public class SearchByLocationStep extends GreenCoffeeSteps {
+
+    @Rule
+    public final ActivityTestRule<MapsActivity> main = new ActivityTestRule<>(MapsActivity.class);
 
     @When("^Startpage has finished loading")
 
