@@ -25,13 +25,10 @@ A registered user who spent time at an farm shop or bought something there can e
 
 [ActivityDiagram]: https://github.com/linkna/FyF/blob/master/documentation/UC/activity%20Diagrams-show%20favorite%20farmer.jpg "Activity Diagram"
 
-![alt text][MockUp2]
-
-[MockUp2]: https://github.com/linkna/FyF/blob/master/documentation/UC/Login%20Mockup%202.png
 
 ![alt text][MockUp1]
 
-[MockUp1]: https://github.com/linkna/FyF/blob/master/documentation/UC/Login%20Mockup%201.png
+[MockUp1]: https://github.com/linkna/FyF/blob/master/documentation/UC/Show%20favorite%20farmshops%20Mockup.png
 
 
 ## 2.2 Alternative Flows
