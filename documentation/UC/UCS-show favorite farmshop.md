@@ -1,4 +1,4 @@
-# Use-Case Specification: Show favorite farmers
+# Use-Case Specification: Show favorite farmshop
 
 # Table of Contents
 - [Analyze Acceleration Behavior](#1-analyze-acceleration-behavior)
