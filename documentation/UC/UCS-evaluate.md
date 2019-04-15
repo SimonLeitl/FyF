@@ -29,10 +29,6 @@ A registered user who spent time at an farm shop or bought something there can e
 
 [MockUp2]: https://github.com/linkna/FyF/blob/master/documentation/UC/Evaluate%20Mockup.jpg
 
-![alt text][MockUp1]
-
-[MockUp1]: https://github.com/linkna/FyF/blob/master/documentation/UC/Login%20Mockup%201.png
-
 
 ## 2.2 Alternative Flows
 # 3. Special Requirements
