@@ -25,10 +25,13 @@ The search result is then filtered by the product.
 
 [ActivityDiagram]: https://github.com/linkna/FyF/blob/master/documentation/UC/activity%20Diagrams-search%20by%20product.jpg "Activity Diagram"
 
-![alt text][MockUp]
+![alt text][MockUp1]
 
-[MockUp]: https://github.com/linkna/FyF/blob/master/documentation/UC/search%20by%20product%20Mockup.png
+[MockUp1]: https://github.com/linkna/FyF/blob/master/documentation/UC/Search%20by%20product%20Mockup1.jpg
 
+![alt text][MockUp2]
+
+[MockUp2]: https://github.com/linkna/FyF/blob/master/documentation/UC/Search%20by%20product%20Mockup2.jpg
 
 
 
