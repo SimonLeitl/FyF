@@ -1,4 +1,4 @@
-# Use-Case Specification: Search by location
+# Use-Case Specification: Create profile
 
 # Table of Contents
 - [Analyze Acceleration Behavior](#1-analyze-acceleration-behavior)
