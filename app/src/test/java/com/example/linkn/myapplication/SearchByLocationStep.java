@@ -15,7 +15,7 @@ public class SearchByLocationStep extends GreenCoffeeSteps {
     @Rule
     public final ActivityTestRule<MapsActivity> main = new ActivityTestRule<>(MapsActivity.class);
 
-    @When("^Startpage has finished loading")
+    @When("^Startpage has finished loading$")
 
     @And("^User declines to access location with answer \"([^\"]*)\"$")
     public void userDeclinesTheAccessForLocationWithAnswer(String arg0) throws Throwable {

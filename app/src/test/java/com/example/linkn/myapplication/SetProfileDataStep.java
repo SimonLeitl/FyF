@@ -12,26 +12,34 @@ import org.junit.Rule;
 public class SetProfileDataStep extends GreenCoffeeSteps {
 
     @Rule
-    public final ActivityTestRule<LoginActivity> main = new ActivityTestRule<>(LoginActivity.class);
+    public final ActivityTestRule<Profile> main = new ActivityTestRule<>(Profile.class);
 
-    @When("^Startpage has finished loading")
+    @When("^Startpage has finished loading$")
 
-    @And("^User declines to access location with answer \"([^\"]*)\"$")
-    public void userDeclinesTheAccessForLocationWithAnswer(String arg0) throws Throwable {
-        String answer = arg0;
-        switch (answer) {
-            case "accepted":
-                onViewWithId(R.layout.registration).type("accepted");
+    @And("^User enters \"([^\"]*)\" into input field with id \"([^\"]*)\"$")
+    public void userEntersIntoInputFieldWithId(String text, String id) throws Throwable {
+        switch (id) {
+            case "vorname":
+                onViewWithId(R.id.vornameTextBox).type(text);
                 break;
-            case "denied":
-                onViewWithId(R.layout.registration).type("denied");
+            case "nachname":
+                onViewWithId(R.id.nameTextBox).type(text);
+                break;
+            case "name Inhaber":
+                onViewWithId(R.id.inhaberTextBox).type(text);
+                break;
+            case "postcode":
+                onViewWithId(R.id.plzTextBox).type(text);
+                break;
+            case "birthday":
+                onViewWithId(R.id.gebTextBox).type(text);
                 break;
             default:
-                throw new Exception("permission isn`t denied");
+                throw new Exception("case not specified");
         }
     }
 
-    @Then("^Display shows an message \"([^\"]*)\"$")
+   /*@Then("^Display shows an message \"([^\"]*)\"$")
     public void displayShowsAnMessage(String arg0) throws Throwable {
         String message = arg0;
         switch (message) {
@@ -45,6 +53,6 @@ public class SetProfileDataStep extends GreenCoffeeSteps {
                 throw new Exception("no error occurred");
         }
     }
-
+*/
 
 }
