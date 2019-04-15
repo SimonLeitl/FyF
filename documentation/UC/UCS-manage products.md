@@ -13,7 +13,7 @@
 
 # 1. Analyze Acceleration Behavior
 
-A registered farmer can add information about offered products to his account. He can create, update or delete the product list.
+A registered farmer can add information about offered products to his account. Therefore he can select product categories.
 
 ## 1.2 Screenshots
 
