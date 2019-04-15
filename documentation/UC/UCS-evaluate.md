@@ -27,7 +27,7 @@ A registered user who spent time at an farm shop or bought something there can e
 
 ![alt text][MockUp2]
 
-[MockUp2]: https://github.com/linkna/FyF/blob/master/documentation/UC/Evaluate%20Mockup%202.jpg
+[MockUp2]: https://github.com/linkna/FyF/blob/master/documentation/UC/Evaluate%20Mockup.jpg
 
 ![alt text][MockUp1]
 
