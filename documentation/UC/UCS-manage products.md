@@ -27,7 +27,7 @@ A registered farmer can add information about offered products to his account. T
 
 ![alt text][MockUp]
 
-[MockUp2]: https://github.com/linkna/FyF/blob/master/documentation/UC/manage%20products%20Mockup%202.png
+[MockUp]: https://github.com/linkna/FyF/blob/master/documentation/UC/Manage%20products%20MockUp%20.png
 
 
 
