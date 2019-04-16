@@ -13,7 +13,7 @@
 
 # 1. Analyze Acceleration Behavior
 
-A registered user who spent time at an farm shop or bought something there can evaluate this shop.
+A registered user can save his favorite farmshops to a personal list. With "show favorite farmshops" the user can look at the list of his saved farmshops. The farmshops will be displayed with their names and have a button which send you on the farmshops page. 
 
 ## 1.2 Screenshots
 
