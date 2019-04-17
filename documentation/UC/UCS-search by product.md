@@ -31,7 +31,7 @@ The search result is then filtered by the product category and shown as a list o
 
 ![alt text][MockUp2]
 
-[MockUp2]: https://github.com/linkna/FyF/blob/master/documentation/UC/Search%20by%20product%20Mockup2.jpg
+[MockUp2]: https://github.com/linkna/FyF/blob/master/documentation/UC/Search%20by%20product%20Mockup2.png
 
 
 
