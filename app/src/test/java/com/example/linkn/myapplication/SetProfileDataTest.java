@@ -17,7 +17,7 @@ import java.io.IOException;
 public class SetProfileDataTest extends GreenCoffeeTest {
 
     @Rule
-    public ActivityTestRule activity = new ActivityTestRule(MainActivity.class);
+    public ActivityTestRule activity = new ActivityTestRule(Profile.class);
 
     public SetProfileDataTest(ScenarioConfig scenario) {
         super(scenario);

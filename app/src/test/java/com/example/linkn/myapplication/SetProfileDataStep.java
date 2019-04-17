@@ -14,7 +14,7 @@ public class SetProfileDataStep extends GreenCoffeeSteps {
     @Rule
     public final ActivityTestRule<Profile> main = new ActivityTestRule<>(Profile.class);
 
-    @When("^Startpage has finished loading$")
+    @When("^Profile page has finished loading$")
 
     @And("^User enters \"([^\"]*)\" into input field with id \"([^\"]*)\"$")
     public void userEntersIntoInputFieldWithId(String text, String id) throws Throwable {
