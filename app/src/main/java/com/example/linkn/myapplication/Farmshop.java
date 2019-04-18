@@ -26,6 +26,7 @@ public class Farmshop extends AppCompatActivity {
     private double[] gps;
     public FirebaseAuth auth;
     private FirebaseFirestore mDatabase;
+    private DocumentReference Farmshop;
     Map<String, Object> userEingabe = new HashMap<>();
     //Map<String, Object> öffnungszeiten=new HashMap<>();
 
@@ -210,7 +211,7 @@ public void showFarmShop(View view){
     //gibt den String des aktuellen Users
     String uid = user.getUid();
 
-    DocumentReference Farmshop=mDatabase.collection("Farmshop").document(uid);
+    Farmshop=mDatabase.collection("Farmshop").document(uid);
 
     Farmshop.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>(){
         public void onComplete(@NonNull Task<DocumentSnapshot> task) {

@@ -20,17 +20,14 @@
 
     <TextView
         android:id="@+id/shopnameTextView"
-        android:layout_width="312dp"
+        android:layout_width="274dp"
         android:layout_height="0dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="3dp"
-        android:layout_marginRight="3dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginLeft="56dp"
+        android:layout_marginTop="64dp"
         android:text="Hagsfelder Hofladen"
         android:textSize="24sp"
         app:layout_column="1"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/shopnameheader"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_row="0" />
@@ -39,9 +36,9 @@
         android:id="@+id/adressheader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginTop="75dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="268dp"
         android:text="Adresse:"
         app:layout_column="0"
         app:layout_constraintStart_toStartOf="parent"
@@ -51,14 +48,14 @@
     <TextView
         android:id="@+id/phoneheader"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginTop="10dp"
+        android:layout_height="18dp"
+        android:layout_marginStart="116dp"
+        android:layout_marginLeft="116dp"
+        android:layout_marginTop="9dp"
         android:text="Telefonnr.:"
         app:layout_column="0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/adressTextView"
+        app:layout_constraintTop_toBottomOf="@+id/FarmerTextView"
         app:layout_row="2" />
 
     <TextView
@@ -78,17 +75,17 @@
         android:id="@+id/adressTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="75dp"
-        android:layout_marginEnd="3dp"
-        android:layout_marginRight="3dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="11dp"
+        android:layout_marginEnd="188dp"
+        android:layout_marginRight="188dp"
         android:text="In der Karl-Pfizer-Anlage, Karlsruhe"
         android:textSize="14sp"
         app:layout_column="1"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/adressheader"
-        app:layout_constraintTop_toBottomOf="@+id/shopnameTextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/adressheader"
         app:layout_row="0" />
 
     <TextView
@@ -97,15 +94,16 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="9dp"
         android:layout_marginEnd="3dp"
         android:layout_marginRight="3dp"
         android:text="015770427956"
         android:textSize="14sp"
         app:layout_column="1"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/phoneheader"
-        app:layout_constraintTop_toBottomOf="@+id/adressTextView"
+        app:layout_constraintTop_toBottomOf="@+id/FarmerTextView"
         app:layout_row="0" />
 
     <TextView
@@ -142,5 +140,38 @@
         app:layout_constraintStart_toEndOf="@+id/opentimeheader"
         app:layout_constraintTop_toBottomOf="@+id/phoneTextView"
         app:layout_row="0" />
+
+    <RatingBar
+        android:id="@+id/ratingBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="85dp"
+        tools:layout_editor_absoluteY="509dp" />
+
+    <com.google.android.gms.maps.MapView
+        android:id="@+id/mapView"
+        android:layout_width="126dp"
+        android:layout_height="129dp"
+        tools:layout_editor_absoluteX="251dp"
+        tools:layout_editor_absoluteY="306dp" />
+
+    <TextView
+        android:id="@+id/FarmerTextView"
+        android:layout_width="195dp"
+        android:layout_height="26dp"
+        android:layout_marginTop="19dp"
+        android:layout_marginBottom="19dp"
+        android:text="Harald Hagsfeld"
+        app:layout_constraintBottom_toTopOf="@+id/phoneTextView"
+        app:layout_constraintTop_toBottomOf="@+id/shopnameTextView"
+        tools:layout_editor_absoluteX="115dp" />
+
+    <TextView
+        android:id="@+id/RatingTextView"
+        android:layout_width="112dp"
+        android:layout_height="27dp"
+        android:text="3,5/5"
+        tools:layout_editor_absoluteX="116dp"
+        tools:layout_editor_absoluteY="21dp" />
 
 </android.support.constraint.ConstraintLayout>
