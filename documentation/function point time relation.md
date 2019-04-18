@@ -1,5 +1,5 @@
 | Use Cases              |      time in minutes      |  Function Points |
-|------------------------|:-------------------------:|-----------------:|
+|------------------------|:-------------------------:|:----------------:|
 | Login & Logout         |            280            |                  |
 | create customer profile|            180            |                  |
 | create farm shop       |            281            |                  |
