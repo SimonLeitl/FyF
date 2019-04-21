@@ -4,7 +4,7 @@
 | create customer profile|            180            |                  |
 | create farm shop       |            281            |                  |
 | create farmer profile  |            177            |                  |
-| edit profile           |            133            |                  |
+| edit profile           |            133            |      31.96       |
 | show profile           |             90            |      10.34       |
 | search by location     |           1147            |      17.38       |
 | show results as list   |            210            |      16.59       |
