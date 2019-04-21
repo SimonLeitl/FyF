@@ -46,17 +46,27 @@ The user has the possibility to choose between two different account types.
 Either he registers as a farmer or as a customer. But the app can also be used as a guest.
 
 #### 3.1.2 Farmer profile
-An as farm shop registered user can access his user profile. There, he is able to update his provided personal data and password, and also to delete his account. 
-##### 3.1.2.1 [Create farm shop](https://github.com/linkna/FyF/blob/master/documentation/UC/UCS-create%20farm%20shop.md)
+##### 3.1.2.1 [show profile](https://github.com/linkna/FyF/blob/master/documentation/UC/UCS-create%20farm%20shop.md)
+An as farmer registered user can access his user profile. 
+##### 3.1.2.2 [edit profile](https://github.com/linkna/FyF/blob/master/documentation/UC/UCS-create%20farm%20shop.md)
+There, he is able to update his provided personal data and password.
+##### 3.1.2.3 [delete profile](https://github.com/linkna/FyF/blob/master/documentation/UC/UCS-create%20farm%20shop.md)
+He can also delete his account. 
+##### 3.1.2.4 [Create farm shop](https://github.com/linkna/FyF/blob/master/documentation/UC/UCS-create%20farm%20shop.md)
 A user with a farmer profile can register new farm shops and manage the business data.
 
 #### 3.1.3 Customer profile
-An as customer registered user can access his user profile. There, he is able to update his provided personal data and password, and also to delete his account.
-#### 3.1.3.1 [Save favorite farmshop](https://github.com/linkna/FyF/blob/master/documentation/UC/UCS-save%20favorite%20farmshop.md)
+##### 3.1.3.1 [show profile](https://github.com/linkna/FyF/blob/master/documentation/UC/UCS-create%20farm%20shop.md)
+An as customer registered user can access his user profile.  
+##### 3.1.3.2 [edit profile](https://github.com/linkna/FyF/blob/master/documentation/UC/UCS-create%20farm%20shop.md)
+There, he is able to update his provided personal data and password.
+##### 3.1.3.3 [delete profile](https://github.com/linkna/FyF/blob/master/documentation/UC/UCS-create%20farm%20shop.md)
+He can also delete his account.
+#### 3.1.3.4 [Save favorite farmshop](https://github.com/linkna/FyF/blob/master/documentation/UC/UCS-save%20favorite%20farmshop.md)
 Customers can save a selected farm shop in a list of his favorites.
-#### 3.1.3.2 [Show favorite farmshops](https://github.com/linkna/FyF/blob/master/documentation/UC/UCS-show%20favorite%20farmshops.md)
+#### 3.1.3.5 [Show favorite farmshops](https://github.com/linkna/FyF/blob/master/documentation/UC/UCS-show%20favorite%20farmshops.md)
 Shows a list with the saved favorite farmshops.
-#### 3.1.3.3 [Evaluate](https://github.com/linkna/FyF/blob/master/documentation/UC/UCS-evaluate.md)
+#### 3.1.3.6 [Evaluate](https://github.com/linkna/FyF/blob/master/documentation/UC/UCS-evaluate.md)
 Customers can evaluate farmshops.
 
 #### 3.1.4 [Login](https://github.com/linkna/FyF/blob/master/documentation/UC/UCS-login.md)
