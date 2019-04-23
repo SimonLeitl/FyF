@@ -23,15 +23,15 @@ The user can choose between different search methods to find a farm shop. The de
 
 ![alt text][ActivityDiagram]
 
-[ActivityDiagram]: https://github.com/FyF-Team/fyf/blob/master/UC/UC%20search%20by%20location%20activity%20diagram.jpg "Activity Diagram"
+[ActivityDiagram]: https://github.com/linkna/FyF/blob/master/documentation/UC/UC%20search%20by%20location%20activity%20diagram.jpg "Activity Diagram"
 
 ![alt text][MockUp2]
 
-[MockUp2]: https://github.com/FyF-Team/fyf/blob/master/UC/Maps%20Abfrage.png "MockUp2"
+[MockUp2]: https://github.com/linkna/FyF/blob/master/documentation/UC/Maps%20Abfrage.png "MockUp2"
 
 ![alt text][MockUp1]
 
-[MockUp1]: https://github.com/FyF-Team/fyf/blob/master/UC/Maps.png "MockUp1"
+[MockUp1]: https://github.com/linkna/FyF/blob/master/documentation/UC/Maps.png "MockUp1"
 
 
 ## 2.2 Alternative Flows
