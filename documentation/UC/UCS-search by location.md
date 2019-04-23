@@ -23,7 +23,7 @@ The user can choose between different search methods to find a farm shop. The de
 
 ![alt text][ActivityDiagram]
 
-[ActivityDiagram]: https://github.com/linkna/FyF/blob/master/documentation/UC/UC%20search%20by%20location%20activity%20diagram.jpg "Activity Diagram"
+[ActivityDiagram]: https://github.com/linkna/FyF/blob/master/documentation/UC/activity%20Diagrams-search%20by%20location.jpg "Activity Diagram"
 
 ![alt text][MockUp2]
 
