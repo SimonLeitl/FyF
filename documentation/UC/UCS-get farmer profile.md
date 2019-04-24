@@ -41,7 +41,7 @@ Since the app can be used on every android phone, there will be many different s
 ## 4.1 App opened on screen
 The app must be running and opened on the screen. 
 
-## 4.2 A farmshop is selected
+## 4.2 A farmshop view is opened
 To view a farmer profile the user has to click on the farmshop owner in the farmshop overview. 
 
 
