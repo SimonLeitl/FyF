@@ -10,7 +10,7 @@
 - [Special Requirements](#3-special-requirements)
 - [Preconditions](#4-preconditions)
 - [Postconditions](#5-postconditions)
-- [Function Points](#5-function-points)
+- [Function Points](#6-function-points)
 
 # 1. Analyze Acceleration Behavior
 ## 1.1 Brief Description
