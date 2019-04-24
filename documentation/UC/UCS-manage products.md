@@ -69,4 +69,5 @@ Display a notification, saying that and why (if possible) the managing failed.
 Value: 38
 
 ![alt text][fp]
+
 [fp]: https://github.com/linkna/FyF/blob/master/documentation/UC/manage%20products%20fp.JPG
