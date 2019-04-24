@@ -42,3 +42,7 @@ A registered user who spent time at an farm shop or bought something there can e
 
 
 # 6. Function Points
+Value: 10
+![alt text][fp]
+
+[fp]: https://github.com/linkna/FyF/blob/master/documentation/UC/save%20favorite%20farmshop%20fp.JPG
