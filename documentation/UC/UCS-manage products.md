@@ -53,7 +53,7 @@ To manage products the app must be running and opened on the screen.
 
 To manage products, the farmer has to be logged in. 
 
-## 4.2 The farmshop is already created
+## 4.3 The farmshop is already created
 To manage products, a farmshop has to exist and the farmer has to be the owner.
 
 # 5. Postconditions
