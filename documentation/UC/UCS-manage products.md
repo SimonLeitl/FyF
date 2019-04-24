@@ -43,3 +43,7 @@ A registered farmer can add information about offered products to his account. T
 
 
 # 6. Function Points
+Value: 38
+![alt text][fp]
+
+[fp]: https://github.com/linkna/FyF/blob/master/documentation/UC/manage%20products%20fp.JPG
