@@ -21,11 +21,13 @@ A registered user who spent time at an farm shop or bought something there can e
 
 # 2. Flow of Events
 ## 2.1 Basic Flow
+## 2.1.1 Activity Diagram
 
 ![alt text][ActivityDiagram]
 
 [ActivityDiagram]: https://github.com/linkna/FyF/blob/master/documentation/UC/activity%20Diagrams-evaluate.jpg "Activity Diagram"
 
+## 2.1.2 Mock-Up
 ![alt text][MockUp2]
 
 [MockUp2]: https://github.com/linkna/FyF/blob/master/documentation/UC/Evaluate%20Mockup.jpg
