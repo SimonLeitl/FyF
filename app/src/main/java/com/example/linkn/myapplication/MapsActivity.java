@@ -67,6 +67,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     ListView ladenNameView;
 
     private Task<List<FarmShopMarker>> farmShopMarkerFuture;
+    private float ratingSum = 0;
     private float anzahl = 0;
     Map<String, Object> userRatingEingabe = new HashMap<>();
 
@@ -284,9 +285,10 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
        submitButton.setOnClickListener(OnClickListener ->{
            float totalStars = ratingBar.getNumStars();
            float rating = ratingBar.getRating();
+           ratingSum += rating;
            anzahl += 1;
 
-           userRatingEingabe.put("bewertung", rating);
+           userRatingEingabe.put("bewertung", ratingSum);
            userRatingEingabe.put("anzahl", anzahl);
            mDatabase.collection("Evaluation").document(uid).set(userRatingEingabe);
 
