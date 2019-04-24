@@ -58,8 +58,9 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     public FirebaseAuth auth;
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-    TextView adressTextView, phoneTextView;
+    TextView adressTextView, phoneTextView, shopnameTextView;
     ListView ladenNameView;
+
     private Task<List<FarmShopMarker>> farmShopMarkerFuture;
 
 
@@ -241,6 +242,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         setContentView(R.layout.farm_shop_profile);
         adressTextView = (TextView) findViewById(R.id.adressTextView);
         phoneTextView = (TextView) findViewById(R.id.phoneTextView);
+        shopnameTextView = (TextView) findViewById(R.id.shopnameTextView);
+
 
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -259,9 +262,11 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 DocumentSnapshot document = task.getResult();
                 String adresse = document.getString("straße") + " " + document.getString("hausnummer") + " " + document.getString("plz") + " " + document.getString("ort");
                 String phone = document.getString("phone");
+                String shopname= document.getString("shopname");
                 // String geb=document.getString("born");
                 adressTextView.setText(adresse);
                 phoneTextView.setText(phone);
+                shopnameTextView.setText(shopname);
             }
         });
 
