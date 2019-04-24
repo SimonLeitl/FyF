@@ -122,24 +122,6 @@
         app:layout_constraintTop_toBottomOf="@+id/phoneTextView"
         app:layout_row="0" />
 
-    <TextView
-        android:id="@+id/opentimeTextView2"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="36dp"
-        android:layout_marginEnd="3dp"
-        android:layout_marginRight="3dp"
-        android:text="Dienstag 12 - 18 Uhr"
-        android:textSize="14sp"
-        app:layout_column="1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/opentimeheader"
-        app:layout_constraintTop_toBottomOf="@+id/phoneTextView"
-        app:layout_row="0" />
-
     <RatingBar
         android:id="@+id/ratingBar"
         android:layout_width="wrap_content"
@@ -161,14 +143,14 @@
         android:layout_height="129dp"
         android:layout_marginStart="28dp"
         android:layout_marginLeft="28dp"
-        android:layout_marginTop="81dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="34dp"
         android:layout_marginRight="34dp"
-        android:layout_marginBottom="74dp"
         app:layout_constraintBottom_toTopOf="@+id/ratingBar"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/adressTextView"
-        app:layout_constraintTop_toBottomOf="@+id/opentimeTextView2" />
+        app:layout_constraintTop_toBottomOf="@+id/opentimeTextView" />
 
     <TextView
         android:id="@+id/FarmerTextView"
