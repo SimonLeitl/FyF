@@ -37,8 +37,8 @@ public class Farmshop extends AppCompatActivity {
 
     TextView adressTextView,phoneTextView;
     // Farmshopdaten als enum speichern? Name, Adresse, Öffnungszeiten...
-public Farmshop(){}
-public Farmshop(Farmer owner, String shopname, double[]gps){
+    public Farmshop(){}
+    public Farmshop(Farmer owner, String shopname, double[]gps){
     this.owner=owner;
     this.shopname=shopname;
     this.gps=gps;

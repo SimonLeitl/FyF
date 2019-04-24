@@ -46,7 +46,7 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 
-public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback {
+public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback,GoogleMap.OnMarkerClickListener {
 
     public static final String FARMSHOP = "Farmshop";
 
@@ -58,9 +58,13 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     public FirebaseAuth auth;
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-    TextView adressTextView, phoneTextView;
+    TextView adressTextView, phoneTextView, shopnameTextView;
     ListView ladenNameView;
+
     private Task<List<FarmShopMarker>> farmShopMarkerFuture;
+
+
+
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
@@ -197,6 +201,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     }
 
+
     @SuppressLint("NewApi")
     private void addFarmshopMarkersToMap() {
 
@@ -213,26 +218,43 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                             .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
 
                     Marker marker = mMap.addMarker(markerOptions);
-                    marker.setTag(farmShopMarker);
+                    marker.setTag(farmShopMarker.getId());
+                    mMap.setOnMarkerClickListener(this);
                 }
+
             });
+
 
             return null;
         });
     }
 
+    public boolean onMarkerClick(final Marker marker) {
 
-    public void goToFarmshop(View view) {
+        goToFarmshop(marker);
+        return true;
+
+    }
+
+    public void goToFarmshop(Marker marker) {
+
 
         setContentView(R.layout.farm_shop_profile);
         adressTextView = (TextView) findViewById(R.id.adressTextView);
         phoneTextView = (TextView) findViewById(R.id.phoneTextView);
+        shopnameTextView = (TextView) findViewById(R.id.shopnameTextView);
+
+
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         //gibt den String des aktuellen Users
         String uid = user.getUid();
+        String id=(String) marker.getTag();
 
-        DocumentReference Farmshop = mDatabase.collection("Farmshop").document(uid);
+
+
+
+        DocumentReference Farmshop = mDatabase.collection("Farmshop").document(id);
 
         Farmshop.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
@@ -240,9 +262,11 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 DocumentSnapshot document = task.getResult();
                 String adresse = document.getString("straße") + " " + document.getString("hausnummer") + " " + document.getString("plz") + " " + document.getString("ort");
                 String phone = document.getString("phone");
+                String shopname= document.getString("shopname");
                 // String geb=document.getString("born");
                 adressTextView.setText(adresse);
                 phoneTextView.setText(phone);
+                shopnameTextView.setText(shopname);
             }
         });
 

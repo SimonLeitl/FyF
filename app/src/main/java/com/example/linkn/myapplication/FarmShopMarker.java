@@ -95,5 +95,11 @@ public class FarmShopMarker {
         public FarmShopMarker build() {
             return new FarmShopMarker(id, shopName, city, zipCode, streetNumber, street);
         }
+
     }
+    public String getId(){
+        return id;
+    }
+
+
 }
