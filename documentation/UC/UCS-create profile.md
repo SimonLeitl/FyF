@@ -44,7 +44,7 @@ Since the app can be used on every android phone, there will be many different s
 
 # 4. Preconditions
 ## 4.1 App opened on screen
-To manage products the app must be running and opened on the screen. 
+The app must be running and opened on the screen. 
 
 # 5. Postconditions
 ## 5.1 Registered as farmer
