@@ -14,16 +14,19 @@
 # 1. Analyze Acceleration Behavior
 ## 1.1 Brief Description
 
-A user who wishes to register a farm shop can do so via the profile data setting function. A new farm shop is created and the associated data such as opening hours, address or telephone number are saved via a form.
+An user who wishes to register a farm shop can do so via the profile data setting function. A new farm shop is created and the associated data such as opening hours, address or telephone number are saved via a form.
 
 ## 1.2 Screenshots
 
 
 # 2. Flow of Events
 ## 2.1 Basic Flow
+## 2.1.1 Activity Diagram
 ![alt text][ActivityDiagram]
 
 [ActivityDiagram]: https://github.com/linkna/FyF/blob/master/documentation/UC/activity%20Diagrams-create%20farm%20shop.jpg "Activity Diagram"
+
+## 2.1.2 Mock-Up
 
 ![alt text][MockUp1]
 
@@ -39,12 +42,26 @@ A user who wishes to register a farm shop can do so via the profile data setting
 
 ## 2.2 Alternative Flows
 # 3. Special Requirements
-
+## 3.1 Device connection 
+The device has to be connected to the internet.
+## 3.2 Screen size support 
+Since the app can be used on every android phone, there will be many different screen sizes. The layout should not waste space on big screens and should still be readable on small screens.
 
 # 4. Preconditions
+## 4.1 App opened on screen
+
+To create a farmshop the app must be running and opened on the screen. 
+
+## 4.2 The farmer is logged in
+
+To create a farmshop the farmer has to be logged in. 
 
 
 # 5. Postconditions
 
+## 5.1 Creating success
+Farmshop is listed in the farmers profile overview. The farmshop is shown on the map and can be found by the search function.
 
-# 6. Function Points
+## 5.2 Creating failure
+
+Display a notification, saying that and why (if possible) the creating failed.
