@@ -24,26 +24,26 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="15dp"
         android:text="E-Mailadresse"
         android:textSize="18sp"
         app:layout_constraintStart_toEndOf="@+id/textViewFarmer"
-        app:layout_constraintTop_toBottomOf="@+id/textViewFarmerNachname2" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewFarmerNachname" />
 
     <TextView
-        android:id="@+id/textViewFarmerNachname2"
+        android:id="@+id/textViewFarmerNachname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="15dp"
         android:text="Nachname"
         android:textSize="24sp"
         app:layout_constraintStart_toEndOf="@+id/textViewFarmer"
-        app:layout_constraintTop_toBottomOf="@+id/textViewFarmerVorname2" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewFarmerVorname" />
 
     <TextView
-        android:id="@+id/textViewFarmerVorname2"
+        android:id="@+id/textViewFarmerVorname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
