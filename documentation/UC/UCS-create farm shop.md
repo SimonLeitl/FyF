@@ -65,3 +65,10 @@ Farmshop is listed in the farmers profile overview. The farmshop is shown on the
 ## 5.2 Creating failure
 
 Display a notification, saying that and why (if possible) the creating failed.
+
+# 6. Function Points
+Value: 60
+
+![alt text][fp]
+
+[fp]: https://github.com/linkna/FyF/blob/master/documentation/UC/create%farm%20shop%20fp.JPG
