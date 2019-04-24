@@ -42,3 +42,8 @@ A registered user can save his favorite farmshops to a personal list. With "show
 
 
 # 6. Function Points
+Value: 10
+![alt text][fp]
+
+[fp]: https://github.com/linkna/FyF/blob/master/documentation/UC/manage%20products%20fp.JPG
+
