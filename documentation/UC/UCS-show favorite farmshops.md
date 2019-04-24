@@ -10,6 +10,8 @@
 - [Special Requirements](#3-special-requirements)
 - [Preconditions](#4-preconditions)
 - [Postconditions](#5-postconditions)
+- [Function Points](#6-function-points)
+
 
 # 1. Analyze Acceleration Behavior
 
@@ -45,5 +47,5 @@ A registered user can save his favorite farmshops to a personal list. With "show
 Value: 10
 ![alt text][fp]
 
-[fp]: https://github.com/linkna/FyF/blob/master/documentation/UC/manage%20products%20fp.JPG
+[fp]: https://github.com/linkna/FyF/blob/master/documentation/UC/show%20favorite%20farmshop%20fp.JPG
 
