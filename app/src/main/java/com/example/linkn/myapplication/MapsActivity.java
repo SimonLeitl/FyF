@@ -18,7 +18,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -40,7 +42,9 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -49,6 +53,7 @@ import java.util.stream.Collectors;
 public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback,GoogleMap.OnMarkerClickListener {
 
     public static final String FARMSHOP = "Farmshop";
+    public static final String EVALUATION = "Evaluation";
 
     private LocationManager locationManager;
     private LocationListener locationListener;
@@ -62,6 +67,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     ListView ladenNameView;
 
     private Task<List<FarmShopMarker>> farmShopMarkerFuture;
+    private float anzahl = 0;
+    Map<String, Object> userRatingEingabe = new HashMap<>();
 
 
 
@@ -269,6 +276,21 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 shopnameTextView.setText(shopname);
             }
         });
+
+        // save rating in Database ToDO: get Farmshop-ID to put th rating on the right place
+       final RatingBar ratingBar = (RatingBar) findViewById(R.id.ratingBar);
+       Button submitButton = (Button) findViewById(R.id.buttonRating);
+
+       submitButton.setOnClickListener(OnClickListener ->{
+           float totalStars = ratingBar.getNumStars();
+           float rating = ratingBar.getRating();
+           anzahl += 1;
+
+           userRatingEingabe.put("bewertung", rating);
+           userRatingEingabe.put("anzahl", anzahl);
+           mDatabase.collection("Evaluation").document(uid).set(userRatingEingabe);
+
+       });
 
 
     }

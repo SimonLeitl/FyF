@@ -104,11 +104,9 @@
         android:id="@+id/phoneTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginLeft="10dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginLeft="25dp"
         android:layout_marginTop="9dp"
-        android:layout_marginEnd="3dp"
-        android:layout_marginRight="3dp"
         android:text="015770427956"
         android:textSize="14sp"
         app:layout_column="1"
@@ -122,11 +120,9 @@
         android:id="@+id/mailTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginLeft="10dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginLeft="25dp"
         android:layout_marginTop="9dp"
-        android:layout_marginEnd="3dp"
-        android:layout_marginRight="3dp"
         android:text="suff@suff.suff"
         android:textSize="14sp"
         app:layout_column="1"
@@ -163,8 +159,6 @@
         android:layout_marginTop="74dp"
         android:layout_marginEnd="86dp"
         android:layout_marginRight="86dp"
-        android:layout_marginBottom="111dp"
-        app:layout_constraintBottom_toTopOf="@+id/buttonBack"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mapView" />
@@ -201,7 +195,7 @@
         app:layout_constraintTop_toBottomOf="@+id/shopnameTextView" />
 
     <TextView
-        android:id="@+id/RatingTextView"
+        android:id="@+id/ratingTextView"
         android:layout_width="112dp"
         android:layout_height="27dp"
         android:layout_marginStart="56dp"
@@ -237,5 +231,21 @@
         android:text="Weiter"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/buttonRating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="162dp"
+        android:layout_marginLeft="162dp"
+        android:layout_marginTop="42dp"
+        android:layout_marginEnd="162dp"
+        android:layout_marginRight="162dp"
+        android:layout_marginBottom="8dp"
+        android:text="Submit"
+        app:layout_constraintBottom_toTopOf="@+id/buttonBack"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ratingBar" />
 
 </android.support.constraint.ConstraintLayout>
