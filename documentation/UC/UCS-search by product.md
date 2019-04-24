@@ -9,7 +9,7 @@
 - [Special Requirements](#3-special-requirements)
 - [Preconditions](#4-preconditions)
 - [Postconditions](#5-postconditions)
-
+- [Function Points](#6-function-points)
 # 1. Analyze Acceleration Behavior
 
 A customer can find a farmshop by selecting a product category. 
@@ -46,3 +46,9 @@ The search result is then filtered by the product category and shown as a list o
 
 
 # 6. Function Points
+
+Value: 17
+![alt text][fp]
+
+[fp]: https://github.com/linkna/FyF/blob/master/documentation/UC/search%20by%20product%20fp.JPG
+
