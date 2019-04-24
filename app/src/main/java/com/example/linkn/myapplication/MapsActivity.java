@@ -230,8 +230,10 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     }
 
     public boolean onMarkerClick(final Marker marker) {
-
+// Überprüfung ob man auf eigenen Standort klickt. Sonst stürzt App ab.
+        if(!marker.getTitle().equalsIgnoreCase(yourLocation.getTitle())){
         goToFarmshop(marker);
+        }
         return true;
 
     }
