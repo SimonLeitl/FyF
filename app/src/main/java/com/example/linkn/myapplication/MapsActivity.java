@@ -133,7 +133,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     public void onMapReady(GoogleMap googleMap) {
 
         mMap = googleMap;
-
         addFarmshopMarkersToMap();
 
         locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
@@ -194,7 +193,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
         } else {
             //minTime legt fest, wie oft die Location aktualisiert wird, pro sekunde, halbe Minute usw.
-            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 3, 0, locationListener);
+            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 300, 100, locationListener);
         }
         // Add a marker on the Position of the user
 
