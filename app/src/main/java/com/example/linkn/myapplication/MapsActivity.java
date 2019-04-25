@@ -63,11 +63,13 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     public FirebaseAuth auth;
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-    TextView adressTextView, phoneTextView, shopnameTextView;
+    TextView adressTextView, phoneTextView, shopnameTextView, ratingTextView;
     ListView ladenNameView;
 
     private Task<List<FarmShopMarker>> farmShopMarkerFuture;
-    private float ratingSum = 0;
+    private final RatingBar ratingBar = (RatingBar) findViewById(R.id.ratingBar);
+    private float totalStars = ratingBar.getNumStars();
+    private float bewertung = 0;
     private float anzahl = 0;
     Map<String, Object> userRatingEingabe = new HashMap<>();
 
@@ -257,7 +259,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         //gibt den String des aktuellen Users
         String uid = user.getUid();
-        String id=(String) marker.getTag();
+        String id = (String) marker.getTag();
 
 
 
@@ -278,19 +280,39 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             }
         });
 
-        // save rating in Database ToDO: get Farmshop-ID to put th rating on the right place
-       final RatingBar ratingBar = (RatingBar) findViewById(R.id.ratingBar);
+        DocumentReference evaluation = mDatabase.collection("Evaluation").document(id);
+
+        evaluation.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>(){
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                DocumentSnapshot document = task.getResult();
+                bewertung = document.getLong("bewertung");
+                anzahl = document.getLong("anzahl");
+                float average = bewertung / anzahl;
+                ratingTextView.setText(average + "/" + totalStars);
+
+            }
+
+
+        });
+
+        // save rating in Database
+
        Button submitButton = (Button) findViewById(R.id.buttonRating);
+       submitButton.setVisibility(View.GONE);
+       ratingBar.setOnRatingBarChangeListener((ratingBar1, rating, fromUser) -> {
+
+           submitButton.setVisibility(View.VISIBLE);
+       });
 
        submitButton.setOnClickListener(OnClickListener ->{
-           float totalStars = ratingBar.getNumStars();
            float rating = ratingBar.getRating();
-           ratingSum += rating;
+           bewertung += rating;
            anzahl += 1;
 
-           userRatingEingabe.put("bewertung", ratingSum);
+           userRatingEingabe.put("bewertung", bewertung);
            userRatingEingabe.put("anzahl", anzahl);
-           mDatabase.collection("Evaluation").document(uid).set(userRatingEingabe);
+           mDatabase.collection("Evaluation").document(id).set(userRatingEingabe);
 
        });
 
