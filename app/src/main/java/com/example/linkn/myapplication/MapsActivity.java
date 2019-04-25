@@ -18,7 +18,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -40,7 +42,12 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.io.IOException;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -49,6 +56,7 @@ import java.util.stream.Collectors;
 public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback,GoogleMap.OnMarkerClickListener {
 
     public static final String FARMSHOP = "Farmshop";
+    public static final String EVALUATION = "Evaluation";
 
     private LocationManager locationManager;
     private LocationListener locationListener;
@@ -58,10 +66,13 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     public FirebaseAuth auth;
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-    TextView adressTextView, phoneTextView, shopnameTextView, FarmerTextView, opentimeTextView;
+    TextView adressTextView, phoneTextView, shopnameTextView, FarmerTextView, opentimeTextView, ratingTextView;
     ListView ladenNameView;
 
     private Task<List<FarmShopMarker>> farmShopMarkerFuture;
+    private float bewertung = 0;
+    private float anzahl = 0;
+    Map<String, Object> userRatingEingabe = new HashMap<>();
 
 
 
@@ -244,6 +255,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         adressTextView = (TextView) findViewById(R.id.adressTextView);
         phoneTextView = (TextView) findViewById(R.id.phoneTextView);
         shopnameTextView = (TextView) findViewById(R.id.shopnameTextView);
+        ratingTextView = (TextView) findViewById(R.id.ratingTextView);
         FarmerTextView=(TextView) findViewById(R.id.FarmerTextView);
         opentimeTextView=(TextView) findViewById(R.id.opentimeTextView);
 
@@ -251,7 +263,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         //gibt den String des aktuellen Users
         String uid = user.getUid();
-        String id=(String) marker.getTag();
+        String id = (String) marker.getTag();
 
 
 
@@ -308,7 +320,48 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             }
         });
 
+        DocumentReference evaluation = mDatabase.collection("Evaluation").document(id);
 
+        evaluation.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>(){
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                DocumentSnapshot document = task.getResult();
+                bewertung = document.getLong("bewertung");
+                anzahl = document.getLong("anzahl");
+                float average;
+                if(anzahl != 0){
+                    average = bewertung / anzahl;
+                    ratingTextView.setText(average + " / 5");
+               } else {
+                    ratingTextView.setText(bewertung + " / 5");
+                }
+            }
+        });
+
+       // save rating in Database
+       final RatingBar ratingBar = (RatingBar) findViewById(R.id.ratingBar);
+       Button submitButton = (Button) findViewById(R.id.buttonRating);
+       submitButton.setVisibility(View.GONE);
+       ratingBar.setOnRatingBarChangeListener((ratingBar1, rating, fromUser) -> {
+           submitButton.setVisibility(View.VISIBLE);
+       });
+
+       submitButton.setOnClickListener(OnClickListener ->{
+           float rating = ratingBar.getRating();
+           bewertung += rating;
+           anzahl += 1;
+           userRatingEingabe.put("bewertung", bewertung);
+           userRatingEingabe.put("anzahl", anzahl);
+           mDatabase.collection("Evaluation").document(id).set(userRatingEingabe);
+       });
+       
+       Button forwardButton = (Button) findViewById(R.id.buttonForward);
+        Button backButton = (Button) findViewById(R.id.buttonBack);
+        View.OnClickListener onClickListener = OnClickListener -> {
+            startActivity(new Intent(MapsActivity.this, MapsActivity.class));
+        };
+        forwardButton.setOnClickListener(onClickListener);
+        backButton.setOnClickListener(onClickListener);
     }
 
     public void profilButton(View view) {
