@@ -326,36 +326,43 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 DocumentSnapshot document = task.getResult();
-                bewertung = document.getLong("bewertung");
-                anzahl = document.getLong("anzahl");
-                float average;
-                if(anzahl != 0){
-                    average = bewertung / anzahl;
-                    ratingTextView.setText(average + " / 5");
-               } else {
-                    ratingTextView.setText(bewertung + " / 5");
+                if(document.exists()) {
+                    bewertung = document.getLong("bewertung");
+                    anzahl = document.getLong("anzahl");
+                    float average;
+                    if (anzahl != 0) {
+                        average = bewertung / anzahl;
+                        ratingTextView.setText(average + " / 5");
+                    } else {
+                        ratingTextView.setText(bewertung + " / 5");
+                    }
                 }
             }
         });
 
-       // save rating in Database
-       final RatingBar ratingBar = (RatingBar) findViewById(R.id.ratingBar);
-       Button submitButton = (Button) findViewById(R.id.buttonRating);
-       submitButton.setVisibility(View.GONE);
-       ratingBar.setOnRatingBarChangeListener((ratingBar1, rating, fromUser) -> {
-           submitButton.setVisibility(View.VISIBLE);
-       });
+        evaluateShop(id);
+    }
 
-       submitButton.setOnClickListener(OnClickListener ->{
-           float rating = ratingBar.getRating();
-           bewertung += rating;
-           anzahl += 1;
-           userRatingEingabe.put("bewertung", bewertung);
-           userRatingEingabe.put("anzahl", anzahl);
-           mDatabase.collection("Evaluation").document(id).set(userRatingEingabe);
-       });
-       
-       Button forwardButton = (Button) findViewById(R.id.buttonForward);
+    public void evaluateShop(String id){
+
+        // save rating in Database
+        final RatingBar ratingBar = (RatingBar) findViewById(R.id.ratingBar);
+        Button submitButton = (Button) findViewById(R.id.buttonRating);
+        submitButton.setVisibility(View.GONE);
+        ratingBar.setOnRatingBarChangeListener((ratingBar1, rating, fromUser) -> {
+            submitButton.setVisibility(View.VISIBLE);
+        });
+
+        submitButton.setOnClickListener(OnClickListener ->{
+            float rating = ratingBar.getRating();
+            bewertung += rating;
+            anzahl += 1;
+            userRatingEingabe.put("bewertung", bewertung);
+            userRatingEingabe.put("anzahl", anzahl);
+            mDatabase.collection("Evaluation").document(id).set(userRatingEingabe);
+        });
+
+        Button forwardButton = (Button) findViewById(R.id.buttonForward);
         Button backButton = (Button) findViewById(R.id.buttonBack);
         View.OnClickListener onClickListener = OnClickListener -> {
             startActivity(new Intent(MapsActivity.this, MapsActivity.class));
