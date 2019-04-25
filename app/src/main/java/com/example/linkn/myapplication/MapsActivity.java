@@ -67,8 +67,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     ListView ladenNameView;
 
     private Task<List<FarmShopMarker>> farmShopMarkerFuture;
-    private final RatingBar ratingBar = (RatingBar) findViewById(R.id.ratingBar);
-    private float totalStars = ratingBar.getNumStars();
     private float bewertung = 0;
     private float anzahl = 0;
     Map<String, Object> userRatingEingabe = new HashMap<>();
@@ -253,6 +251,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         adressTextView = (TextView) findViewById(R.id.adressTextView);
         phoneTextView = (TextView) findViewById(R.id.phoneTextView);
         shopnameTextView = (TextView) findViewById(R.id.shopnameTextView);
+        ratingTextView = (TextView) findViewById(R.id.ratingTextView);
 
 
 
@@ -288,8 +287,13 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 DocumentSnapshot document = task.getResult();
                 bewertung = document.getLong("bewertung");
                 anzahl = document.getLong("anzahl");
-                float average = bewertung / anzahl;
-                ratingTextView.setText(average + "/" + totalStars);
+                float average;
+                if(anzahl != 0){
+                    average = bewertung / anzahl;
+                    ratingTextView.setText(average + " / 5");
+               } else {
+                    ratingTextView.setText(bewertung + " / 5");
+                }
 
             }
 
@@ -297,6 +301,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         });
 
         // save rating in Database
+       final RatingBar ratingBar = (RatingBar) findViewById(R.id.ratingBar);
 
        Button submitButton = (Button) findViewById(R.id.buttonRating);
        submitButton.setVisibility(View.GONE);
