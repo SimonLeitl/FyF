@@ -290,6 +290,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 float average;
                 if(anzahl != 0){
                     average = bewertung / anzahl;
+                    Math.round(average);
                     ratingTextView.setText(average + " / 5");
                } else {
                     ratingTextView.setText(bewertung + " / 5");
@@ -319,7 +320,14 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
            mDatabase.collection("Evaluation").document(id).set(userRatingEingabe);
 
        });
-
+       
+       Button forwardButton = (Button) findViewById(R.id.buttonForward);
+        Button backButton = (Button) findViewById(R.id.buttonBack);
+        View.OnClickListener onClickListener = OnClickListener -> {
+            startActivity(new Intent(MapsActivity.this, MapsActivity.class));
+        };
+        forwardButton.setOnClickListener(onClickListener);
+        backButton.setOnClickListener(onClickListener);
 
     }
 
