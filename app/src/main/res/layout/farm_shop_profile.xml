@@ -177,6 +177,7 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/adressTextView"
         app:layout_constraintTop_toBottomOf="@+id/opentimeTextView" />
+        tools:layout_editor_absoluteY="304dp" />
 
     <TextView
         android:id="@+id/FarmerTextView"
