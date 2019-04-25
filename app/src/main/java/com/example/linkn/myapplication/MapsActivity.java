@@ -300,9 +300,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         });
 
-        // save rating in Database
+       // save rating in Database
        final RatingBar ratingBar = (RatingBar) findViewById(R.id.ratingBar);
-
        Button submitButton = (Button) findViewById(R.id.buttonRating);
        submitButton.setVisibility(View.GONE);
        ratingBar.setOnRatingBarChangeListener((ratingBar1, rating, fromUser) -> {
