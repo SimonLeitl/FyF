@@ -42,6 +42,9 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.io.IOException;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -290,15 +293,11 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 float average;
                 if(anzahl != 0){
                     average = bewertung / anzahl;
-                    Math.round(average);
                     ratingTextView.setText(average + " / 5");
                } else {
                     ratingTextView.setText(bewertung + " / 5");
                 }
-
             }
-
-
         });
 
        // save rating in Database
@@ -306,7 +305,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
        Button submitButton = (Button) findViewById(R.id.buttonRating);
        submitButton.setVisibility(View.GONE);
        ratingBar.setOnRatingBarChangeListener((ratingBar1, rating, fromUser) -> {
-
            submitButton.setVisibility(View.VISIBLE);
        });
 
@@ -314,11 +312,9 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
            float rating = ratingBar.getRating();
            bewertung += rating;
            anzahl += 1;
-
            userRatingEingabe.put("bewertung", bewertung);
            userRatingEingabe.put("anzahl", anzahl);
            mDatabase.collection("Evaluation").document(id).set(userRatingEingabe);
-
        });
        
        Button forwardButton = (Button) findViewById(R.id.buttonForward);
@@ -328,7 +324,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         };
         forwardButton.setOnClickListener(onClickListener);
         backButton.setOnClickListener(onClickListener);
-
     }
 
     public void profilButton(View view) {
