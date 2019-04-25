@@ -58,7 +58,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     public FirebaseAuth auth;
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-    TextView adressTextView, phoneTextView, shopnameTextView;
+    TextView adressTextView, phoneTextView, shopnameTextView, FarmerTextView, opentimeTextView;
     ListView ladenNameView;
 
     private Task<List<FarmShopMarker>> farmShopMarkerFuture;
@@ -244,7 +244,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         adressTextView = (TextView) findViewById(R.id.adressTextView);
         phoneTextView = (TextView) findViewById(R.id.phoneTextView);
         shopnameTextView = (TextView) findViewById(R.id.shopnameTextView);
-
+        FarmerTextView=(TextView) findViewById(R.id.FarmerTextView);
+        opentimeTextView=(TextView) findViewById(R.id.opentimeTextView);
 
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -264,10 +265,46 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 String adresse = document.getString("straße") + " " + document.getString("hausnummer") + " " + document.getString("plz") + " " + document.getString("ort");
                 String phone = document.getString("phone");
                 String shopname= document.getString("shopname");
-                // String geb=document.getString("born");
+                String inhabername=document.getString("inhabername");
+                String montag="",dienstag="",mittwoch="",donnerstag="",freitag="",samstag="",sonntag="",dauerhaft, öffnungszeiten;
+                if(document.getString("24Stunden")==null) {
+
+                    if (document.getString("Montag") != null) {
+                        montag = document.getString("Montag");
+                    }
+                    if (document.getString("Dienstag") != null) {
+                        dienstag = document.getString("Dienstag");
+                    }
+                    if (document.getString("Mittwoch") != null) {
+                        mittwoch = document.getString("Mittwoch");
+                    }
+                    if (document.getString("Donnerstag") != null) {
+                        donnerstag = document.getString("Donnerstag");
+                    }
+                    if (document.getString("Freitag") != null) {
+                        freitag = document.getString("Freitag");
+                    }
+                    if (document.getString("Samstag") != null) {
+                        samstag = document.getString("Samstag");
+                    }
+                    if (document.getString("Sonntag") != null) {
+                        sonntag = document.getString("Sonntag");
+                    }
+
+                     öffnungszeiten="Montag: "+montag+"\n"+"Dienstag: "+dienstag+"\n"+"Mittwoch: "+mittwoch+"\n"+"Donnerstag: "+donnerstag+"\n"+"Freitag: "+freitag+"\n"+"Samstag: "+samstag+"\n"+"Sonntag: "+sonntag +"\n";
+                }else {
+
+                     öffnungszeiten="24 Stunden geöffnet";
+                }
+
+                //                //                // String geb=document.getString("born");
+
                 adressTextView.setText(adresse);
                 phoneTextView.setText(phone);
                 shopnameTextView.setText(shopname);
+                FarmerTextView.setText(inhabername);
+                opentimeTextView.setText(öffnungszeiten);
+
             }
         });
 
