@@ -36,12 +36,30 @@ A registered user can login to his account with his email adress and password.
 
 ## 2.2 Alternative Flows
 # 3. Special Requirements
-
+## 3.1 Device connection 
+The device has to be connected to the internet.
+## 3.2 Screen size support 
+Since the app can be used on every android phone, there will be many different screen sizes. The layout should not waste space on big screens and should still be readable on small screens.
 
 # 4. Preconditions
+## 4.1 App opened on screen
+The app must be running and opened on the screen. 
 
+## 4.3 The profile is already created
+To login into an account, the profile has to exist.
 
 # 5. Postconditions
 
+## 5.1 Managing success
+Map is shown. User can view and edit his profile.
+
+## 5.2 Managing failure
+
+Display a notification, saying that and why (if possible) the login failed.
 
 # 6. Function Points
+Value: 13
+
+![alt text][fp]
+
+[fp]: https://github.com/linkna/FyF/blob/master/documentation/UC/login%20fp.JPG
