@@ -18,7 +18,9 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Farmshop extends AppCompatActivity {
@@ -30,6 +32,7 @@ public class Farmshop extends AppCompatActivity {
     private DocumentReference Farmshop;
     Map<String, Object> userEingabe = new HashMap<>();
     //Map<String, Object> öffnungszeiten=new HashMap<>();
+    Map<String, Object> farmshopId=new HashMap<>();
 
     EditText shopnameTextbox,inhaberTextBox,StraßeTextBox,hausnummerTextBox,plzTextBox, ortTextBox2,phoneTextBox, emailTextBox,
             moAnfangTextBox, moEndeTextBox,diAnfangTextBox, diEndeTextBox,miAnfangTextBox, miEndeTextBox,doAnfangTextBox,
@@ -49,9 +52,8 @@ public class Farmshop extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
         mDatabase = FirebaseFirestore.getInstance();
-
+        setContentView(R.layout.create_farm_shop1);
 
     }
 public void durchgängigGeöffnet(View view){
@@ -193,8 +195,28 @@ public void createFarmshop2(View view){
         userEingabe.put("Sonntag",soAnfangTextBox.getText().toString() + " - " + soEndeTextBox.getText().toString());
 
     }
+    userEingabe.put("uid",uid);
+    //erstellt ein neues Document für einen Farmshop mit einer zufalls ID
+    DocumentReference ref=mDatabase.collection("Farmshop").document();
+    //fügt die Farmshopdaten in das Farmshop Dokument
+    mDatabase.collection("Farmshop").add(userEingabe);
+    //String für die zufällig generierte ID
+    String id=ref.getId();
+    //fügt die Farmshop Id dem Farmer zu
+    DocumentReference Farmer = mDatabase.collection("Favoriten").document(uid);
+    Farmer.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
 
-    mDatabase.collection("Farmshop").document(uid).set(userEingabe);
+            DocumentSnapshot document = task.getResult();
+            List<String> farmshopIds=(List<String>) document.get("farmshopid");
+
+            farmshopIds.add(id);
+            farmshopId.put("farmshopid",farmshopIds);
+
+        }
+    });
+    mDatabase.collection("Farmer").add(farmshopId);
+
     startActivity(new Intent(Farmshop.this, MapsActivity.class));
 
 
