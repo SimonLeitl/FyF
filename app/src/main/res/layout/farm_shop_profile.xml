@@ -24,7 +24,7 @@
         android:layout_height="0dp"
         android:layout_marginStart="56dp"
         android:layout_marginLeft="56dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="50dp"
         android:text="Hagsfelder Hofladen"
         android:textSize="24sp"
         app:layout_column="1"
@@ -46,11 +46,24 @@
         app:layout_row="2" />
 
     <TextView
-        android:id="@+id/phoneheader"
+        android:id="@+id/mailheader"
         android:layout_width="wrap_content"
         android:layout_height="18dp"
-        android:layout_marginStart="116dp"
-        android:layout_marginLeft="116dp"
+        android:layout_marginStart="115dp"
+        android:layout_marginLeft="115dp"
+        android:layout_marginTop="9dp"
+        android:text="E-Mail:"
+        app:layout_column="0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/phoneheader2"
+        app:layout_row="2" />
+
+    <TextView
+        android:id="@+id/phoneheader2"
+        android:layout_width="wrap_content"
+        android:layout_height="18dp"
+        android:layout_marginStart="115dp"
+        android:layout_marginLeft="115dp"
         android:layout_marginTop="9dp"
         android:text="Telefonnr.:"
         app:layout_column="0"
@@ -62,9 +75,9 @@
         android:id="@+id/opentimeheader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="44dp"
         android:text="Öffnungszeiten:"
         app:layout_column="0"
         app:layout_constraintStart_toStartOf="parent"
@@ -92,18 +105,32 @@
         android:id="@+id/phoneTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginLeft="10dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginLeft="25dp"
         android:layout_marginTop="9dp"
-        android:layout_marginEnd="3dp"
-        android:layout_marginRight="3dp"
         android:text="015770427956"
         android:textSize="14sp"
         app:layout_column="1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/phoneheader"
+        app:layout_constraintStart_toEndOf="@+id/mailheader"
         app:layout_constraintTop_toBottomOf="@+id/FarmerTextView"
+        app:layout_row="0" />
+
+    <TextView
+        android:id="@+id/mailTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="9dp"
+        android:text="suff@suff.suff"
+        android:textSize="14sp"
+        app:layout_column="1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/mailheader"
+        app:layout_constraintTop_toBottomOf="@+id/phoneTextView"
         app:layout_row="0" />
 
     <TextView
@@ -112,13 +139,14 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="44dp"
         android:layout_marginEnd="3dp"
         android:layout_marginRight="3dp"
         android:text="Montag 12 - 18 Uhr"
         android:textSize="14sp"
         app:layout_column="1"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/opentimeheader"
         app:layout_constraintTop_toBottomOf="@+id/phoneTextView"
         app:layout_row="0" />
@@ -127,8 +155,8 @@
         android:id="@+id/ratingBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="85dp"
-        android:layout_marginLeft="85dp"
+        android:layout_marginStart="86dp"
+        android:layout_marginLeft="86dp"
         android:layout_marginTop="74dp"
         android:layout_marginEnd="86dp"
         android:layout_marginRight="86dp"
@@ -142,32 +170,40 @@
         android:layout_height="129dp"
         android:layout_marginStart="28dp"
         android:layout_marginLeft="28dp"
-        android:layout_marginTop="106dp"
+
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="34dp"
         android:layout_marginRight="34dp"
-        android:layout_marginBottom="13dp"
-        app:layout_constraintBottom_toTopOf="@+id/buttonForward"
+        app:layout_constraintBottom_toTopOf="@+id/ratingBar"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/adressTextView"
         app:layout_constraintTop_toBottomOf="@+id/opentimeTextView" />
+        tools:layout_editor_absoluteY="304dp" />
+
 
     <TextView
         android:id="@+id/FarmerTextView"
         android:layout_width="195dp"
         android:layout_height="26dp"
-        android:layout_marginTop="19dp"
+        android:layout_marginStart="115dp"
+        android:layout_marginLeft="115dp"
+        android:layout_marginTop="15dp"
         android:layout_marginEnd="101dp"
         android:layout_marginRight="101dp"
         android:layout_marginBottom="19dp"
         android:text="Harald Hagsfeld"
         app:layout_constraintBottom_toTopOf="@+id/phoneTextView"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/shopnameTextView" />
 
     <TextView
-        android:id="@+id/RatingTextView"
+        android:id="@+id/ratingTextView"
         android:layout_width="112dp"
         android:layout_height="27dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginLeft="56dp"
         android:layout_marginTop="21dp"
         android:layout_marginEnd="183dp"
         android:layout_marginRight="183dp"
@@ -175,6 +211,7 @@
         android:text="3,5/5"
         app:layout_constraintBottom_toTopOf="@+id/shopnameTextView"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/shopnameheader"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
@@ -183,12 +220,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginEnd="116dp"
-        android:layout_marginRight="116dp"
-        android:layout_marginBottom="66dp"
+        android:layout_marginBottom="5dp"
         android:text="Zurück"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/buttonForward"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
@@ -197,10 +231,11 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginBottom="66dp"
+        android:layout_marginBottom="5dp"
         android:text="Weiter"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
 
     <ImageView
         android:id="@+id/favoriteButton"
@@ -218,5 +253,22 @@
         app:layout_constraintStart_toEndOf="@+id/RatingTextView"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:drawable/btn_star_big_off" />
+
+    <Button
+        android:id="@+id/buttonRating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="162dp"
+        android:layout_marginLeft="162dp"
+        android:layout_marginTop="42dp"
+        android:layout_marginEnd="162dp"
+        android:layout_marginRight="162dp"
+        android:layout_marginBottom="8dp"
+        android:text="Submit"
+        app:layout_constraintBottom_toTopOf="@+id/buttonBack"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ratingBar" />
+
 
 </android.support.constraint.ConstraintLayout>
