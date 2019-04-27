@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
     <TextView
         android:id="@+id/shopnameheader"
         android:layout_width="wrap_content"
@@ -139,10 +140,16 @@
         android:id="@+id/mapView"
         android:layout_width="126dp"
         android:layout_height="129dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="106dp"
         android:layout_marginEnd="34dp"
         android:layout_marginRight="34dp"
+        android:layout_marginBottom="13dp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonForward"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:layout_editor_absoluteY="304dp" />
+        app:layout_constraintStart_toEndOf="@+id/adressTextView"
+        app:layout_constraintTop_toBottomOf="@+id/opentimeTextView" />
 
     <TextView
         android:id="@+id/FarmerTextView"
@@ -194,5 +201,22 @@
         android:text="Weiter"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
+    <ImageView
+        android:id="@+id/favoriteButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="135dp"
+        android:layout_marginLeft="135dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="27dp"
+        android:onClick="saveFavoriteFarmshop"
+        app:layout_constraintBottom_toTopOf="@+id/shopnameTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/RatingTextView"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/btn_star_big_off" />
 
 </android.support.constraint.ConstraintLayout>
