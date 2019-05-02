@@ -362,6 +362,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         });
 
         evaluateShop(id);
+        goToFarmerEvent();
     }
 
     public void goToFarmerEvent() {
