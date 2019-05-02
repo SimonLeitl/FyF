@@ -39,12 +39,11 @@ public class FarmerProfile extends AppCompatActivity {
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 DocumentSnapshot document = task.getResult();
 
-                //check if the farmshop has an evaluation in the database
+                //check if the farmshop has an shop or an machine in the database
                 if(document.exists()) {
 
                     // get the information from the database
                     anzahlFarmshops = document.getString("farmshop");
-
                     int anzahlshops = Integer.getInteger(anzahlFarmshops);
 
                     if(anzahlFarmshops != null | anzahlshops > 0){
@@ -55,7 +54,6 @@ public class FarmerProfile extends AppCompatActivity {
                     }
 
                     anzahlAutomaten = document.getString("automat");
-
                     int anzahlautomaten = Integer.getInteger(anzahlAutomaten);
 
                     if(anzahlAutomaten != null | anzahlautomaten > 0){
