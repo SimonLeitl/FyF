@@ -29,9 +29,10 @@ public class FarmerProfile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.farmer_profile);
         mDatabase = FirebaseFirestore.getInstance();
+
     }
 
-    private void getShopsAndMachines(String farmerID){
+    protected void getShopsAndMachines(String farmerID){
         DocumentReference farmerProfile = mDatabase.collection("Farmer").document(farmerID);
 
         farmerProfile.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>(){

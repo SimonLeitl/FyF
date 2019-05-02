@@ -82,6 +82,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     private float bewertung = 0;
     private float anzahl = 0;
     Map<String, Object> userRatingEingabe = new HashMap<>();
+    private FarmerProfile farmerProfile;
 
 
 
@@ -362,6 +363,16 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         evaluateShop(id);
     }
+
+    public void goToFarmerEvent() {
+        findViewById(R.id.FarmerTextView).setOnClickListener(v -> goToFarmer());
+    }
+    public void goToFarmer(){
+        farmerProfile.getShopsAndMachines(5432+""); // ToDo: get the ID of the Farmer
+
+    }
+
+
 
     public void evaluateShop(String id){
 
