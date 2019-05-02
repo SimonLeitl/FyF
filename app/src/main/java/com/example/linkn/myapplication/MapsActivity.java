@@ -365,7 +365,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     public void evaluateShop(String id){
 
-        // creates the rating stars an the submit-button with an actionlistener 
+        // creates the rating stars an the submit-button with an actionlistener
         final RatingBar ratingBar = (RatingBar) findViewById(R.id.ratingBar);
         Button submitButton = (Button) findViewById(R.id.buttonRating);
         submitButton.setVisibility(View.GONE);
