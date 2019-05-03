@@ -343,7 +343,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         evaluation.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>(){
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                if (task.getResult() != null) {
                     DocumentSnapshot document = task.getResult();
                     //check if the farmshop has an evaluation in the database
                     if (document.exists()) {
@@ -359,7 +358,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                             ratingTextView.setText(bewertung + " / 5");
                         }
                     }
-                }
             }
         });
 
