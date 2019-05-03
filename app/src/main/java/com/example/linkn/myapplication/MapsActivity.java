@@ -72,7 +72,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     TextView adressTextView, phoneTextView, shopnameTextView, FarmerTextView, opentimeTextView, ratingTextView;
     ListView ladenNameView;
-    String id,uid,anzahlFavoriten;
+    String id,uid,anzahlFavoriten, farmerID;
     private Task<List<FarmShopMarker>> farmShopMarkerFuture;
 
     Map<String, Object> favoriteFarmshop = new HashMap<>();
@@ -369,7 +369,18 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         findViewById(R.id.FarmerTextView).setOnClickListener(v -> goToFarmer());
     }
     public void goToFarmer(){
-        farmerProfile.getShopsAndMachines(5432+""); // ToDo: get the ID of the Farmer
+        DocumentReference farmer = mDatabase.collection("Farmshop").document(id);
+        farmer.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>(){
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                DocumentSnapshot document = task.getResult();
+                //check if the farmshop has an evaluation in the database
+                if(document.exists()) {
+                  farmerID = document.getString("FarmerID");
+                }
+            }
+        });
+        farmerProfile.getShopsAndMachines(farmerID);
 
     }
 
