@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,6 +27,7 @@ public class Profile extends AppCompatActivity {
 
 
     public TextView vornameTextView, nachnameTextView, gebTextView, emailTextView;
+    public Button createNewFarmshopButton;
 
     private FirebaseFirestore mDatabase;
 
@@ -74,6 +76,7 @@ public class Profile extends AppCompatActivity {
         nachnameTextView = (TextView) findViewById(R.id.nachnameTextView);
         gebTextView = (TextView) findViewById(R.id.gebTextView);
         gebTextView = (TextView) findViewById(R.id.gebTextView);
+        createNewFarmshopButton=(Button) findViewById(R.id.createNewFarmshopButton);
         //ruft den aktuellen User ab
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
         //gibt den String des aktuellen Users
@@ -87,6 +90,7 @@ public class Profile extends AppCompatActivity {
             boolean customerExists = ((DocumentSnapshot) result.get(0).getResult()).exists();
             boolean farmerExists = ((DocumentSnapshot) result.get(1).getResult()).exists();
             if(customerExists==true){
+                createNewFarmshopButton.setVisibility(View.INVISIBLE);
                 DocumentSnapshot document = customerTask.getResult();
                 String vorname= document.getString("firstname");
                 String nachname=document.getString("lastname");
@@ -102,6 +106,7 @@ public class Profile extends AppCompatActivity {
                 vornameTextView.setText(vorname);
                 nachnameTextView.setText(nachname);
                 gebTextView.setText(geb);
+                createNewFarmshopButton.setVisibility(View.VISIBLE);
             }
             return null;
         });
@@ -120,6 +125,10 @@ public class Profile extends AppCompatActivity {
 //            return null;
 //        });
     }
+    //Methode um neuen Farmshop zu erstellen
+    public void createNewFarmshop(View view){
+        startActivity(new Intent(Profile.this,Farmshop.class));
+    }
 
 
     EditText changePasswort;
@@ -128,6 +137,8 @@ public class Profile extends AppCompatActivity {
         setContentView(R.layout.change_password);
         changePasswort = (EditText) findViewById(R.id.newPasswortTextBox);
     }
+
+
 
     public void changePassword(View view) {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
