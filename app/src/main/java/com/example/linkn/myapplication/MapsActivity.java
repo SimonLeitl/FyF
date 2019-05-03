@@ -343,19 +343,21 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         evaluation.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>(){
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                DocumentSnapshot document = task.getResult();
-                //check if the farmshop has an evaluation in the database
-                if(document.exists()) {
-                    // get the information from the database
-                    bewertung = document.getLong("bewertung");
-                    anzahl = document.getLong("anzahl");
-                    float average;
-                    // check if the information from the database do not equals zero then it will calculate the average evaluation
-                    if (anzahl != 0) {
-                        average = bewertung / anzahl;
-                        ratingTextView.setText(average + " / 5");
-                    } else {
-                        ratingTextView.setText(bewertung + " / 5");
+                if (task.getResult() != null) {
+                    DocumentSnapshot document = task.getResult();
+                    //check if the farmshop has an evaluation in the database
+                    if (document.exists()) {
+                        // get the information from the database
+                        bewertung = document.getLong("bewertung");
+                        anzahl = document.getLong("anzahl");
+                        float average;
+                        // check if the information from the database do not equals zero then it will calculate the average evaluation
+                        if (anzahl != 0) {
+                            average = bewertung / anzahl;
+                            ratingTextView.setText(average + " / 5");
+                        } else {
+                            ratingTextView.setText(bewertung + " / 5");
+                        }
                     }
                 }
             }
