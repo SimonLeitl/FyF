@@ -18,6 +18,7 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -195,7 +196,7 @@ public void createFarmshop2(View view){
         userEingabe.put("Sonntag",soAnfangTextBox.getText().toString() + " - " + soEndeTextBox.getText().toString());
 
     }
-    userEingabe.put("uid",uid);
+    userEingabe.put("FarmerID",uid);
     //erstellt ein neues Document für einen Farmshop mit einer zufalls ID
     DocumentReference ref=mDatabase.collection("Farmshop").document();
     //fügt die Farmshopdaten in das Farmshop Dokument
@@ -203,14 +204,17 @@ public void createFarmshop2(View view){
     //String für die zufällig generierte ID
     String id=ref.getId();
     //fügt die Farmshop Id dem Farmer zu
-    DocumentReference Farmer = mDatabase.collection("Favoriten").document(uid);
+    DocumentReference Farmer = mDatabase.collection("Farmer").document(uid);
     Farmer.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
         public void onComplete(@NonNull Task<DocumentSnapshot> task) {
 
             DocumentSnapshot document = task.getResult();
-            List<String> farmshopIds=(List<String>) document.get("farmshopid");
+            List<String> farmshopIds=new ArrayList<String>();
+           // List<String> farmshopIds=(List<String>) document.get("farmshopid");
 
-            farmshopIds.add(id);
+                farmshopIds.add(id);
+
+
             farmshopId.put("farmshopid",farmshopIds);
 
         }
