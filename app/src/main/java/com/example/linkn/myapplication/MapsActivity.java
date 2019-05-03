@@ -72,7 +72,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     TextView adressTextView, phoneTextView, shopnameTextView, FarmerTextView, opentimeTextView, ratingTextView;
     ListView ladenNameView;
-    String id,uid,anzahlFavoriten;
+    String id,uid,anzahlFavoriten, farmerID;
     private Task<List<FarmShopMarker>> farmShopMarkerFuture;
 
     Map<String, Object> favoriteFarmshop = new HashMap<>();
@@ -82,6 +82,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     private float bewertung = 0;
     private float anzahl = 0;
     Map<String, Object> userRatingEingabe = new HashMap<>();
+    private FarmerProfile farmerProfile;
 
 
 
@@ -342,37 +343,73 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         evaluation.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>(){
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                DocumentSnapshot document = task.getResult();
-                bewertung = document.getLong("bewertung");
-                anzahl = document.getLong("anzahl");
-                float average;
-                if(anzahl != 0){
-                    average = bewertung / anzahl;
-                    ratingTextView.setText(average + " / 5");
-               } else {
-                    ratingTextView.setText(bewertung + " / 5");
+                if (task.getResult() != null) {
+                    DocumentSnapshot document = task.getResult();
+                    //check if the farmshop has an evaluation in the database
+                    if (document.exists()) {
+                        // get the information from the database
+                        bewertung = document.getLong("bewertung");
+                        anzahl = document.getLong("anzahl");
+                        float average;
+                        // check if the information from the database do not equals zero then it will calculate the average evaluation
+                        if (anzahl != 0) {
+                            average = bewertung / anzahl;
+                            ratingTextView.setText(average + " / 5");
+                        } else {
+                            ratingTextView.setText(bewertung + " / 5");
+                        }
+                    }
                 }
             }
         });
 
-       // save rating in Database
-       final RatingBar ratingBar = (RatingBar) findViewById(R.id.ratingBar);
-       Button submitButton = (Button) findViewById(R.id.buttonRating);
-       submitButton.setVisibility(View.GONE);
-       ratingBar.setOnRatingBarChangeListener((ratingBar1, rating, fromUser) -> {
-           submitButton.setVisibility(View.VISIBLE);
-       });
+        evaluateShop(id);
+        goToFarmerEvent();
+    }
 
-       submitButton.setOnClickListener(OnClickListener ->{
-           float rating = ratingBar.getRating();
-           bewertung += rating;
-           anzahl += 1;
-           userRatingEingabe.put("bewertung", bewertung);
-           userRatingEingabe.put("anzahl", anzahl);
-           mDatabase.collection("Evaluation").document(id).set(userRatingEingabe);
-       });
-       
-       Button forwardButton = (Button) findViewById(R.id.buttonForward);
+    public void goToFarmerEvent() {
+        findViewById(R.id.FarmerTextView).setOnClickListener(v -> goToFarmer());
+    }
+    public void goToFarmer(){
+        DocumentReference farmer = mDatabase.collection("Farmshop").document(id);
+        farmer.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>(){
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                DocumentSnapshot document = task.getResult();
+                //check if the farmshop has an evaluation in the database
+                if(document.exists()) {
+                  farmerID = document.getString("FarmerID");
+                }
+            }
+        });
+        farmerProfile.getShopsAndMachines(farmerID);
+
+    }
+
+
+
+    public void evaluateShop(String id){
+
+        // creates the rating stars an the submit-button with an actionlistener
+        final RatingBar ratingBar = (RatingBar) findViewById(R.id.ratingBar);
+        Button submitButton = (Button) findViewById(R.id.buttonRating);
+        submitButton.setVisibility(View.GONE);
+        ratingBar.setOnRatingBarChangeListener((ratingBar1, rating, fromUser) -> {
+            submitButton.setVisibility(View.VISIBLE);
+        });
+
+        submitButton.setOnClickListener(OnClickListener ->{
+            // guess thr rating from the stars from the UI
+            float rating = ratingBar.getRating();
+            bewertung += rating;
+            anzahl += 1;
+            // save rating in Database
+            userRatingEingabe.put("bewertung", bewertung);
+            userRatingEingabe.put("anzahl", anzahl);
+            mDatabase.collection("Evaluation").document(id).set(userRatingEingabe);
+        });
+
+        Button forwardButton = (Button) findViewById(R.id.buttonForward);
         Button backButton = (Button) findViewById(R.id.buttonBack);
         View.OnClickListener onClickListener = OnClickListener -> {
             startActivity(new Intent(MapsActivity.this, MapsActivity.class));
