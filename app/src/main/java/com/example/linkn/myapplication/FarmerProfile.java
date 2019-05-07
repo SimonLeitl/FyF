@@ -3,6 +3,9 @@ package com.example.linkn.myapplication;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.Button;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -19,20 +22,56 @@ public class FarmerProfile extends AppCompatActivity {
     private String anzahlAutomaten;
     private ArrayList<String> farmshopList = new ArrayList<>();
     private ArrayList<String> automatenList = new ArrayList<>();
+    private RadioGroup radioButtonGroup;
+    private RadioButton radioShopButton, radioMachineButton;
+    private String farmerID;
 
     public FarmerProfile(){
 
-
     }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.farmer_profile);
         mDatabase = FirebaseFirestore.getInstance();
+        radioButtonGroup = findViewById(R.id.radioGroup);
+        radioShopButton = findViewById(R.id.radioButtonShop);
+        radioMachineButton = findViewById(R.id.radioButtonAutomat);
+        showShopsOrMachines();
+
+    }
+
+    public void showShopsOrMachines(){
+        radioShopButton.setOnClickListener(v -> {
+
+            DocumentReference farmShops = mDatabase.collection("Farmer").document(farmerID);
+            farmShops.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                    DocumentSnapshot document = task.getResult();
+
+                    if (document.exists()) {
+                        int selectedId = radioButtonGroup.getCheckedRadioButtonId();
+                        findViewById(selectedId);
+                        if(findViewById(selectedId).equals(findViewById(R.id.radioButtonShop))){
+
+                        }
+
+                        if(findViewById(selectedId).equals(findViewById(R.id.radioButtonAutomat))){
+
+                        }
+
+                    }
+                }
+            });
+
+        });
 
     }
 
     protected void getShopsAndMachines(String farmerID){
+        this.farmerID = farmerID;
         DocumentReference farmerProfile = mDatabase.collection("Farmer").document(farmerID);
 
         farmerProfile.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>(){
