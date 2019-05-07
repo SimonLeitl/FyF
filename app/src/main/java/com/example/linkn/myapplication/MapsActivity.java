@@ -369,6 +369,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         findViewById(R.id.FarmerTextView).setOnClickListener(v -> goToFarmer());
     }
     public void goToFarmer(){
+        setContentView(R.layout.farmer_profile);
         DocumentReference farmer = mDatabase.collection("Farmshop").document(id);
         farmer.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>(){
             @Override
@@ -381,6 +382,9 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             }
         });
         farmerProfile.getShopsAndMachines(farmerID);
+        // ToDo: create relation in database FarmerID to continue Farmer-Profile processing
+        // method is running, famerID in the database is missing (guess this field)
+        farmerProfile.showShopsOrMachines();
 
     }
 
