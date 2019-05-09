@@ -82,7 +82,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     private float bewertung = 0;
     private float anzahl = 0;
     Map<String, Object> userRatingEingabe = new HashMap<>();
-    private FarmerProfile farmerProfile;
+    protected FarmerProfile farmerProfile;
 
 
 
@@ -375,17 +375,12 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 DocumentSnapshot document = task.getResult();
-                //check if the farmshop has an evaluation in the database
-                if(document.exists()) {
                   farmerID = document.getString("FarmerID");
-                }
+                  farmerProfile.getShopsAndMachines(farmerID);
+                  farmerProfile.showShopsOrMachines();
+
             }
         });
-        farmerProfile.getShopsAndMachines(farmerID);
-        // ToDo: create relation in database FarmerID to continue Farmer-Profile processing
-        // method is running, famerID in the database is missing (guess this field)
-        farmerProfile.showShopsOrMachines();
-
     }
 
 
