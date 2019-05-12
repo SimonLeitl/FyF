@@ -9,6 +9,7 @@ import android.widget.RadioGroup;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -34,7 +35,6 @@ public class FarmerProfile extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.farmer_profile);
-        mDatabase = FirebaseFirestore.getInstance();
         radioButtonGroup = findViewById(R.id.radioGroup);
         radioShopButton = findViewById(R.id.radioButtonShop);
         radioMachineButton = findViewById(R.id.radioButtonAutomat);
@@ -72,6 +72,7 @@ public class FarmerProfile extends AppCompatActivity {
 
     protected void getShopsAndMachines(String farmerID){
         this.farmerID = farmerID;
+        mDatabase = FirebaseFirestore.getInstance();
         DocumentReference farmerProfile = mDatabase.collection("Farmer").document(farmerID);
 
         farmerProfile.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>(){
@@ -80,7 +81,6 @@ public class FarmerProfile extends AppCompatActivity {
                 DocumentSnapshot document = task.getResult();
 
                 //check if the farmshop has an shop or an machine in the database
-                if(document.exists()) {
 
                     // get the information from the database
                     anzahlFarmshops = document.getString("farmshop");
@@ -103,7 +103,7 @@ public class FarmerProfile extends AppCompatActivity {
                         }
                     }
 
-                }
+
             }
         });
     }

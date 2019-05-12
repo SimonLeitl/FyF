@@ -375,10 +375,10 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 DocumentSnapshot document = task.getResult();
-                  farmerID = document.getString("FarmerID");
-                  farmerProfile.getShopsAndMachines(farmerID);
-                  farmerProfile.showShopsOrMachines();
-
+                farmerID = document.getString("FarmerID");
+                farmerProfile = new FarmerProfile();
+                farmerProfile.getShopsAndMachines(farmerID);
+                farmerProfile.showShopsOrMachines();
             }
         });
     }
