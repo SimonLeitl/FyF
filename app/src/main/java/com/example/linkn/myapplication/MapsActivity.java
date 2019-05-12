@@ -368,14 +368,17 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     public void goToFarmerEvent() {
         findViewById(R.id.FarmerTextView).setOnClickListener(v -> goToFarmer());
     }
+
     public void goToFarmer(){
         setContentView(R.layout.farmer_profile);
         DocumentReference farmer = mDatabase.collection("Farmshop").document(id);
         farmer.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>(){
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                //reads the farmer id from the Database
                 DocumentSnapshot document = task.getResult();
                 farmerID = document.getString("FarmerID");
+                // links the class of the farmer and open/start the class of the farmer profile
                 farmerProfile = new FarmerProfile();
                 farmerProfile.getShopsAndMachines(farmerID);
                 farmerProfile.showShopsOrMachines();
