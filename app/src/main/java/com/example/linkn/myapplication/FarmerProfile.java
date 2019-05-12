@@ -3,6 +3,7 @@ package com.example.linkn.myapplication;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -27,46 +28,27 @@ public class FarmerProfile extends AppCompatActivity {
     private RadioButton radioShopButton, radioMachineButton;
     private String farmerID;
 
-    public FarmerProfile(){
-
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.farmer_profile);
         radioButtonGroup = findViewById(R.id.radioGroup);
         radioShopButton = findViewById(R.id.radioButtonShop);
         radioMachineButton = findViewById(R.id.radioButtonAutomat);
-        showShopsOrMachines();
+    }
 
+    public FarmerProfile(){
     }
 
     public void showShopsOrMachines(){
-        radioShopButton.setOnClickListener(v -> {
 
-            DocumentReference farmShops = mDatabase.collection("Farmer").document(farmerID);
-            farmShops.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                @Override
-                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                    DocumentSnapshot document = task.getResult();
+/*                findViewById(selectedId);
+                if (findViewById(selectedId).equals(findViewById(R.id.radioButtonShop))) {
 
-                    if (document.exists()) {
-                        int selectedId = radioButtonGroup.getCheckedRadioButtonId();
-                        findViewById(selectedId);
-                        if(findViewById(selectedId).equals(findViewById(R.id.radioButtonShop))){
-
-                        }
-
-                        if(findViewById(selectedId).equals(findViewById(R.id.radioButtonAutomat))){
-
-                        }
-
-                    }
                 }
-            });
 
-        });
+                if (findViewById(selectedId).equals(findViewById(R.id.radioButtonAutomat))) {
+
+                } */
 
     }
 
