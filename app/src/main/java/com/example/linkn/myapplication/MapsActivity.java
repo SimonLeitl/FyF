@@ -70,7 +70,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     public FirebaseAuth auth;
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-    TextView adressTextView, phoneTextView, shopnameTextView, FarmerTextView, opentimeTextView, ratingTextView;
+    TextView adressTextView, phoneTextView, shopnameTextView, FarmerTextView, opentimeTextView, ratingTextView, shopArtTextView;
     ListView ladenNameView;
     String id,uid,anzahlFavoriten, farmerID;
     private Task<List<FarmShopMarker>> farmShopMarkerFuture;
@@ -269,7 +269,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         ratingTextView = (TextView) findViewById(R.id.ratingTextView);
         FarmerTextView=(TextView) findViewById(R.id.FarmerTextView);
         opentimeTextView=(TextView) findViewById(R.id.opentimeTextView);
-
+        shopArtTextView=(TextView) findViewById(R.id.shopartTextView);
 
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -296,6 +296,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 String phone = document.getString("phone");
                 String shopname= document.getString("shopname");
                 String inhabername=document.getString("inhabername");
+                String shopart=document.getString("Shopart");
                 String montag="",dienstag="",mittwoch="",donnerstag="",freitag="",samstag="",sonntag="",dauerhaft, öffnungszeiten;
                 if(document.getString("24Stunden")==null) {
 
@@ -334,6 +335,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 shopnameTextView.setText(shopname);
                 FarmerTextView.setText(inhabername);
                 opentimeTextView.setText(öffnungszeiten);
+                shopArtTextView.setText(shopart);
 
             }
         });

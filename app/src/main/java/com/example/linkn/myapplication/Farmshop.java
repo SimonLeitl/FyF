@@ -8,6 +8,8 @@ import android.view.View;
 import android.view.Window;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -39,6 +41,8 @@ public class Farmshop extends AppCompatActivity {
             moAnfangTextBox, moEndeTextBox,diAnfangTextBox, diEndeTextBox,miAnfangTextBox, miEndeTextBox,doAnfangTextBox,
             doEndeTextBox,frAnfangTextBox, frEndeTextBox,saAnfangTextBox, saEndeTextBox,soAnfangTextBox, soEndeTextBox;
     CheckBox montagcheckBox,dienstagcheckBox,mittwochcheckBox,donnerstagcheckBox,freitagcheckBox, samstagcheckBox, sonntagcheckBox, geöffnetCeckBox;
+    private RadioGroup radioGroup;
+    private RadioButton radioButton;
 
     TextView adressTextView,phoneTextView;
     // Farmshopdaten als enum speichern? Name, Adresse, Öffnungszeiten...
@@ -168,7 +172,12 @@ public void createFarmshop2(View view){
     freitagcheckBox = (CheckBox) findViewById(R.id.freitagcheckBox);
     samstagcheckBox = (CheckBox) findViewById(R.id.samstagcheckBox);
     sonntagcheckBox=(CheckBox)findViewById(R.id.sonntagcheckBox);
+    radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
 
+
+    int selectedId = radioGroup.getCheckedRadioButtonId();
+    radioButton = (RadioButton) findViewById(selectedId);
+    userEingabe.put("Shopart",radioButton.getText());
 
     if(montagcheckBox.isChecked()){
     userEingabe.put("Montag",moAnfangTextBox.getText().toString() + " - " + moEndeTextBox.getText().toString());
@@ -209,10 +218,9 @@ public void createFarmshop2(View view){
         public void onComplete(@NonNull Task<DocumentSnapshot> task) {
 
             DocumentSnapshot document = task.getResult();
-            List<String> farmshopIds=new ArrayList<String>();
-           // List<String> farmshopIds=(List<String>) document.get("farmshopid");
-
-                farmshopIds.add(id);
+            List<Object> farmshopIds=new ArrayList<Object>();
+            farmshopIds.add(document.get("farmshopid"));
+            farmshopIds.add(id);
 
 
             farmshopId.put("farmshopid",farmshopIds);

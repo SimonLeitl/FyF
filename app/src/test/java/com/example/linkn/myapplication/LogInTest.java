@@ -22,7 +22,7 @@ public class LogInTest {
         authSignal=new CountDownLatch(1);
        auth=FirebaseAuth.getInstance();
         if(auth.getCurrentUser() == null) {
-            auth.signInWithEmailAndPassword("urbi@orbi.it", "12345678").addOnCompleteListener(
+            auth.signInWithEmailAndPassword("test@test.de", "123456").addOnCompleteListener(
                     new OnCompleteListener<AuthResult>() {
 
 
