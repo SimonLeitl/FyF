@@ -38,7 +38,8 @@ A registered user can save his favorite farmshops to a personal list. With "show
 
 
 # 4. Preconditions
-
+The user has to be logged in. 
+The user has navigated to the personal list of favorites. 
 
 # 5. Postconditions
 
