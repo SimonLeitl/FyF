@@ -38,6 +38,7 @@ A registered user can save his favorite farmshops to a list of favorites.
 
 # 4. Preconditions
 The user has to be logged in to save the favorite farmshops to his personal list. 
+The user has navigated to a farmshop and clicked the heart button.
 
 # 5. Postconditions
 
