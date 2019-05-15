@@ -20,6 +20,7 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -43,7 +44,7 @@ public class Farmshop extends AppCompatActivity {
     CheckBox montagcheckBox,dienstagcheckBox,mittwochcheckBox,donnerstagcheckBox,freitagcheckBox, samstagcheckBox, sonntagcheckBox, geöffnetCeckBox;
     private RadioGroup radioGroup;
     private RadioButton radioButton;
-
+    public ArrayList<String> farmshopIds=new ArrayList<String>();
     TextView adressTextView,phoneTextView;
     // Farmshopdaten als enum speichern? Name, Adresse, Öffnungszeiten...
     public Farmshop(){}
@@ -137,7 +138,7 @@ public void createFarmshop1(View view){
     userEingabe.put("phone",phoneTextBox.getText().toString());
     userEingabe.put("email", emailTextBox.getText().toString());
 
-    mDatabase.collection("Farmshop").document(uid).set(userEingabe);
+    //mDatabase.collection("Farmshop").document(uid).set(userEingabe);
     setContentView(R.layout.create_farm_shop2);
 }
 
@@ -208,26 +209,33 @@ public void createFarmshop2(View view){
     userEingabe.put("FarmerID",uid);
     //erstellt ein neues Document für einen Farmshop mit einer zufalls ID
     DocumentReference ref=mDatabase.collection("Farmshop").document();
-    //fügt die Farmshopdaten in das Farmshop Dokument
-    mDatabase.collection("Farmshop").add(userEingabe);
     //String für die zufällig generierte ID
     String id=ref.getId();
+    //fügt die Farmshopdaten in das Farmshop Dokument
+    mDatabase.collection("Farmshop").document(id).set(userEingabe);
     //fügt die Farmshop Id dem Farmer zu
     DocumentReference Farmer = mDatabase.collection("Farmer").document(uid);
     Farmer.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
         public void onComplete(@NonNull Task<DocumentSnapshot> task) {
 
             DocumentSnapshot document = task.getResult();
-            List<Object> farmshopIds=new ArrayList<Object>();
-            farmshopIds.add(document.get("farmshopid"));
+            List<String> group = (List<String>) document.get("farmshopid");
+
+            if(group!=null){
+                for(int i=0; i<farmshopIds.size();i++){
+                    farmshopIds.add(group.get(i));
+                }
+            }
+
+
             farmshopIds.add(id);
 
 
             farmshopId.put("farmshopid",farmshopIds);
-
+            mDatabase.collection("Farmer").document(uid).update("farmshopid",farmshopIds);
         }
     });
-    mDatabase.collection("Farmer").add(farmshopId);
+    //mDatabase.collection("Farmer").document(uid).update("farmshopid",farmshopIds);
 
     startActivity(new Intent(Farmshop.this, MapsActivity.class));
 
