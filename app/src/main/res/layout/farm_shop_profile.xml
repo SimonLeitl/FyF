@@ -62,9 +62,9 @@
         android:id="@+id/phoneheader2"
         android:layout_width="wrap_content"
         android:layout_height="18dp"
-        android:layout_marginStart="115dp"
-        android:layout_marginLeft="115dp"
-        android:layout_marginTop="9dp"
+        android:layout_marginStart="112dp"
+        android:layout_marginLeft="112dp"
+        android:layout_marginTop="36dp"
         android:text="Telefonnr.:"
         app:layout_column="0"
         app:layout_constraintStart_toStartOf="parent"
@@ -107,7 +107,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
         android:layout_marginLeft="25dp"
-        android:layout_marginTop="9dp"
+        android:layout_marginTop="36dp"
         android:text="015770427956"
         android:textSize="14sp"
         app:layout_column="1"
@@ -176,7 +176,7 @@
         android:layout_marginRight="34dp"
         app:layout_constraintBottom_toTopOf="@+id/ratingBar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/adressTextView"
         app:layout_constraintTop_toBottomOf="@+id/opentimeTextView" />
         tools:layout_editor_absoluteY="304dp" />
@@ -195,6 +195,7 @@
         android:text="Harald Hagsfeld"
         app:layout_constraintBottom_toTopOf="@+id/phoneTextView"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/shopnameTextView" />
 
@@ -269,6 +270,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ratingBar" />
+
+    <TextView
+        android:id="@+id/shopartTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="368dp" />
 
 
 </android.support.constraint.ConstraintLayout>
