@@ -25,32 +25,22 @@ public class FarmerProfile extends AppCompatActivity {
     private RadioButton radioShopButton, radioMachineButton;
     private String farmerID;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        radioButtonGroup = findViewById(R.id.radioGroup);
-        radioShopButton = findViewById(R.id.radioButtonShop);
-        radioMachineButton = findViewById(R.id.radioButtonAutomat);
-    }
-
     public FarmerProfile(){
     }
 
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
+
     public void showShopsOrMachines(){
-        // when the radiobutton is clicked, he will read the data from database and show the shops tje farmer have
-        if(radioShopButton.isSelected()){
 
-        }
-
-        if(radioMachineButton.isSelected()){
-
-        }
 
     }
 
     protected void getShopsAndMachines(String farmerID){
-        this.farmerID = farmerID;
+    /*    this.farmerID = farmerID;
         mDatabase = FirebaseFirestore.getInstance();
         DocumentReference farmerProfile = mDatabase.collection("Farmer").document(farmerID);
         farmerProfile.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>(){
@@ -60,7 +50,7 @@ public class FarmerProfile extends AppCompatActivity {
                 anzahlFarmshops = document.getString("farmshop");
                 int anzahlshops = Integer.getInteger(anzahlFarmshops);
 
-                // guess the size/ length of the saved farmshops in database and will add it to an arraylist 
+                // guess the size/ length of the saved farmshops in database and will add it to an arraylist
                 if(anzahlFarmshops != null | anzahlshops > 0){
                     for(int i = 0; i< anzahlshops;i++){
                         String farmerFarmshops = document.getString(Integer.toString(i));
@@ -78,6 +68,6 @@ public class FarmerProfile extends AppCompatActivity {
                     }
                 }
             }
-        });
+        }); */
     }
 }
