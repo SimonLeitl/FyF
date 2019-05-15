@@ -14,7 +14,7 @@
 
 # 1. Analyze Acceleration Behavior
 
-A registered user who spent time at an farm shop or bought something there can evaluate this shop.
+A registered user can save his favorite farmshops to a list of favorites.
 
 ## 1.2 Screenshots
 
@@ -37,10 +37,13 @@ A registered user who spent time at an farm shop or bought something there can e
 
 
 # 4. Preconditions
-
+The user has to be logged in to save the favorite farmshops to his personal list. 
+The user has navigated to a farmshop and clicked the heart button.
 
 # 5. Postconditions
 
+## 5.1 Store data
+Store the new list in the database.
 
 # 6. Function Points
 Value: 10
