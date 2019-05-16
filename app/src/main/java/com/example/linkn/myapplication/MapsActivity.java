@@ -69,19 +69,19 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     private FirebaseFirestore mDatabase;
 
     public FirebaseAuth auth;
-    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-    TextView adressTextView, phoneTextView, shopnameTextView, FarmerTextView, opentimeTextView, ratingTextView, shopArtTextView;
-    ListView ladenNameView;
-    String id,uid,anzahlFavoriten, farmerID;
+    private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+    private TextView adressTextView, phoneTextView, shopnameTextView, FarmerTextView, opentimeTextView, ratingTextView, shopArtTextView;
+    private ListView ladenNameView;
+    private String id,uid,anzahlFavoriten, farmerID;
     private Task<List<FarmShopMarker>> farmShopMarkerFuture;
 
-    Map<String, Object> favoriteFarmshop = new HashMap<>();
-    Map<String, Object> favoriteFarmshopAnzahl = new HashMap<>();
-    ArrayList<String> favoriteFarmshopList=new ArrayList<String>();
+    private Map<String, Object> favoriteFarmshop = new HashMap<>();
+    private  Map<String, Object> favoriteFarmshopAnzahl = new HashMap<>();
+    private ArrayList<String> favoriteFarmshopList=new ArrayList<String>();
 
     private float bewertung = 0;
     private float anzahl = 0;
-    Map<String, Object> userRatingEingabe = new HashMap<>();
+    private Map<String, Object> userRatingEingabe = new HashMap<>();
     protected FarmerProfile farmerProfile;
 
 
@@ -372,7 +372,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     }
 
     public void goToFarmer(){
-        setContentView(R.layout.farmer_profile);
         DocumentReference farmer = mDatabase.collection("Farmshop").document(id);
         farmer.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>(){
             @Override
@@ -381,11 +380,18 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 DocumentSnapshot document = task.getResult();
                 farmerID = document.getString("FarmerID");
                 // links the class of the farmer and open/start the class of the farmer profile
-                farmerProfile = new FarmerProfile();
-                farmerProfile.getShopsAndMachines(farmerID);
-                farmerProfile.showShopsOrMachines();
+                goToFarmerView();
+                //startActivity(new Intent(MapsActivity.this, FarmerProfile.class));
+                //farmerProfile = new FarmerProfile();
+                //farmerProfile.getShopsAndMachines(farmerID);
+
             }
         });
+
+    }
+
+    public void goToFarmerView(){
+        FarmerProfile.start(this, farmerID);
     }
 
 
