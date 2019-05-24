@@ -18,13 +18,14 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class FarmerProfile extends AppCompatActivity {
 
     private static String farmerIDReal;
     private FirebaseFirestore mDatabase;
-    private String anzahlFarmshops;
-    private ArrayList<String> farmshopList = new ArrayList<>();
+    private List<String> group = new ArrayList<>();
+    private List<String> shops = new ArrayList<>();
     private static final String FARMERID = "com.example.linkn.myapplication";
     private TextView farmerVorname, farmerNachname;
     private ListView farmerShops;
@@ -51,13 +52,24 @@ public class FarmerProfile extends AppCompatActivity {
 
 
     public void showShopsOrMachines(){
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_list_item_1, android.R.id.text1, farmshopList);
+       /* for ( String farmshopIDReal  : group) {
 
-        farmerShops.setAdapter(adapter);
+            DocumentReference farmerProfile = mDatabase.collection("Farmshop").document(farmshopIDReal);
+            farmerProfile.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                    DocumentSnapshot document = task.getResult();
 
+                    String shopName = document.getString("shopname");
+                    String shopArt = document.getString("Shopart");
+                    shops.add(shopName + ", " + shopArt);
+                }
+            });
+        }*/
+            ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
+                    android.R.layout.simple_list_item_1, android.R.id.text1, shops);
 
-
+            farmerShops.setAdapter(adapter);
     }
 
     protected void getShopsAndMachines(String farmerID){
@@ -77,23 +89,15 @@ public class FarmerProfile extends AppCompatActivity {
                 String farmerNachnameDB = document.getString("lastname");
                 farmerNachname.setText(farmerNachnameDB);
 
-                anzahlFarmshops = document.getString("farmerid");
-
-                // guess the size/ length of the saved farmshops in database and will add it to an arraylist
-                if(anzahlFarmshops != null){
-                    for(int i = 0; i< Integer.parseInt(anzahlFarmshops);i++){
-                        String farmerFarmshops = document.getString(Integer.toString(i));
-                            farmshopList.add(farmerFarmshops);
-                    }
-                }
+                group = (List<String>) document.get("farmshopid");
+                showShopsOrMachines();
             }
         });
-        showShopsOrMachines();
+
         Button okButton = (Button) findViewById(R.id.buttonOK);
         View.OnClickListener onClickListener = OnClickListener -> {
             startActivity(new Intent(FarmerProfile.this, MapsActivity.class));
         };
         okButton.setOnClickListener(onClickListener);
     }
-
 }
