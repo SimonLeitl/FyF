@@ -427,67 +427,9 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     }
 
     public void saveFavoriteFarmshop(View view){
-    //wird später zum Überprüfen verwendet, ob der Farmshop bereits als Favorit gespeichert ist.
-    boolean farmshopExists=false;
-       //mit dieser if Abfrage wird überprüft ob ein User eingelogged ist. Ansonsten wird dieser zum Login geleitet.
-        if(auth.getCurrentUser()!=null){
-            //hier wird die Verbindung zur Tabelle mit den Favoriten erstellt
-            DocumentReference Favoriten = mDatabase.collection("Favoriten").document(uid);
-            Favoriten.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
 
-                    DocumentSnapshot document = task.getResult();
-                    //hier wird die Anzahl an Favoriten abgefragt und in einem String gespeichert
-                    //dieser dient nacher dazu um zu deklarieren der wie vielte Favoriteneintrag vorgenommen wird.
-                     anzahlFavoriten = document.getString("anzahl");
-                     //überprüft ob bereits favoriten Eingetragen sind.
-                     if(anzahlFavoriten!=null){
-                    //ruft alle Favoriten ab und speichert sie in die Liste: favoriteFarmshopList
-                    for(int i=0; i<Integer.parseInt(anzahlFavoriten);i++){
-                        String farmshop=document.getString(Integer.toString(i)) ;
-                        favoriteFarmshopList.add(farmshop);
-                     }
-                     }
-                }
-            });
-                if(anzahlFavoriten!=null){
-
-
-                    //vergleicht alle gespeicherten Favoriten ob einer mit dem aktuellen Farmshop übereinstimmt.
-                    //wenn der aktuelle Farmshop bereits gespeichert ist wird der boolean farmshopExists auf true gesetzt
-                for(int i=0;i<favoriteFarmshopList.size();i++){
-                    if(favoriteFarmshopList.get(i).equals(id)){
-                        farmshopExists=true;
-                    }
-                }}
-                //wenn der Farmshop noch nicht gespeichert ist beginnt hier das speichern des Farmshops in die Favoritentabelle
-                if(farmshopExists!=true){
-                    //Wenn schon Favoriten vorhanden sind wird der aktuelle Farmshop unter der aktuellen Nummer (also vorhandene +1) abgespeichert.
-                    if(anzahlFavoriten!=null){
-                        int anzahlVorberechnung=Integer.parseInt(anzahlFavoriten);
-                        int berechnung=anzahlVorberechnung++;
-                        String anzahl=Integer.toString(berechnung);
-                        favoriteFarmshop.put(anzahl,id);
-
-                    }
-                    //ist noch kein Farmshop als Favorit eingetragen wird hier der erste Eintrag gesetzt
-                    //das Feld für die Anzahl der Einträge wird hier auch gesetzt
-                    else{
-                        favoriteFarmshop.put("0",id);
-                        String i="1";
-                        favoriteFarmshop.put("anzahl",i);
-
-                    }
-
-                    mDatabase.collection("Favoriten").document(uid).set(favoriteFarmshop);
-                }else{
-                    // hier muss dem User gesagt werden, dass er den Farmshop bereits als Favorite gespeichert hat
-                }
-
-        }else{
-            //führt zum Login
-            startActivity(new Intent(MapsActivity.this, LoginActivity.class));
-        }
+            Farmshop farmshop=new Farmshop();
+           farmshop.saveFavoriteFarmshop(id,uid,auth);
 
     }
     public void profilButton(View view) {

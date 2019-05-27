@@ -200,12 +200,7 @@ public class Profile extends AppCompatActivity {
         }
     }
 
-    public Profile(String name, int id, double[] gps) {
-        this.name = name;
-        this.id = id;
 
-
-    }
 
     //Methode für den LogOut
     public void logOut(View view) {
@@ -236,13 +231,7 @@ public class Profile extends AppCompatActivity {
         setContentView(R.layout.profil_view);
     }
 
-    public String getName() {
-        return name;
-    }
 
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public void editProfile() {
 

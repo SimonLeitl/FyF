@@ -1,8 +1,10 @@
 package com.example.linkn.myapplication;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.Window;
@@ -34,6 +36,8 @@ public class Farmshop extends AppCompatActivity {
     public FirebaseAuth auth;
     private FirebaseFirestore mDatabase;
     private DocumentReference Farmshop;
+    private String id;
+    private String uid,anzahlFavoriten;
     Map<String, Object> userEingabe = new HashMap<>();
     //Map<String, Object> öffnungszeiten=new HashMap<>();
     Map<String, Object> farmshopId=new HashMap<>();
@@ -45,6 +49,9 @@ public class Farmshop extends AppCompatActivity {
     private RadioGroup radioGroup;
     private RadioButton radioButton;
     public ArrayList<String> farmshopIds=new ArrayList<String>();
+    private ArrayList<String> favoriteFarmshopList=new ArrayList<String>();
+    private Map<String, Object> favoriteFarmshop = new HashMap<>();
+
     TextView adressTextView,phoneTextView;
     // Farmshopdaten als enum speichern? Name, Adresse, Öffnungszeiten...
     public Farmshop(){}
@@ -52,6 +59,7 @@ public class Farmshop extends AppCompatActivity {
     this.owner=owner;
     this.shopname=shopname;
     this.gps=gps;
+
 }
 
     @Override
@@ -242,8 +250,7 @@ public void createFarmshop2(View view){
 
 }
 
-public void FarmShopShow(){
-}
+
 
 public void showFarmShop(View view){
     setContentView(R.layout.farm_shop_profile);
@@ -270,43 +277,75 @@ public void showFarmShop(View view){
 
 
 }
+    public void saveFavoriteFarmshop(String id,String uid,FirebaseAuth auth) {
+        this.id = id;
 
-    public Farmer getOwner() {
-        return owner;
+
+
+        //wird später zum Überprüfen verwendet, ob der Farmshop bereits als Favorit gespeichert ist.
+        boolean farmshopExists = false;
+        //mit dieser if Abfrage wird überprüft ob ein User eingelogged ist. Ansonsten wird dieser zum Login geleitet.
+        if (auth.getCurrentUser() != null) {
+            //hier wird die Verbindung zur Tabelle mit den Favoriten erstellt
+            DocumentReference Favoriten = mDatabase.collection("Favoriten").document(uid);
+            Favoriten.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+
+                    DocumentSnapshot document = task.getResult();
+                    //hier wird die Anzahl an Favoriten abgefragt und in einem String gespeichert
+                    //dieser dient nacher dazu um zu deklarieren der wie vielte Favoriteneintrag vorgenommen wird.
+                    anzahlFavoriten = document.getString("anzahl");
+                    //überprüft ob bereits favoriten Eingetragen sind.
+                    if (anzahlFavoriten != null) {
+                        //ruft alle Favoriten ab und speichert sie in die Liste: favoriteFarmshopList
+                        for (int i = 0; i < Integer.parseInt(anzahlFavoriten); i++) {
+                            String farmshop = document.getString(Integer.toString(i));
+                            favoriteFarmshopList.add(farmshop);
+                        }
+                    }
+                }
+            });
+            if (anzahlFavoriten != null) {
+
+
+                //vergleicht alle gespeicherten Favoriten ob einer mit dem aktuellen Farmshop übereinstimmt.
+                //wenn der aktuelle Farmshop bereits gespeichert ist wird der boolean farmshopExists auf true gesetzt
+                for (int i = 0; i < favoriteFarmshopList.size(); i++) {
+                    if (favoriteFarmshopList.get(i).equals(id)) {
+                        farmshopExists = true;
+                    }
+                }
+            }
+            //wenn der Farmshop noch nicht gespeichert ist beginnt hier das speichern des Farmshops in die Favoritentabelle
+            if (farmshopExists != true) {
+                //Wenn schon Favoriten vorhanden sind wird der aktuelle Farmshop unter der aktuellen Nummer (also vorhandene +1) abgespeichert.
+                if (anzahlFavoriten != null) {
+                    int anzahlVorberechnung = Integer.parseInt(anzahlFavoriten);
+                    int berechnung = anzahlVorberechnung++;
+                    String anzahl = Integer.toString(berechnung);
+                    favoriteFarmshop.put(anzahl, id);
+
+                }
+                //ist noch kein Farmshop als Favorit eingetragen wird hier der erste Eintrag gesetzt
+                //das Feld für die Anzahl der Einträge wird hier auch gesetzt
+                else {
+                    favoriteFarmshop.put("0", id);
+                    String i = "1";
+                    favoriteFarmshop.put("anzahl", i);
+
+                }
+
+                mDatabase.collection("Favoriten").document(uid).set(favoriteFarmshop);
+            } else {
+                // hier muss dem User gesagt werden, dass er den Farmshop bereits als Favorite gespeichert hat
+            }
+
+        } else {
+            //führt zum Login
+            //startActivity(new Intent(MapsActivity.class, LoginActivity.class));
+
+
+        }
     }
 
-    public void setOwner(Farmer owner) {
-        this.owner = owner;
-    }
-
-    public String getShopname() {
-        return shopname;
-    }
-
-    public void setShopname(String shopname) {
-        this.shopname = shopname;
-    }
-
-    public double[] getGps() {
-        return gps;
-    }
-
-    public void setGps(double[] gps) {
-        this.gps = gps;
-    }
-
-    public void saveAsFavorite(){
-
-        auth = FirebaseAuth.getInstance();
-
-        // gibt eine Instanz des aktuellen Nutzers zurück
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-
-        //speichert die ID des aktuellen Nutzer in einen String.
-        String uid = user.getUid();
-
-        //erstellet einen neuen einen neuen Eintrag in der Favoriten Tabelle. Der Eintrag bekommt als Id, die des aktiven Nutzers zugewiesen. Die Farmshop ID wird als Feld innerhalb des Eintrags gespeichert.
-        mDatabase.collection("Favoriten").document(uid).set(Farmshop.getId());
-
-    }
 }
