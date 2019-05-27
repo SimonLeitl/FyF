@@ -38,11 +38,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
         android:layout_marginLeft="4dp"
-        android:layout_marginTop="268dp"
         android:text="Adresse:"
         app:layout_column="0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/shopnameheader"
+        app:layout_constraintTop_toBottomOf="@+id/opentimeTextView"
         app:layout_row="2" />
 
     <TextView
@@ -86,19 +85,16 @@
 
     <TextView
         android:id="@+id/adressTextView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginLeft="4dp"
-        android:layout_marginTop="11dp"
-        android:layout_marginEnd="188dp"
-        android:layout_marginRight="188dp"
+        android:layout_width="278dp"
+        android:layout_height="21dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
         android:text="In der Karl-Pfizer-Anlage, Karlsruhe"
         android:textSize="14sp"
         app:layout_column="1"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/adressheader"
+        app:layout_constraintStart_toEndOf="@+id/adressheader"
+        app:layout_constraintTop_toBottomOf="@+id/opentimeTextView"
         app:layout_row="0" />
 
     <TextView
@@ -157,30 +153,17 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="86dp"
         android:layout_marginLeft="86dp"
-        android:layout_marginTop="74dp"
+        android:layout_marginTop="30dp"
         android:layout_marginEnd="86dp"
         android:layout_marginRight="86dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mapView" />
+        app:layout_constraintTop_toBottomOf="@+id/shopartTextView" /><![CDATA[
 
-    <com.google.android.gms.maps.MapView
-        android:id="@+id/mapView"
-        android:layout_width="126dp"
-        android:layout_height="129dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginLeft="28dp"
+    tools:layout_editor_absoluteY="304dp" />
 
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="34dp"
-        android:layout_marginRight="34dp"
-        app:layout_constraintBottom_toTopOf="@+id/ratingBar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/adressTextView"
-        app:layout_constraintTop_toBottomOf="@+id/opentimeTextView" />
-        tools:layout_editor_absoluteY="304dp" />
 
+    ]]>
 
     <TextView
         android:id="@+id/FarmerTextView"
@@ -261,7 +244,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="162dp"
         android:layout_marginLeft="162dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="162dp"
         android:layout_marginRight="162dp"
         android:layout_marginBottom="8dp"
@@ -273,18 +256,13 @@
 
     <TextView
         android:id="@+id/shopartTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="368dp"
-        android:layout_marginEnd="243dp"
-        android:layout_marginRight="243dp"
-        android:layout_marginBottom="344dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/mapView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_width="131dp"
+        android:layout_height="27dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="164dp"
+        android:layout_marginRight="164dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/adressTextView" />
 
 
 </android.support.constraint.ConstraintLayout>

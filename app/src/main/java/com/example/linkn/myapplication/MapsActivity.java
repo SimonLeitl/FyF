@@ -69,20 +69,20 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     private FirebaseFirestore mDatabase;
 
     public FirebaseAuth auth;
-    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-    TextView adressTextView, phoneTextView, shopnameTextView, FarmerTextView, opentimeTextView, ratingTextView, shopArtTextView;
-    ListView ladenNameView;
-    String id,uid,anzahlFavoriten, farmerID;
+    private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+    private TextView adressTextView, phoneTextView, shopnameTextView, FarmerTextView, opentimeTextView, ratingTextView, shopArtTextView;
+    private ListView ladenNameView;
+    private String id,uid,anzahlFavoriten, farmerID;
     private Task<List<FarmShopMarker>> farmShopMarkerFuture;
 
-    Map<String, Object> favoriteFarmshop = new HashMap<>();
-    Map<String, Object> favoriteFarmshopAnzahl = new HashMap<>();
-    ArrayList<String> favoriteFarmshopList=new ArrayList<String>();
+    private Map<String, Object> favoriteFarmshop = new HashMap<>();
+    private  Map<String, Object> favoriteFarmshopAnzahl = new HashMap<>();
+    private ArrayList<String> favoriteFarmshopList=new ArrayList<String>();
 
     private float bewertung = 0;
     private float anzahl = 0;
-    Map<String, Object> userRatingEingabe = new HashMap<>();
-    private FarmerProfile farmerProfile;
+    private Map<String, Object> userRatingEingabe = new HashMap<>();
+    protected FarmerProfile farmerProfile;
 
 
 
@@ -345,7 +345,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         evaluation.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>(){
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                if (task.getResult() != null) {
                     DocumentSnapshot document = task.getResult();
                     //check if the farmshop has an evaluation in the database
                     if (document.exists()) {
@@ -361,7 +360,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                             ratingTextView.setText(bewertung + " / 5");
                         }
                     }
-                }
             }
         });
 
@@ -372,20 +370,28 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     public void goToFarmerEvent() {
         findViewById(R.id.FarmerTextView).setOnClickListener(v -> goToFarmer());
     }
+
     public void goToFarmer(){
         DocumentReference farmer = mDatabase.collection("Farmshop").document(id);
         farmer.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>(){
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                //reads the farmer id from the Database
                 DocumentSnapshot document = task.getResult();
-                //check if the farmshop has an evaluation in the database
-                if(document.exists()) {
-                  farmerID = document.getString("FarmerID");
-                }
+                farmerID = document.getString("FarmerID");
+                // links the class of the farmer and open/start the class of the farmer profile
+                goToFarmerView();
+                //startActivity(new Intent(MapsActivity.this, FarmerProfile.class));
+                //farmerProfile = new FarmerProfile();
+                //farmerProfile.getShopsAndMachines(farmerID);
+
             }
         });
-        farmerProfile.getShopsAndMachines(farmerID);
 
+    }
+
+    public void goToFarmerView(){
+        FarmerProfile.start(this, farmerID);
     }
 
 

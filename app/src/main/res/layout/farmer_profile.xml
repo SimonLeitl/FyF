@@ -66,40 +66,33 @@
         app:layout_constraintStart_toEndOf="@+id/textViewFarmer"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <RadioButton
-        android:id="@+id/radioButtonAutomat"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:text="Automaten"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewFarmerMail" />
-
-    <RadioButton
-        android:id="@+id/radioButtonShop"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="25dp"
-        android:text="Shops"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewFarmerMail" />
 
     <ListView
-        android:layout_width="match_parent"
-        android:layout_height="453dp"
+        android:id="@+id/shopListItem"
+        android:layout_width="407dp"
+        android:layout_height="338dp"
         android:layout_marginStart="5dp"
         android:layout_marginLeft="5dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="5dp"
         android:layout_marginEnd="5dp"
         android:layout_marginRight="5dp"
-        android:layout_marginBottom="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewFarmerTel" />
+
+    <Button
+        android:id="@+id/buttonOK"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="162dp"
+        android:layout_marginLeft="162dp"
+        android:layout_marginEnd="162dp"
+        android:layout_marginRight="162dp"
+        android:layout_marginBottom="5dp"
+        android:text="@android:string/ok"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radioButtonAutomat" />
+        app:layout_constraintTop_toBottomOf="@+id/shopListItem" />
 
 </android.support.constraint.ConstraintLayout>
