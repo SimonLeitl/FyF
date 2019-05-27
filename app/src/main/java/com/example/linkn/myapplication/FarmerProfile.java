@@ -52,25 +52,30 @@ public class FarmerProfile extends AppCompatActivity {
 
 
     public void showShopsOrMachines(){
-       /* for ( String farmshopIDReal  : group) {
+      /*  for ( String farmshopIDReal  : shops) {
+        DocumentReference farmerProfile;
+        farmerProfile = mDatabase.collection("Farmshop").document(farmshopGroup);
+        farmerProfile.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                DocumentSnapshot document = task.getResult();
 
-            DocumentReference farmerProfile = mDatabase.collection("Farmshop").document(farmshopIDReal);
-            farmerProfile.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                @Override
-                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                    DocumentSnapshot document = task.getResult();
+                String shopName = document.getString("shopname");
+                String shopArt = document.getString("Shopart");
+                shops.add(shopName + ", " + shopArt);
+            }
+        });
 
-                    String shopName = document.getString("shopname");
-                    String shopArt = document.getString("Shopart");
-                    shops.add(shopName + ", " + shopArt);
-                }
-            });
-        }*/
-            ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
-                    android.R.layout.simple_list_item_1, android.R.id.text1, shops);
+        } */
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
+                android.R.layout.simple_list_item_1, android.R.id.text1, shops);
 
-            farmerShops.setAdapter(adapter);
+        farmerShops.setAdapter(adapter);
     }
+
+   /* public void showResultAsList(){
+
+    }*/
 
     protected void getShopsAndMachines(String farmerID){
         this.farmerIDReal = farmerID;
@@ -90,9 +95,16 @@ public class FarmerProfile extends AppCompatActivity {
                 farmerNachname.setText(farmerNachnameDB);
 
                 group = (List<String>) document.get("farmshopid");
-                showShopsOrMachines();
+
+                for (String farmshopGroup : group ) {
+                    shops.add(farmshopGroup);
+
+                    showShopsOrMachines();
+                }
             }
         });
+
+        //showResultAsList();
 
         Button okButton = (Button) findViewById(R.id.buttonOK);
         View.OnClickListener onClickListener = OnClickListener -> {
