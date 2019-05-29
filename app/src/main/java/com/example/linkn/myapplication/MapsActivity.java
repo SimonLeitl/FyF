@@ -46,6 +46,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Hashtable;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -74,6 +75,9 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     Map<String, Object> favoriteFarmshop = new HashMap<>();
     Map<String, Object> favoriteFarmshopAnzahl = new HashMap<>();
     ArrayList<String> favoriteFarmshopList=new ArrayList<String>();
+
+    Hashtable<String, String> hashtableIdName =
+            new Hashtable<String, String>();
 
     private float bewertung = 0;
     private float anzahl = 0;
@@ -517,14 +521,24 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         farmShopMarkerFuture.onSuccessTask(farmShopMarkers -> {
 
+            List<String> farmShopIds = farmShopMarkers
+                    .stream()
+                    .map(farmShopMarker -> farmShopMarker.getId())
+                    .collect(Collectors.toList());
+
             List<String> farmShopNames = farmShopMarkers
                     .stream()
                     .map(farmShopMarker -> farmShopMarker.getShopName())
                     .collect(Collectors.toList());
 
+
+
+            for (int o=0; o<farmShopIds.size(); o++){
+                hashtableIdName.put(farmShopNames.get(o), farmShopIds.get(o));
+            }
+
             ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
                     android.R.layout.simple_list_item_1, android.R.id.text1, farmShopNames);
-
             ladenNameView.setAdapter(adapter);
 
             return null;
@@ -537,21 +551,17 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
 
            String shopname = ((TextView) arg1).getText().toString();
-           Toast.makeText(getBaseContext(), "Item " + shopname, Toast.LENGTH_LONG).show();
+           String shopId = hashtableIdName.get(shopname);
+           Toast.makeText(getBaseContext(), "Item " + shopId, Toast.LENGTH_LONG).show();
 
             setContentView(R.layout.farm_shop_profile);
-            adressTextView = (TextView) findViewById(R.id.adressTextView);
-            phoneTextView = (TextView) findViewById(R.id.phoneTextView);
-            shopnameTextView = (TextView) findViewById(R.id.shopnameTextView);
-            ratingTextView = (TextView) findViewById(R.id.ratingTextView);
-            FarmerTextView=(TextView) findViewById(R.id.FarmerTextView);
-            opentimeTextView=(TextView) findViewById(R.id.opentimeTextView);
-            shopArtTextView=(TextView) findViewById(R.id.shopartTextView);
 
             shopnameTextView.setText(shopname);
 
 
             // !!! aktuell wird im Profil nur der richtige Name angezeigt
+            // Methode muss noch gemaut werden
+            // getFarmshopByID(shopId);
 
 
 
